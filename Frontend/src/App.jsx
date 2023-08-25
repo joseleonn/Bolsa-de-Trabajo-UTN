@@ -1,11 +1,11 @@
 import { useState } from "react";
+import { Navbar } from "./components";
 
 function App() {
   return (
-    <div className="relative sm:-8 p-4 bg-[#13131a] min-h-screen flex flex-row ">
-      <div className="flex flex-1 justify-center items-center">
-        {" "}
-        <h1 className="text-white text-center">Hola</h1>
+    <div className="relative sm:-8 p-4 bg-[#262526] min-h-screen flex flex-row ">
+      <div className="ml-[10px] mt-[10px] flex-1 max-sm:w-full max-w-[1280px] mx-auto sm:pr-5">
+        <Navbar />
       </div>
     </div>
   );
