@@ -1,19 +1,25 @@
-import {} from "../assets";
+import { Work, home, myworks, profile } from "../assets";
 
 export const navlinks = [
   {
     name: "inicio",
-    // imgUrl: ,
+    imgUrl: home,
     link: "/",
   },
   {
     name: "empleos",
-    // imgUrl: ,
+    imgUrl: Work,
     link: "/empleos",
   },
   {
-    name: "acercaDe",
-    // imgUrl: ,
-    link: "/acerca-de",
+    name: "postulaciones",
+    imgUrl: myworks,
+    link: "/postulaciones",
+  },
+
+  {
+    name: "profile",
+    imgUrl: profile,
+    link: "/profile",
   },
 ];
