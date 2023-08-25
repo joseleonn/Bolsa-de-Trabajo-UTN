@@ -1,0 +1,7 @@
+# Ignorar archivos de configuración de IDEs
+.idea/
+.vscode/
+
+# Ignorar archivos compilados
+*.class
+*.o
