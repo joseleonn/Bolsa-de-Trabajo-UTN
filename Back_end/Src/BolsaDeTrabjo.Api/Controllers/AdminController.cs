@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using BolsaDeTrabajo.Model.Models;
+using BolsaDeTrabajo.Service.Interfaces;
+using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -8,36 +10,23 @@ namespace BolsaDeTrabjo.Api.Controllers
     [ApiController]
     public class AdminController : ControllerBase
     {
-        // GET: api/<AdminController>
-        [HttpGet]
-        public IEnumerable<string> Get()
+        private readonly IAdminService _adminService;
+        public AdminController(IAdminService adminService)
         {
-            return new string[] { "value1", "value2" };
+            _adminService = adminService;
         }
-
-        // GET api/<AdminController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public async Task<ActionResult<Usuarios?>> GetById(int id)
         {
-            return "value";
+            var user = await _adminService.GetByIdAsync(id);
+
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(user);
         }
 
-        // POST api/<AdminController>
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
-
-        // PUT api/<AdminController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/<AdminController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
     }
 }
