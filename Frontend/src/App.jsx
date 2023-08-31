@@ -3,7 +3,7 @@ import { Navbar, Sidebar } from "./components";
 import { Home } from "./pages";
 function App() {
   return (
-    <div className="relative sm:-8 p-4 bg-[#262526] min-h-screen flex flex-row ">
+    <div className="relative sm:-8 p-4 bg-[#151719] min-h-screen flex flex-row ">
       <div className="sm:flex hidden mr-10 relative">
         <Sidebar />
       </div>

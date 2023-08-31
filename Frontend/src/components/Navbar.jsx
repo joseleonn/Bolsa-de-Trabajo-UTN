@@ -6,8 +6,8 @@ import { navlinks } from "../constants";
 
 const Navbar = () => {
   return (
-    <div className="sm:flex hidden flex-row justify-between gap-4 mt-2">
-      <div className="lg:flex-1  flex flex-row max-w-[458px] py-2 pl-4 pr-2 h-[52px] bg-[#f3f3f3] rounded-[100px]">
+    <div className="sm:flex hidden flex-row justify-between gap-4 mt-2 max-w-full   ">
+      <div className="lg:flex-1  flex flex-row max-w-[458px]   py-2 pl-4 pr-2 h-[52px] bg-[#f3f3f3] rounded-[100px]">
         <input
           type="text"
           placeholder="Buscar empleos"
@@ -21,12 +21,12 @@ const Navbar = () => {
           />
         </div>
       </div>
-      <div className="flex gap-4 mr-[15px] ">
+      <div className="flex gap-4 ">
         <CustomButton
           btnType=""
           title="Iniciar Sesion"
           // handleClick=""
-          styles="bg-[#f3f3f3] text-[#262526] hover:bg-[#afb2b7] "
+          styles="bg-[#f3f3f3] text-[#15171a] hover:bg-[#afb2b7] "
         />
 
         <CustomButton

@@ -2,8 +2,12 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { UTN_logo, sun } from "../assets";
 import { navlinks } from "../constants";
+import { motion } from "framer-motion";
+
 const Icon = ({ styles, name, imgUrl, isActive, disable, handleClick }) => (
-  <div
+  <motion.div
+    whileHover={{ scale: 1.1 }}
+    whileTap={{ scale: 0.9 }}
     className={`w-[48px] h-[48px] rounded-full ${
       isActive && isActive === name && "bg-[#afb2b7]"
     } flex justify-center items-center ${
@@ -20,7 +24,7 @@ const Icon = ({ styles, name, imgUrl, isActive, disable, handleClick }) => (
         className={`w-1/2 h-1/2 ${isActive !== name && "grayscale"}`}
       />
     )}
-  </div>
+  </motion.div>
 );
 const Sidebar = () => {
   const navigate = useNavigate();
