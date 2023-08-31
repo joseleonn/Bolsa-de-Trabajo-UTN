@@ -8,7 +8,6 @@ const CustomButton = ({ btnType, title, handleClick, styles }) => {
         className={`font-epilogue font-semibold text-[16px] leading-[26px]  min-h-[52px] px-4 rounded-[54px]  transition ${styles}`}
         onClick={handleClick}
       >
-        {" "}
         {title}
       </button>
     </div>

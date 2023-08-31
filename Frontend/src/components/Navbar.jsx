@@ -1,5 +1,8 @@
-import { search } from "../assets";
+import { useState } from "react";
+import { search, menu } from "../assets";
 import CustomButton from "./CustomButton";
+import { useNavigate } from "react-router-dom";
+import { navlinks } from "../constants";
 
 const Navbar = () => {
   return (
@@ -22,14 +25,14 @@ const Navbar = () => {
         <CustomButton
           btnType=""
           title="Iniciar Sesion"
-          handleClick=""
+          // handleClick=""
           styles="bg-[#f3f3f3] text-[#262526] hover:bg-[#afb2b7] "
         />
 
         <CustomButton
           btnType=""
           title="Inscribirse"
-          handleClick=""
+          // handleClick={}
           styles="bg-blue-600 text-[#f3f3f3] hover:bg-blue-800 "
         />
       </div>
