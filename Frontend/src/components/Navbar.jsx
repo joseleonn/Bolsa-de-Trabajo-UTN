@@ -1,13 +1,25 @@
 import { useState } from "react";
-import { search, menu } from "../assets";
+import { search, menu, UTN_logo, UTNletra } from "../assets";
 import CustomButton from "./CustomButton";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { navlinks } from "../constants";
+import { motion } from "framer-motion";
 
+const itemVariants = {
+  open: {
+    opacity: 1,
+    y: 0,
+    transition: { type: "spring", stiffness: 300, damping: 24 },
+  },
+  closed: { opacity: 0, y: 20, transition: { duration: 0.2 } },
+};
 const Navbar = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate();
+
   return (
-    <div className="sm:flex hidden flex-row justify-between gap-4 mt-2 max-w-full   ">
-      <div className="lg:flex-1  flex flex-row max-w-[458px]   py-2 pl-4 pr-2 h-[52px] bg-[#f3f3f3] rounded-[100px]">
+    <div className="sm:flex  flex-row justify-between gap-4 mt-2 max-w-full   ">
+      <div className="sm:flex hidden lg:flex-1  flex flex-row max-w-[458px]   py-2 pl-4 pr-2 h-[52px] bg-[#f3f3f3] rounded-[100px]">
         <input
           type="text"
           placeholder="Buscar empleos"
@@ -21,7 +33,7 @@ const Navbar = () => {
           />
         </div>
       </div>
-      <div className="flex gap-4 ">
+      <div className="sm:flex hidden gap-4 ">
         <CustomButton
           btnType=""
           title="Iniciar Sesion"
@@ -35,6 +47,94 @@ const Navbar = () => {
           // handleClick={}
           styles="bg-blue-600 text-[#f3f3f3] hover:bg-blue-800 "
         />
+      </div>
+
+      {/* MOVIL */}
+      <div className="fixed w-full flex justify-between sm:hidden ">
+        <div className="z-50 ">
+          <img src={UTNletra} alt="logo" className=" " />
+        </div>
+        <motion.nav
+          initial={false}
+          animate={isOpen ? "open" : "closed"}
+          className="menu  mr-[40px] max-w-[200px]  sm:hidden "
+        >
+          <div className="flex  justify-end mt-[4px]">
+            <motion.button
+              whileTap={{ scale: 0.97 }}
+              onClick={() => setIsOpen(!isOpen)}
+              className=" "
+            >
+              <img src={menu} alt="movil menu" className="w-[40px] h-[40px] " />
+            </motion.button>
+          </div>
+          <motion.ul
+            variants={{
+              open: {
+                clipPath: "inset(0% 0% 0% 0% round 10px)",
+                transition: {
+                  type: "spring",
+                  bounce: 0,
+                  duration: 0.7,
+                  delayChildren: 0.3,
+                  staggerChildren: 0.05,
+                },
+              },
+              closed: {
+                clipPath: "inset(10% 50% 90% 50% round 10px)",
+                transition: {
+                  type: "spring",
+                  bounce: 0,
+                  duration: 0.3,
+                },
+              },
+            }}
+            className="bg-[#f3f3f3] p-2 gap-5 flex flex-col "
+          >
+            {navlinks.map((link) => (
+              <motion.li
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.9 }}
+                className="p-2 flex font-epilogue uppercase font-semibold text-[#262526] f3f3f3 cursor-pointer justify-start items-center "
+                key={link.name}
+                onClick={() => {
+                  if (!link.disabled) {
+                    navigate(link.link);
+                  }
+                }}
+                variants={itemVariants}
+              >
+                <img
+                  src={link.imgUrl}
+                  alt="icon"
+                  className="w-[20px] h-[20px] mr-3 cursor-pointer"
+                />
+                {link.name}
+              </motion.li>
+            ))}
+            <li>
+              <div className="sm:hidden flex gap-3 justify-center  ">
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.9 }}
+                  // handleClick=""
+                  className="bg-[#afb2b7] rounded-[10px] p-2 font-epilogue text-l font-semibold text-[#15171a] hover:bg-[#7f8084] mb-2  "
+                >
+                  Acceder
+                </motion.button>
+
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.9 }}
+                  // handleClick={}
+                  className="bg-blue-600 rounded-[10px] p-2 font-epilogue text-l font-semibold  text-[#f3f3f3] hover:bg-blue-800 mb-2 "
+                >
+                  Inscribirse
+                </motion.button>
+              </div>
+            </li>
+          </motion.ul>
+        </motion.nav>
       </div>
     </div>
   );

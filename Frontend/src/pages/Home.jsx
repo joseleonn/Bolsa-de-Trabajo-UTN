@@ -45,7 +45,7 @@ const Home = () => {
           <h1 className="text-6xl font-epilogue font-semibold  text-[#f3f3f3] tracking-tight lg:text-8xl mt-[50px]  ">
             {showText && (
               <Typewriter
-                words={["Econtrá el trabajo de tus"]}
+                words={["Encontrá el trabajo de tus"]}
                 cursor
                 cursorStyle=""
                 typeSpeed={80}
