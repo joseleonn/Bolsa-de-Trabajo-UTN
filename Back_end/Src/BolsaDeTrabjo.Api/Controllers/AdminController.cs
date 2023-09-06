@@ -16,7 +16,7 @@ namespace BolsaDeTrabjo.Api.Controllers
             _adminService = adminService;
         }
         [HttpGet("{id}")]
-        public async Task<ActionResult<Usuarios?>> GetById(int id)
+        public async Task<IActionResult> GetById(int id)
         {
             var user = await _adminService.GetByIdAsync(id);
 
