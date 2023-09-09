@@ -3228,11 +3228,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\josec\\OneDrive\\Escritorio\\Bolsa de Trabajo\\Back_end\\Src\\BolsaDeTrabajo.Model\\BolsaDeTrabajo.Model.csproj",
+      "projectUniqueName": "C:\\Users\\josec\\Desktop\\Bolsa-de-Trabajo-UTN\\Back_end\\Src\\BolsaDeTrabajo.Model\\BolsaDeTrabajo.Model.csproj",
       "projectName": "BolsaDeTrabajo.Model",
-      "projectPath": "C:\\Users\\josec\\OneDrive\\Escritorio\\Bolsa de Trabajo\\Back_end\\Src\\BolsaDeTrabajo.Model\\BolsaDeTrabajo.Model.csproj",
+      "projectPath": "C:\\Users\\josec\\Desktop\\Bolsa-de-Trabajo-UTN\\Back_end\\Src\\BolsaDeTrabajo.Model\\BolsaDeTrabajo.Model.csproj",
       "packagesPath": "C:\\Users\\josec\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\josec\\OneDrive\\Escritorio\\Bolsa de Trabajo\\Back_end\\Src\\BolsaDeTrabajo.Model\\obj\\",
+      "outputPath": "C:\\Users\\josec\\Desktop\\Bolsa-de-Trabajo-UTN\\Back_end\\Src\\BolsaDeTrabajo.Model\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\josec\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -3282,7 +3282,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
       }
     }
   }

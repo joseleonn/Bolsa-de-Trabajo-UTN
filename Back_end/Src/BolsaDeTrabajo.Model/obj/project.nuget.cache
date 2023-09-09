@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "8IcrxYYSLsqrOQtod609OR0wYpqs6/Tv1AVDLwoSdyiz769O6U72J3xk9wVADFQfnnksN2ggjo4SC96I0kC1Iw==",
+  "dgSpecHash": "5+2ll6IQCGEN53sjz8ixJ2FTnk8H0gsqaKJDk8A1FBddqdv2VjWi4U9mpbPYk9fVnTeOKrVO4fh5Kmmy215auQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\josec\\OneDrive\\Escritorio\\Bolsa de Trabajo\\Back_end\\Src\\BolsaDeTrabajo.Model\\BolsaDeTrabajo.Model.csproj",
+  "projectFilePath": "C:\\Users\\josec\\Desktop\\Bolsa-de-Trabajo-UTN\\Back_end\\Src\\BolsaDeTrabajo.Model\\BolsaDeTrabajo.Model.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\josec\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\josec\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",

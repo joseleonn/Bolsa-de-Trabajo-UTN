@@ -3264,11 +3264,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\josec\\OneDrive\\Escritorio\\Bolsa de Trabajo\\Back_end\\Src\\BolsaDeTrabajo.Service\\BolsaDeTrabajo.Service.csproj",
+      "projectUniqueName": "C:\\Users\\josec\\Desktop\\Bolsa-de-Trabajo-UTN\\Back_end\\Src\\BolsaDeTrabajo.Service\\BolsaDeTrabajo.Service.csproj",
       "projectName": "BolsaDeTrabajo.Service",
-      "projectPath": "C:\\Users\\josec\\OneDrive\\Escritorio\\Bolsa de Trabajo\\Back_end\\Src\\BolsaDeTrabajo.Service\\BolsaDeTrabajo.Service.csproj",
+      "projectPath": "C:\\Users\\josec\\Desktop\\Bolsa-de-Trabajo-UTN\\Back_end\\Src\\BolsaDeTrabajo.Service\\BolsaDeTrabajo.Service.csproj",
       "packagesPath": "C:\\Users\\josec\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\josec\\OneDrive\\Escritorio\\Bolsa de Trabajo\\Back_end\\Src\\BolsaDeTrabajo.Service\\obj\\",
+      "outputPath": "C:\\Users\\josec\\Desktop\\Bolsa-de-Trabajo-UTN\\Back_end\\Src\\BolsaDeTrabajo.Service\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\josec\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -3285,8 +3285,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\josec\\OneDrive\\Escritorio\\Bolsa de Trabajo\\Back_end\\Src\\BolsaDeTrabajo.Data\\BolsaDeTrabajo.Data.csproj": {
-              "projectPath": "C:\\Users\\josec\\OneDrive\\Escritorio\\Bolsa de Trabajo\\Back_end\\Src\\BolsaDeTrabajo.Data\\BolsaDeTrabajo.Data.csproj"
+            "C:\\Users\\josec\\Desktop\\Bolsa-de-Trabajo-UTN\\Back_end\\Src\\BolsaDeTrabajo.Data\\BolsaDeTrabajo.Data.csproj": {
+              "projectPath": "C:\\Users\\josec\\Desktop\\Bolsa-de-Trabajo-UTN\\Back_end\\Src\\BolsaDeTrabajo.Data\\BolsaDeTrabajo.Data.csproj"
             }
           }
         }
@@ -3316,7 +3316,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
       }
     }
   }
