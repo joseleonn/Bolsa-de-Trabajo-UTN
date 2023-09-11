@@ -3264,11 +3264,19 @@
   "project": {
     "version": "1.0.0",
     "restore": {
+<<<<<<< HEAD
       "projectUniqueName": "C:\\Users\\josec\\Desktop\\Bolsa-de-Trabajo-UTN\\Back_end\\Src\\BolsaDeTrabajo.Service\\BolsaDeTrabajo.Service.csproj",
       "projectName": "BolsaDeTrabajo.Service",
       "projectPath": "C:\\Users\\josec\\Desktop\\Bolsa-de-Trabajo-UTN\\Back_end\\Src\\BolsaDeTrabajo.Service\\BolsaDeTrabajo.Service.csproj",
       "packagesPath": "C:\\Users\\josec\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\josec\\Desktop\\Bolsa-de-Trabajo-UTN\\Back_end\\Src\\BolsaDeTrabajo.Service\\obj\\",
+=======
+      "projectUniqueName": "C:\\Users\\josec\\OneDrive\\Escritorio\\Bolsa-de-Trabajo-UTN\\Back_end\\Src\\BolsaDeTrabajo.Service\\BolsaDeTrabajo.Service.csproj",
+      "projectName": "BolsaDeTrabajo.Service",
+      "projectPath": "C:\\Users\\josec\\OneDrive\\Escritorio\\Bolsa-de-Trabajo-UTN\\Back_end\\Src\\BolsaDeTrabajo.Service\\BolsaDeTrabajo.Service.csproj",
+      "packagesPath": "C:\\Users\\josec\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\josec\\OneDrive\\Escritorio\\Bolsa-de-Trabajo-UTN\\Back_end\\Src\\BolsaDeTrabajo.Service\\obj\\",
+>>>>>>> ff8c4d8ffe88e331412d3740c476812973b20e2b
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\josec\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -3285,8 +3293,13 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
+<<<<<<< HEAD
             "C:\\Users\\josec\\Desktop\\Bolsa-de-Trabajo-UTN\\Back_end\\Src\\BolsaDeTrabajo.Data\\BolsaDeTrabajo.Data.csproj": {
               "projectPath": "C:\\Users\\josec\\Desktop\\Bolsa-de-Trabajo-UTN\\Back_end\\Src\\BolsaDeTrabajo.Data\\BolsaDeTrabajo.Data.csproj"
+=======
+            "C:\\Users\\josec\\OneDrive\\Escritorio\\Bolsa-de-Trabajo-UTN\\Back_end\\Src\\BolsaDeTrabajo.Data\\BolsaDeTrabajo.Data.csproj": {
+              "projectPath": "C:\\Users\\josec\\OneDrive\\Escritorio\\Bolsa-de-Trabajo-UTN\\Back_end\\Src\\BolsaDeTrabajo.Data\\BolsaDeTrabajo.Data.csproj"
+>>>>>>> ff8c4d8ffe88e331412d3740c476812973b20e2b
             }
           }
         }

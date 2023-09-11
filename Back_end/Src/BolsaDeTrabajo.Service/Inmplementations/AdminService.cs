@@ -24,13 +24,21 @@ namespace BolsaDeTrabajo.Service.Inmplementations
         {
             Admins admin = await _adminRepository.GetAdminById(id);
 
-            AdminDTO request = new AdminDTO
+            if(admin != null) {
+                AdminDTO request = new AdminDTO
+                {
+                    IdAdmin = admin.IdAdmin,
+                    IdUsuario = admin.IdUsuario,
+                    RolAdmin = admin.RolAdmin,
+                };
+                return request;
+            }
+            else
             {
-                IdAdmin = admin.IdAdmin,
-                IdUsuario = admin.IdUsuario,
-                RolAdmin = admin.RolAdmin,
-            };
-            return request;
+                return null;
+            }
+
+           
         }
     }
 }

@@ -9,9 +9,17 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = BolsaDeTrabjo.Api
 build_property.RootNamespace = BolsaDeTrabjo.Api
+<<<<<<< HEAD
 build_property.ProjectDir = C:\Users\josec\Desktop\Bolsa-de-Trabajo-UTN\Back_end\Src\BolsaDeTrabjo.Api\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
 build_property.MSBuildProjectDirectory = C:\Users\josec\Desktop\Bolsa-de-Trabajo-UTN\Back_end\Src\BolsaDeTrabjo.Api
+=======
+build_property.ProjectDir = C:\Users\josec\OneDrive\Escritorio\Bolsa-de-Trabajo-UTN\Back_end\Src\BolsaDeTrabjo.Api\
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\josec\OneDrive\Escritorio\Bolsa-de-Trabajo-UTN\Back_end\Src\BolsaDeTrabjo.Api
+>>>>>>> ff8c4d8ffe88e331412d3740c476812973b20e2b
 build_property._RazorSourceGeneratorDebug = 

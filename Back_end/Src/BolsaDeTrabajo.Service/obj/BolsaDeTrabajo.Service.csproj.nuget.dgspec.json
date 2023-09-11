@@ -1,6 +1,7 @@
 {
   "format": 1,
   "restore": {
+<<<<<<< HEAD
     "C:\\Users\\josec\\Desktop\\Bolsa-de-Trabajo-UTN\\Back_end\\Src\\BolsaDeTrabajo.Service\\BolsaDeTrabajo.Service.csproj": {}
   },
   "projects": {
@@ -12,6 +13,19 @@
         "projectPath": "C:\\Users\\josec\\Desktop\\Bolsa-de-Trabajo-UTN\\Back_end\\Src\\BolsaDeTrabajo.Data\\BolsaDeTrabajo.Data.csproj",
         "packagesPath": "C:\\Users\\josec\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\josec\\Desktop\\Bolsa-de-Trabajo-UTN\\Back_end\\Src\\BolsaDeTrabajo.Data\\obj\\",
+=======
+    "C:\\Users\\josec\\OneDrive\\Escritorio\\Bolsa-de-Trabajo-UTN\\Back_end\\Src\\BolsaDeTrabajo.Service\\BolsaDeTrabajo.Service.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\josec\\OneDrive\\Escritorio\\Bolsa-de-Trabajo-UTN\\Back_end\\Src\\BolsaDeTrabajo.Data\\BolsaDeTrabajo.Data.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\josec\\OneDrive\\Escritorio\\Bolsa-de-Trabajo-UTN\\Back_end\\Src\\BolsaDeTrabajo.Data\\BolsaDeTrabajo.Data.csproj",
+        "projectName": "BolsaDeTrabajo.Data",
+        "projectPath": "C:\\Users\\josec\\OneDrive\\Escritorio\\Bolsa-de-Trabajo-UTN\\Back_end\\Src\\BolsaDeTrabajo.Data\\BolsaDeTrabajo.Data.csproj",
+        "packagesPath": "C:\\Users\\josec\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\josec\\OneDrive\\Escritorio\\Bolsa-de-Trabajo-UTN\\Back_end\\Src\\BolsaDeTrabajo.Data\\obj\\",
+>>>>>>> ff8c4d8ffe88e331412d3740c476812973b20e2b
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\josec\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -28,8 +42,13 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
+<<<<<<< HEAD
               "C:\\Users\\josec\\Desktop\\Bolsa-de-Trabajo-UTN\\Back_end\\Src\\BolsaDeTrabajo.Model\\BolsaDeTrabajo.Model.csproj": {
                 "projectPath": "C:\\Users\\josec\\Desktop\\Bolsa-de-Trabajo-UTN\\Back_end\\Src\\BolsaDeTrabajo.Model\\BolsaDeTrabajo.Model.csproj"
+=======
+              "C:\\Users\\josec\\OneDrive\\Escritorio\\Bolsa-de-Trabajo-UTN\\Back_end\\Src\\BolsaDeTrabajo.Model\\BolsaDeTrabajo.Model.csproj": {
+                "projectPath": "C:\\Users\\josec\\OneDrive\\Escritorio\\Bolsa-de-Trabajo-UTN\\Back_end\\Src\\BolsaDeTrabajo.Model\\BolsaDeTrabajo.Model.csproj"
+>>>>>>> ff8c4d8ffe88e331412d3740c476812973b20e2b
               }
             }
           }
@@ -63,6 +82,7 @@
         }
       }
     },
+<<<<<<< HEAD
     "C:\\Users\\josec\\Desktop\\Bolsa-de-Trabajo-UTN\\Back_end\\Src\\BolsaDeTrabajo.Model\\BolsaDeTrabajo.Model.csproj": {
       "version": "1.0.0",
       "restore": {
@@ -71,6 +91,16 @@
         "projectPath": "C:\\Users\\josec\\Desktop\\Bolsa-de-Trabajo-UTN\\Back_end\\Src\\BolsaDeTrabajo.Model\\BolsaDeTrabajo.Model.csproj",
         "packagesPath": "C:\\Users\\josec\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\josec\\Desktop\\Bolsa-de-Trabajo-UTN\\Back_end\\Src\\BolsaDeTrabajo.Model\\obj\\",
+=======
+    "C:\\Users\\josec\\OneDrive\\Escritorio\\Bolsa-de-Trabajo-UTN\\Back_end\\Src\\BolsaDeTrabajo.Model\\BolsaDeTrabajo.Model.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\josec\\OneDrive\\Escritorio\\Bolsa-de-Trabajo-UTN\\Back_end\\Src\\BolsaDeTrabajo.Model\\BolsaDeTrabajo.Model.csproj",
+        "projectName": "BolsaDeTrabajo.Model",
+        "projectPath": "C:\\Users\\josec\\OneDrive\\Escritorio\\Bolsa-de-Trabajo-UTN\\Back_end\\Src\\BolsaDeTrabajo.Model\\BolsaDeTrabajo.Model.csproj",
+        "packagesPath": "C:\\Users\\josec\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\josec\\OneDrive\\Escritorio\\Bolsa-de-Trabajo-UTN\\Back_end\\Src\\BolsaDeTrabajo.Model\\obj\\",
+>>>>>>> ff8c4d8ffe88e331412d3740c476812973b20e2b
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\josec\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -124,6 +154,7 @@
         }
       }
     },
+<<<<<<< HEAD
     "C:\\Users\\josec\\Desktop\\Bolsa-de-Trabajo-UTN\\Back_end\\Src\\BolsaDeTrabajo.Service\\BolsaDeTrabajo.Service.csproj": {
       "version": "1.0.0",
       "restore": {
@@ -132,6 +163,16 @@
         "projectPath": "C:\\Users\\josec\\Desktop\\Bolsa-de-Trabajo-UTN\\Back_end\\Src\\BolsaDeTrabajo.Service\\BolsaDeTrabajo.Service.csproj",
         "packagesPath": "C:\\Users\\josec\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\josec\\Desktop\\Bolsa-de-Trabajo-UTN\\Back_end\\Src\\BolsaDeTrabajo.Service\\obj\\",
+=======
+    "C:\\Users\\josec\\OneDrive\\Escritorio\\Bolsa-de-Trabajo-UTN\\Back_end\\Src\\BolsaDeTrabajo.Service\\BolsaDeTrabajo.Service.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\josec\\OneDrive\\Escritorio\\Bolsa-de-Trabajo-UTN\\Back_end\\Src\\BolsaDeTrabajo.Service\\BolsaDeTrabajo.Service.csproj",
+        "projectName": "BolsaDeTrabajo.Service",
+        "projectPath": "C:\\Users\\josec\\OneDrive\\Escritorio\\Bolsa-de-Trabajo-UTN\\Back_end\\Src\\BolsaDeTrabajo.Service\\BolsaDeTrabajo.Service.csproj",
+        "packagesPath": "C:\\Users\\josec\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\josec\\OneDrive\\Escritorio\\Bolsa-de-Trabajo-UTN\\Back_end\\Src\\BolsaDeTrabajo.Service\\obj\\",
+>>>>>>> ff8c4d8ffe88e331412d3740c476812973b20e2b
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\josec\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -148,8 +189,13 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
+<<<<<<< HEAD
               "C:\\Users\\josec\\Desktop\\Bolsa-de-Trabajo-UTN\\Back_end\\Src\\BolsaDeTrabajo.Data\\BolsaDeTrabajo.Data.csproj": {
                 "projectPath": "C:\\Users\\josec\\Desktop\\Bolsa-de-Trabajo-UTN\\Back_end\\Src\\BolsaDeTrabajo.Data\\BolsaDeTrabajo.Data.csproj"
+=======
+              "C:\\Users\\josec\\OneDrive\\Escritorio\\Bolsa-de-Trabajo-UTN\\Back_end\\Src\\BolsaDeTrabajo.Data\\BolsaDeTrabajo.Data.csproj": {
+                "projectPath": "C:\\Users\\josec\\OneDrive\\Escritorio\\Bolsa-de-Trabajo-UTN\\Back_end\\Src\\BolsaDeTrabajo.Data\\BolsaDeTrabajo.Data.csproj"
+>>>>>>> ff8c4d8ffe88e331412d3740c476812973b20e2b
               }
             }
           }

@@ -13,3 +13,18 @@ C:\Users\josec\OneDrive\Escritorio\Bolsa de Trabajo\Back_end\Src\BolsaDeTrabajo.
 C:\Users\josec\OneDrive\Escritorio\Bolsa de Trabajo\Back_end\Src\BolsaDeTrabajo.Data\obj\Debug\net6.0\refint\BolsaDeTrabajo.Data.dll
 C:\Users\josec\OneDrive\Escritorio\Bolsa de Trabajo\Back_end\Src\BolsaDeTrabajo.Data\obj\Debug\net6.0\BolsaDeTrabajo.Data.pdb
 C:\Users\josec\OneDrive\Escritorio\Bolsa de Trabajo\Back_end\Src\BolsaDeTrabajo.Data\obj\Debug\net6.0\ref\BolsaDeTrabajo.Data.dll
+C:\Users\josec\OneDrive\Escritorio\Bolsa-de-Trabajo-UTN\Back_end\Src\BolsaDeTrabajo.Data\bin\Debug\net6.0\BolsaDeTrabajo.Data.deps.json
+C:\Users\josec\OneDrive\Escritorio\Bolsa-de-Trabajo-UTN\Back_end\Src\BolsaDeTrabajo.Data\bin\Debug\net6.0\BolsaDeTrabajo.Data.dll
+C:\Users\josec\OneDrive\Escritorio\Bolsa-de-Trabajo-UTN\Back_end\Src\BolsaDeTrabajo.Data\bin\Debug\net6.0\BolsaDeTrabajo.Data.pdb
+C:\Users\josec\OneDrive\Escritorio\Bolsa-de-Trabajo-UTN\Back_end\Src\BolsaDeTrabajo.Data\bin\Debug\net6.0\BolsaDeTrabajo.Model.dll
+C:\Users\josec\OneDrive\Escritorio\Bolsa-de-Trabajo-UTN\Back_end\Src\BolsaDeTrabajo.Data\bin\Debug\net6.0\BolsaDeTrabajo.Model.pdb
+C:\Users\josec\OneDrive\Escritorio\Bolsa-de-Trabajo-UTN\Back_end\Src\BolsaDeTrabajo.Data\obj\Debug\net6.0\BolsaDeTrabajo.Data.csproj.AssemblyReference.cache
+C:\Users\josec\OneDrive\Escritorio\Bolsa-de-Trabajo-UTN\Back_end\Src\BolsaDeTrabajo.Data\obj\Debug\net6.0\BolsaDeTrabajo.Data.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\josec\OneDrive\Escritorio\Bolsa-de-Trabajo-UTN\Back_end\Src\BolsaDeTrabajo.Data\obj\Debug\net6.0\BolsaDeTrabajo.Data.AssemblyInfoInputs.cache
+C:\Users\josec\OneDrive\Escritorio\Bolsa-de-Trabajo-UTN\Back_end\Src\BolsaDeTrabajo.Data\obj\Debug\net6.0\BolsaDeTrabajo.Data.AssemblyInfo.cs
+C:\Users\josec\OneDrive\Escritorio\Bolsa-de-Trabajo-UTN\Back_end\Src\BolsaDeTrabajo.Data\obj\Debug\net6.0\BolsaDeTrabajo.Data.csproj.CoreCompileInputs.cache
+C:\Users\josec\OneDrive\Escritorio\Bolsa-de-Trabajo-UTN\Back_end\Src\BolsaDeTrabajo.Data\obj\Debug\net6.0\BolsaDeTrabajo.Data.csproj.CopyComplete
+C:\Users\josec\OneDrive\Escritorio\Bolsa-de-Trabajo-UTN\Back_end\Src\BolsaDeTrabajo.Data\obj\Debug\net6.0\BolsaDeTrabajo.Data.dll
+C:\Users\josec\OneDrive\Escritorio\Bolsa-de-Trabajo-UTN\Back_end\Src\BolsaDeTrabajo.Data\obj\Debug\net6.0\refint\BolsaDeTrabajo.Data.dll
+C:\Users\josec\OneDrive\Escritorio\Bolsa-de-Trabajo-UTN\Back_end\Src\BolsaDeTrabajo.Data\obj\Debug\net6.0\BolsaDeTrabajo.Data.pdb
+C:\Users\josec\OneDrive\Escritorio\Bolsa-de-Trabajo-UTN\Back_end\Src\BolsaDeTrabajo.Data\obj\Debug\net6.0\ref\BolsaDeTrabajo.Data.dll

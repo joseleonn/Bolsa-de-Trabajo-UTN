@@ -8,4 +8,8 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = BolsaDeTrabajo.Model
+<<<<<<< HEAD
 build_property.ProjectDir = C:\Users\josec\Desktop\Bolsa-de-Trabajo-UTN\Back_end\Src\BolsaDeTrabajo.Model\
+=======
+build_property.ProjectDir = C:\Users\josec\OneDrive\Escritorio\Bolsa-de-Trabajo-UTN\Back_end\Src\BolsaDeTrabajo.Model\
+>>>>>>> ff8c4d8ffe88e331412d3740c476812973b20e2b
