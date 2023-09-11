@@ -1,16 +1,11 @@
 import { Typewriter } from "react-simple-typewriter";
 import { UTN_logo_white } from "../assets";
 import { motion } from "framer-motion";
-import { Accordion, AccordionItem } from "@nextui-org/react";
 
-import { useEffect, useState } from "react";
-import useTimeout from "../Hooks/useTimeout";
 import { Guia } from "../components";
 import { StudentsGuia, CompaniesGuia } from "../constants";
 
 const Home = () => {
-  const { showText, showText2 } = useTimeout();
-
   return (
     <div>
       <motion.div
@@ -74,9 +69,7 @@ const Home = () => {
       {/* Guide for Companies */}
 
       <Guia
-        title="         Información para Empresas
-
-"
+        title="Información para Empresas"
         description="Para publicar búsquedas laborales en el Sistema Virtual de Búsqueda de Empleo se deberá cumplir con lo siguiente:"
         StudentOrCompany={CompaniesGuia}
       />
