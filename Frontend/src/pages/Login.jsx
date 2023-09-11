@@ -5,22 +5,16 @@ import { Link } from "react-router-dom";
 
 const Login = () => {
   return (
-    <section className="relative flex flex-col lg:flex-row lg:h-screen lg:items-center">
-      {/* Imagen de fondo */}
-      <div className="hidden lg:block relative h-60 sm:h-96 lg:h-full lg:w-1/2">
-        <img
-          alt="Welcome"
-          src={UTN_logo_white}
-          className="absolute inset-0 h-full w-full object-cover"
-        />
-      </div>
+    <section className="relative flex flex-col justify-center  items-center lg:flex-row lg:h-screen lg:items-center">
+      
+      
 
       {/* Contenido del formulario */}
-      <div className="w-full px-4 py-8 sm:px-6 sm:py-12 lg:w-1/2 lg:px-8 lg:py-24">
+      <div className="w-full px-4 py-8 sm:px-6 sm:py-12 lg:w-1/2 lg:px-8 lg:py-24 bg-[#f3f3f3] rounded-[20px] shadow-xl ">
         <div className="mx-auto max-w-md text-center">
-          <h1 className="text-2xl sm:text-3xl font-bold">Bolsa De Trabajo</h1>
-          <p className="mt-4 text-gray-500">Universidad Tecnológica Nacional</p>
-          <p className="text-gray-500">Facultad Regional Rosario</p>
+          <h1 className="text-2xl sm:text-3xl font-bold text-[#15171a]">Bolsa De Trabajo</h1>
+          <p className="mt-4 text-[#15171a]">Universidad Tecnológica Nacional</p>
+          <p className="text-[#15171a]">Facultad Regional Rosario</p>
         </div>
 
         <form className="mx-auto mt-8 max-w-md space-y-4">
@@ -61,7 +55,7 @@ const Login = () => {
           </div>
 
           <div className="flex flex-col sm:flex-row items-center justify-between">
-            <p className="text-sm text-gray-500 mb-4 sm:mb-0">
+            <p className="text-sm text-[#15171a] mb-4 sm:mb-0">
               No estás registrado?
               <a className="underline" href="#">
                 Regístrate.
