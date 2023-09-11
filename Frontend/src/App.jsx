@@ -1,16 +1,25 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import { Navbar, Sidebar } from "./components";
-import { Home } from "./pages";
+import { Home, Login } from "./pages";
+
 function App() {
+  const location = useLocation();
+
   return (
     <div className="relative sm:-8 p-4 bg-[#151719] min-h-screen flex flex-row ">
-      <div className="sm:flex hidden mr-10 relative">
-        <Sidebar />
-      </div>
+      {/* Mostrar Sidebar en todas las rutas excepto "/Login" */}
+      {location.pathname !== "/Login" && (
+        <div className="sm:flex hidden mr-10 relative">
+          <Sidebar />
+        </div>
+      )}
+
       <div className="flex-1 max-sm:w-full  mx-auto sm:pr-5">
-        <Navbar />
+        {/* Mostrar Navbar en todas las rutas excepto "/Login" */}
+        {location.pathname !== "/Login" && <Navbar />}
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/Login" element={<Login />} />
         </Routes>
       </div>
     </div>
