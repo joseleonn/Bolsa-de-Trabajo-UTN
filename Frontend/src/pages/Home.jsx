@@ -19,43 +19,29 @@ const Home = () => {
         animate={{ opacity: 1 }}
         className="flex flex-1  h-screen"
       >
-        <div className="flex flex-col  justify-center max-w-[60%] max-h-screen min-w-[60%] ">
-          <h1 className="text-6xl font-epilogue font-semibold  text-[#f3f3f3] tracking-tight lg:text-8xl  h-10">
-            <Typewriter
-              words={["Hola!"]}
-              cursor
-              cursorStyle=""
-              typeSpeed={80}
-              deleteSpeed={40}
-              delaySpeed={1000}
-            />
-          </h1>
-
-          <h1 className="text-6xl font-epilogue font-semibold  text-[#f3f3f3] tracking-tight lg:text-8xl mt-[50px]  ">
-            {showText && (
+        <div className="flex flex-col justify-center   ">
+          <div>
+            <h1 className="text-8xl font-epilogue font-semibold  text-[#f3f3f3] tracking-tight lg:text-8xl  ">
+              Bolsa de <span className="text-blue-600"> Trabajo</span>
+            </h1>
+          </div>
+          <div className="ml-[5px]   min-h-[150px] ">
+            <h4 className="text-xl font-epilogue   text-[#7f8084] tracking-tight lg:text-2xl  ">
               <Typewriter
-                words={["Encontrá el trabajo de tus"]}
+                words={[
+                  "Encontrá el trabajo de tus sueños.",
+                  "Oportunidades Laborales.",
+                  "Contacta con Empresas.",
+                ]}
                 cursor
                 cursorStyle=""
                 typeSpeed={80}
                 deleteSpeed={40}
                 delaySpeed={1000}
+                loop={100}
               />
-            )}
-            <span className=" text-6xl lg:text-8xl font-epilogue font-semibold text-blue-600">
-              {" "}
-              {showText2 && (
-                <Typewriter
-                  words={[" sueños!"]}
-                  cursor
-                  cursorStyle=""
-                  typeSpeed={80}
-                  deleteSpeed={40}
-                  delaySpeed={1000}
-                />
-              )}
-            </span>
-          </h1>
+            </h4>
+          </div>
         </div>
         <div className="hidden lg:flex mt-20 ">
           <div className="">
@@ -74,15 +60,14 @@ const Home = () => {
 
       {/* Guide for students */}
       <Guia
-        title="          Bolsa de trabajo para Estudiantes
-"
+        title="Bolsa de trabajo para Estudiantes"
         description=" La Secretaría de Asuntos Universitarios de la Universidad Tecnológica
-Nacional Facultad Regional Rosario, te invita a ingresar tu CV en el
-Sistema Virtual de Búsqueda de Empleo para que encuentres el trabajo o
-la pasantía que estás buscando. Esta es una base en la cual podes
-actualizar tus datos cuantas veces quieras (y es recomendable que lo
-hagas periódicamente) e inscribirte a las ofertas que proponen las
-empresas o instituciones."
+        Nacional Facultad Regional Rosario, te invita a ingresar tu CV en el
+        Sistema Virtual de Búsqueda de Empleo para que encuentres el trabajo o
+        la pasantía que estás buscando. Esta es una base en la cual podes
+        actualizar tus datos cuantas veces quieras (y es recomendable que lo
+        hagas periódicamente) e inscribirte a las ofertas que proponen las
+        empresas o instituciones."
         StudentOrCompany={StudentsGuia}
       />
 
