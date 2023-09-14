@@ -2,71 +2,41 @@ import { Typewriter } from "react-simple-typewriter";
 import { UTN_logo_white } from "../assets";
 import { motion } from "framer-motion";
 
-import CustomButton from "../components/CustomButton";
-import { useEffect, useState } from "react";
-import Loading from "../components/Loading";
+import { Guia } from "../components";
+import { StudentsGuia, CompaniesGuia } from "../constants";
 
 const Home = () => {
-  const [showText, setShowText] = useState(false);
-  const [showText2, setShowText2] = useState(false);
-
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      setShowText(true);
-    }, 1000); // Delay in milliseconds before showing the text
-    const timeout2 = setTimeout(() => {
-      setShowText2(true);
-    }, 3500); // Delay in milliseconds before showing the text
-
-    return () => {
-      clearTimeout(timeout, timeout2);
-    };
-  }, []);
   return (
     <div>
       <motion.div
         initial={{ opacity: 0 }}
         transition={{ duration: 0.5 }}
         animate={{ opacity: 1 }}
-        className="flex flex-1 justify-center items-center h-screen"
+        className="flex flex-1  h-screen"
       >
-        <div className="flex flex-col mt-20 max-w-[60%] max-h-screen min-w-[60%] ">
-          <h1 className="text-6xl font-epilogue font-semibold  text-[#f3f3f3] tracking-tight lg:text-8xl  h-10">
-            <Typewriter
-              words={["Hola!"]}
-              cursor
-              cursorStyle=""
-              typeSpeed={80}
-              deleteSpeed={40}
-              delaySpeed={1000}
-            />
-          </h1>
-
-          <h1 className="text-6xl font-epilogue font-semibold  text-[#f3f3f3] tracking-tight lg:text-8xl mt-[50px]  ">
-            {showText && (
+        <div className="flex flex-col justify-center   ">
+          <div>
+            <h1 className="text-8xl font-epilogue font-semibold  text-[#f3f3f3] tracking-tight lg:text-8xl  ">
+              Bolsa de <span className="text-blue-600"> Trabajo</span>
+            </h1>
+          </div>
+          <div className="ml-[5px]   min-h-[150px] ">
+            <h4 className="text-xl font-epilogue   text-[#7f8084] tracking-tight lg:text-2xl  ">
               <Typewriter
-                words={["Encontrá el trabajo de tus"]}
+                words={[
+                  "Encontrá el trabajo de tus sueños.",
+                  "Oportunidades Laborales.",
+                  "Contacta con Empresas.",
+                ]}
                 cursor
                 cursorStyle=""
                 typeSpeed={80}
                 deleteSpeed={40}
                 delaySpeed={1000}
+                loop={100}
               />
-            )}
-            <span className=" text-6xl lg:text-8xl font-epilogue font-semibold text-blue-600">
-              {" "}
-              {showText2 && (
-                <Typewriter
-                  words={[" sueños!"]}
-                  cursor
-                  cursorStyle=""
-                  typeSpeed={80}
-                  deleteSpeed={40}
-                  delaySpeed={1000}
-                />
-              )}
-            </span>
-          </h1>
+            </h4>
+          </div>
         </div>
         <div className="hidden lg:flex mt-20 ">
           <div className="">
@@ -83,7 +53,26 @@ const Home = () => {
         </div>
       </motion.div>
 
-      <div className="w-full bg-[#262526]">hola</div>
+      {/* Guide for students */}
+      <Guia
+        title="Bolsa de trabajo para Estudiantes"
+        description=" La Secretaría de Asuntos Universitarios de la Universidad Tecnológica
+        Nacional Facultad Regional Rosario, te invita a ingresar tu CV en el
+        Sistema Virtual de Búsqueda de Empleo para que encuentres el trabajo o
+        la pasantía que estás buscando. Esta es una base en la cual podes
+        actualizar tus datos cuantas veces quieras (y es recomendable que lo
+        hagas periódicamente) e inscribirte a las ofertas que proponen las
+        empresas o instituciones."
+        StudentOrCompany={StudentsGuia}
+      />
+
+      {/* Guide for Companies */}
+
+      <Guia
+        title="Información para Empresas"
+        description="Para publicar búsquedas laborales en el Sistema Virtual de Búsqueda de Empleo se deberá cumplir con lo siguiente:"
+        StudentOrCompany={CompaniesGuia}
+      />
     </div>
   );
 };

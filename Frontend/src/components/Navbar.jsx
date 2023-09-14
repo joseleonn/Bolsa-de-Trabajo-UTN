@@ -4,6 +4,8 @@ import CustomButton from "./CustomButton";
 import { Link, useNavigate } from "react-router-dom";
 import { navlinks } from "../constants";
 import { motion } from "framer-motion";
+import Login from "../pages/Login";
+import Loading from "./Loading";
 
 const itemVariants = {
   open: {
@@ -34,12 +36,14 @@ const Navbar = () => {
         </div>
       </div>
       <div className="sm:flex hidden gap-4 ">
-        <CustomButton
-          btnType=""
-          title="Iniciar Sesion"
-          // handleClick=""
-          styles="bg-[#f3f3f3] text-[#15171a] hover:bg-[#afb2b7] "
-        />
+        <Link to={"/Login"}>
+          <CustomButton
+            btnType=""
+            title="Iniciar Sesion"
+            // handleClick=""
+            styles="bg-[#f3f3f3] text-[#15171a] hover:bg-[#afb2b7] "
+          />
+        </Link>
 
         <CustomButton
           btnType=""

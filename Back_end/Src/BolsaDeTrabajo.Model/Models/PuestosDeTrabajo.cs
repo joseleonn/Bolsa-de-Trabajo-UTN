@@ -9,9 +9,11 @@ public partial class PuestosDeTrabajo
 {
     public int IdPuesto { get; set; }
 
+    public string Descripcion { get; set; }
+
     public string Titulo { get; set; }
 
-    public string Descripcion { get; set; }
+    public bool Disponible { get; set; }
 
     public virtual ICollection<EmpresasPuestos> EmpresasPuestos { get; set; } = new List<EmpresasPuestos>();
 
