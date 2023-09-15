@@ -54,10 +54,14 @@ const Navbar = () => {
       </div>
 
       {/* MOVIL */}
-      <div className="fixed w-full flex justify-between sm:hidden ">
-        <div className="z-50 ">
+      <div
+        className={`fixed w-full flex justify-between sm:hidden ${
+          isOpen && "z-50"
+        }`}
+      >
+        <Link className=" h-[70px] " to="/">
           <img src={UTNletra} alt="logo" className=" " />
-        </div>
+        </Link>
         <motion.nav
           initial={false}
           animate={isOpen ? "open" : "closed"}

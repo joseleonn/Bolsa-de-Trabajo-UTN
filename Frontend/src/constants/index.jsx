@@ -123,3 +123,56 @@ export const CompaniesGuia = [
       " La empresa debe enviar copia del Convenio colectivo de Trabajo. En caso de no poseerlo, la norma que los rige en cuanto a Salario, ya que el premio estímulo del pasante se basa en el Convenio Colectivo o el Salario Mínimo Vital y Móvil. Hacer nota aclarando cual es el monto. Conforme la Resolución 1225/2009 de la Superintendencia de Servicios de Salud se resuelve que las empresas deberán incluir a los pasantes en la misma obra social que tienen sus empleados. En consecuencia debe presentar el Formulario 931 de la AFIP acreditando la inclusión del pasante a la obra social. Copia del alta de la ART. Copia de la Cobertura Médico Asistencial. Datos del Tutor para poder contactarlo El pasante debe presentar Certificado de alumno regular, copia del DNI y completar la notificación de pasantía Copia del formulario 931 de AFIP a fin de comprobar cantidad de empleados en relación de dependencia.",
   },
 ];
+
+export const jobsTest = [
+  {
+    title: "Desarrollador .NET JR",
+    company: "Accenture",
+    description:
+      "Desarrollador .net con mas de 5 anios de experiencia sql que sepa crear un cohete y hackear la nasa, que cobre barato y hable 10 idiomas.",
+  },
+  {
+    title: "Project Manager JR",
+    company: "Globant",
+    description:
+      "Desarrollador .net con mas de 5 anios de experiencia sql que sepa crear un cohete y hackear la nasa, que cobre barato y hable 10 idiomas.",
+  },
+  {
+    title: "Desarrollador React Ssr",
+    company: "Mercado Libre",
+    description:
+      "Desarrollador .net con mas de 5 anios de experiencia sql que sepa crear un cohete y hackear la nasa, que cobre barato y hable 10 idiomas.",
+  },
+
+  {
+    title: "Desarrollador .NET SR",
+    company: "Accenture",
+    description:
+      "Desarrollador .net con mas de 5 anios de experiencia sql que sepa crear un cohete y hackear la nasa, que cobre barato y hable 10 idiomas.",
+  },
+  {
+    title: "Desarrollador .NET JR",
+    company: "Accenture",
+    description:
+      "Desarrollador .net con mas de 5 anios de experiencia sql que sepa crear un cohete y hackear la nasa, que cobre barato y hable 10 idiomas.",
+  },
+  {
+    title: "Project Manager JR",
+    company: "Globant",
+    description:
+      "Desarrollador .net con mas de 5 anios de experiencia sql que sepa crear un cohete y hackear la nasa, que cobre barato y hable 10 idiomas.",
+  },
+  {
+    title: "Desarrollador React Ssr",
+    company: "Mercado Libre",
+    description:
+      "Desarrollador .net con mas de 5 anios de experiencia sql que sepa crear un cohete y hackear la nasa, que cobre barato y hable 10 idiomas.",
+  },
+
+  {
+    title: "Desarrollador .NET SR",
+    company: "Accenture",
+    description:
+      "Desarrollador .net con mas de 5 anios de experiencia sql que sepa crear un cohete y hackear la nasa, que cobre barato y hable 10 idiomas.",
+  },
+];
