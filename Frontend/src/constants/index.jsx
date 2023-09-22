@@ -126,18 +126,21 @@ export const CompaniesGuia = [
 
 export const jobsTest = [
   {
+    id: 0,
     title: "Desarrollador .NET JR",
     company: "Accenture",
     description:
       "Desarrollador .net con mas de 5 anios de experiencia sql que sepa crear un cohete y hackear la nasa, que cobre barato y hable 10 idiomas.",
   },
   {
+    id: 1,
     title: "Project Manager JR",
     company: "Globant",
     description:
       "Desarrollador .net con mas de 5 anios de experiencia sql que sepa crear un cohete y hackear la nasa, que cobre barato y hable 10 idiomas.",
   },
   {
+    id: 2,
     title: "Desarrollador React Ssr",
     company: "Mercado Libre",
     description:
@@ -145,24 +148,28 @@ export const jobsTest = [
   },
 
   {
+    id: 3,
     title: "Desarrollador .NET SR",
     company: "Accenture",
     description:
       "Desarrollador .net con mas de 5 anios de experiencia sql que sepa crear un cohete y hackear la nasa, que cobre barato y hable 10 idiomas.",
   },
   {
+    id: 4,
     title: "Desarrollador .NET JR",
     company: "Accenture",
     description:
       "Desarrollador .net con mas de 5 anios de experiencia sql que sepa crear un cohete y hackear la nasa, que cobre barato y hable 10 idiomas.",
   },
   {
+    id: 5,
     title: "Project Manager JR",
     company: "Globant",
     description:
       "Desarrollador .net con mas de 5 anios de experiencia sql que sepa crear un cohete y hackear la nasa, que cobre barato y hable 10 idiomas.",
   },
   {
+    id: 6,
     title: "Desarrollador React Ssr",
     company: "Mercado Libre",
     description:
@@ -170,6 +177,7 @@ export const jobsTest = [
   },
 
   {
+    id: 7,
     title: "Desarrollador .NET SR",
     company: "Accenture",
     description:

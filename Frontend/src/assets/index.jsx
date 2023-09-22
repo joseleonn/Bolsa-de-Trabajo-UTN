@@ -8,6 +8,7 @@ import UTN_logo_white from "./UTN_logo_white.svg";
 import search from "./search.svg";
 import menu from "./menu.svg";
 import UTNletra from "./UTNletra.svg";
+import back from "./arrow-narrow-left.svg";
 
 export {
   UTN_logo,
@@ -20,4 +21,5 @@ export {
   search,
   menu,
   UTNletra,
+  back,
 };

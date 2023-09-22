@@ -1,6 +1,6 @@
 import { Route, Routes, useLocation } from "react-router-dom";
 import { Navbar, Sidebar } from "./components";
-import { Home, Jobs, Login } from "./pages";
+import { Home, JobDetail, Jobs, Login } from "./pages";
 
 function App() {
   const location = useLocation();
@@ -13,13 +13,15 @@ function App() {
         <Sidebar />
       </div>
 
-      <div className="flex-1 max-sm:w-full  mx-auto sm:pr-5">
+      <div className="flex-1 max-sm:w-full  mx-auto sm:pr-5 ">
         {/* Mostrar Navbar en todas las rutas  */}
         <Navbar />
+
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/Login" element={<Login />} />
           <Route path="/empleos" element={<Jobs />} />
+          <Route path="/empleos/:id" element={<JobDetail />} />
         </Routes>
       </div>
     </div>

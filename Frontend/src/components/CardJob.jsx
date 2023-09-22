@@ -6,11 +6,15 @@ import {
   CardFooter,
   Avatar,
   Button,
+  useDisclosure,
 } from "@nextui-org/react";
+import ModalJob from "./ModalJob";
 
-const CardJob = ({ title, description, company }) => {
+const CardJob = ({ title, description, company, handleClick }) => {
+  const { isOpen, onOpen, onOpenChange } = useDisclosure();
+
   return (
-    <div>
+    <div className="cursor-pointer" onClick={handleClick}>
       {" "}
       <Card className="max-w-[340px] ">
         <CardHeader className="justify-between mt-[10px]">
