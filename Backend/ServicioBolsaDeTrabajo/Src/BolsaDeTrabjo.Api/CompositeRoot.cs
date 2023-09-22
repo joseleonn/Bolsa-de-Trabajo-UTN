@@ -17,11 +17,13 @@ namespace BolsaDeTrabjo.Api
             builder.Services.AddScoped<IEntrepriseService, EntrepriseService>();
             builder.Services.AddScoped<IStudentService, StudentService>();
             builder.Services.AddScoped<IUsuarioService, UsuarioService>();
+            builder.Services.AddScoped<ICompanyService, CompanyService>();
 
             //REPOSITORIES
             builder.Services.AddScoped<IAdminRepository, AdminRepository>();
+            builder.Services.AddScoped<ICompanyRepository, CompanyRepository>();
 
-
+            //Helpers
             builder.Services.AddScoped<RabbitMQHelper>();
         }
     }
