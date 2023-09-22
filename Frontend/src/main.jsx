@@ -21,7 +21,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <Router>
       <Providers>
-        <main className="dark text-foreground bg-background">
+        <main>
           <App />
         </main>
       </Providers>

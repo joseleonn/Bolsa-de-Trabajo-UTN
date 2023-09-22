@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { UTN_logo, sun } from "../assets";
 import { navlinks } from "../constants";
 import { motion } from "framer-motion";
+import { useTheme } from "next-themes";
 
 const Icon = ({ styles, name, imgUrl, isActive, disable, handleClick }) => (
   <motion.div
@@ -29,6 +30,7 @@ const Icon = ({ styles, name, imgUrl, isActive, disable, handleClick }) => (
 const Sidebar = () => {
   const navigate = useNavigate();
   const [isActive, setIsActive] = useState("dashboard");
+  const { theme, setTheme } = useTheme();
 
   return (
     <div className="flex justify-between items-center flex-col sticky top-5 h-[93vh]">
@@ -52,7 +54,11 @@ const Sidebar = () => {
             />
           ))}
         </div>
-        <Icon styles="bg-[1c1c24] " imgUrl={sun} />
+        <Icon
+          styles="bg-[1c1c24] "
+          imgUrl={sun}
+          handleClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+        />
       </div>
     </div>
   );

@@ -6,7 +6,7 @@ function App() {
   const location = useLocation();
 
   return (
-    <div className="relative sm:-8 p-4 bg-[#151719] min-h-screen flex flex-row ">
+    <div className="relative sm:-8 p-4 dark:bg-[#151719]  min-h-screen flex flex-row ">
       {/* Mostrar Sidebar en todas las rutas excepto "/Login" */}
 
       <div className="sm:flex hidden mr-10 relative">

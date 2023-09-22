@@ -16,12 +16,12 @@ const Home = () => {
       >
         <div className="flex flex-col justify-center   ">
           <div>
-            <h1 className="text-8xl font-epilogue font-semibold  text-[#f3f3f3] tracking-tight lg:text-8xl  ">
+            <h1 className="text-8xl font-epilogue font-semibold  dark:text-[#f3f3f3] tracking-tight lg:text-8xl  light:text-[#000000]">
               Bolsa de <span className="text-blue-600"> Trabajo</span>
             </h1>
           </div>
           <div className="ml-[5px]   min-h-[150px] ">
-            <h4 className="text-xl font-epilogue   text-[#7f8084] tracking-tight lg:text-2xl  ">
+            <h4 className="text-xl font-epilogue   dark:text-[#7f8084] tracking-tight lg:text-2xl light:text-[#000000]  ">
               <Typewriter
                 words={[
                   "Encontrá el trabajo de tus sueños.",
