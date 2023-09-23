@@ -11,9 +11,9 @@ const JobDetail = () => {
     navigate(`/Empleos`);
   };
   return (
-    <div className="bg-[#18181B] shadow-xl rounded-[20px] p-[40px] mt-[70px] flex flex-wrap gap-3 items-center w-full justify-center md:justify-start">
+    <div className="dark:bg-[#18181B] shadow-xl rounded-[20px] p-[40px] mt-[70px] flex flex-wrap gap-3 items-center w-full justify-center md:justify-start">
       <div className="w-full">
-        <h1 className="text-center font-bold font-epilogue text-[50px]">
+        <h1 className="light:text-[#FFFFFF] text-center font-bold font-epilogue text-[50px] ">
           {state.title}
         </h1>
 
@@ -21,18 +21,18 @@ const JobDetail = () => {
           <p className="font-epilogue ">{state.description}</p>
 
           <ul className="mt-[20px]">
-            <span className="font-epilogue font-semibold text-[30px] mt-[30px]">
+            <span className="light:text-[#FFFFFF] font-epilogue font-semibold text-[30px] mt-[30px]">
               Requisitos
             </span>
 
-            <li className="uppercase">volar</li>
+            <li className="uppercase light:text-[#FFFFFF]">volar</li>
             <li>nadar</li>
             <li>inmortalidad</li>
           </ul>
-          <span className="font-epilogue font-semibold text-[30px] mt-[30px]">
+          <span className="light:text-[#FFFFFF] font-epilogue font-semibold text-[30px] mt-[30px]">
             Empresa
           </span>
-          <p>
+          <p className="light:text-[#FFFFFF]">
             Somos una empresa constructora que se dedica a construir cosas no
             construidas, construyendo de manera construida
           </p>
