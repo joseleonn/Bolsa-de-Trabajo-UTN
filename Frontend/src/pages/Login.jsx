@@ -66,10 +66,6 @@ const Login = () => {
                     {errors.email.message}
                   </span>
                 )}
-
-                <span className="absolute inset-y-0 end-0 grid place-content-center px-4">
-                  {/* Icono de correo */}
-                </span>
               </div>
             </div>
 
@@ -78,7 +74,7 @@ const Login = () => {
                 Contraseña
               </label>
 
-              <div className="relative">
+              <div className="relative ">
                 <input
                   type={showPassword ? "text" : "password"}
                   className="w-full rounded-lg p-4 pe-12 text-sm shadow-sm"
@@ -91,12 +87,12 @@ const Login = () => {
                   })}
                 />
                 <span
-                  className="absolute inset-y-0 end-0 grid place-content-center px-4 cursor-pointer"
+                  className="absolute top-4 right-4 grid place-content-center cursor-pointer"
                   onClick={togglePasswordVisibility}
                 >
                   <FontAwesomeIcon
                     icon={showPassword ? faEye : faEyeSlash}
-                    className="text-gray-400 hover:text-gray-600"
+                    className="text-gray-400 hover:text-gray-600 "
                   />
                 </span>
                 {errors.password && (
@@ -104,10 +100,6 @@ const Login = () => {
                     {errors.password.message}
                   </span>
                 )}
-
-                <span className="absolute inset-y-0 end-0 grid place-content-center px-4">
-                  {/* Icono de contraseña */}
-                </span>
               </div>
             </div>
 

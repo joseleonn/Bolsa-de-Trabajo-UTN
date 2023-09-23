@@ -122,14 +122,16 @@ const Navbar = () => {
             ))}
             <li>
               <div className="sm:hidden flex gap-3 justify-center  ">
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.9 }}
-                  // handleClick=""
-                  className="bg-[#afb2b7] rounded-[10px] p-2 font-epilogue text-l font-semibold text-[#15171a] hover:bg-[#7f8084] mb-2  "
-                >
-                  Acceder
-                </motion.button>
+                <Link to={"/Login"}>
+                  <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.9 }}
+                    // handleClick=""
+                    className="bg-[#afb2b7] rounded-[10px] p-2 font-epilogue text-l font-semibold text-[#15171a] hover:bg-[#7f8084] mb-2  "
+                  >
+                    Acceder
+                  </motion.button>
+                </Link>
 
                 <motion.button
                   whileHover={{ scale: 1.05 }}
