@@ -47,7 +47,7 @@ const Navbar = () => {
 
         <CustomButton
           btnType=""
-          title="Inscribirse"
+          title="Registrarse"
           // handleClick={}
           styles="bg-blue-600 text-[#f3f3f3] hover:bg-blue-800 "
         />

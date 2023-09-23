@@ -3,11 +3,13 @@ import { Accordion, AccordionItem } from "@nextui-org/react";
 
 const Guia = ({ title, description, StudentOrCompany }) => {
   return (
-    <div className="w-full bg-[#262526] rounded-[20px] p-[40px] mt-[20px]">
-      <h1 className="font-epilogue font-bold text-[30px] text-center text-[#f3f3f3] pt-[20px] ">
+    <div className="w-full dark:bg-[#262526] rounded-[20px] p-[40px] mt-[20px]">
+      <h1 className="font-epilogue font-bold text-[30px] text-center  dark:text-[#f3f3f3]  light:text-[#15171a]pt-[20px] ">
         {title}
       </h1>
-      <p className="font-epilogue text-[#d7d8da] mt-[20px]">{description}</p>
+      <p className="font-epilogue dark:text-[#f3f3f3]  light:text-[#15171a] mt-[20px]">
+        {description}
+      </p>
 
       <div className="mt-[40px]">
         <Accordion variant="splitted">
@@ -16,7 +18,7 @@ const Guia = ({ title, description, StudentOrCompany }) => {
               key={item.Id}
               aria-label={item.AriaLabel}
               title={item.Title}
-              className="text-[#d7d8da]"
+              className="dark:text-[#f3f3f3]  light:text-[#15171a]"
             >
               {item.Description}
             </AccordionItem>
