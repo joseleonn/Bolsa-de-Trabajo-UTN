@@ -11,5 +11,11 @@ namespace BolsaDeTrabajo.Service.Interfaces
     {
         Task<bool> AddJob(AddJobDTO job);
         Task<bool> DeleteJob(int jobId);
+
+        Task<List<viewJobDTO>> GetAllJobs();
+
+        Task ModifyJob(viewJobDTO job);
+
+
     }
 }

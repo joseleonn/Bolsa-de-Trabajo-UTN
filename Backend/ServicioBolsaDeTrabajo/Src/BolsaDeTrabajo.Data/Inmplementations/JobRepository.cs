@@ -120,6 +120,7 @@ namespace BolsaDeTrabajo.Data.Inmplementations
             List<viewJobDTO> results = jobs.Select(job => new viewJobDTO
             {
                 IdPuesto = job.IdPuesto,
+                IdEmpresa = job.IdEmpresa,
                 Descripcion = job.Descripcion,
                 Titulo = job.Titulo,
                 Disponible = job.Disponible,

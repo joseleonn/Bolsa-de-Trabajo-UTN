@@ -9,6 +9,8 @@ namespace BolsaDeTrabajo.Model.DTOs
     public class viewJobDTO
     {
         public int IdPuesto { get; set; }
+        public int IdEmpresa { get; set; }
+
 
         public string Descripcion { get; set; }
 

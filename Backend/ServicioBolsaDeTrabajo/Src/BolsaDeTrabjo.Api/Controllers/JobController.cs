@@ -62,60 +62,41 @@ namespace BolsaDeTrabjo.Api.Controllers
         }
 
 
-        //[HttpGet]
-        //[Route("/BuscarEmpresa/{id}")]
+        [HttpGet]
+        [Route("/ListaEmpleos")]
 
-        //public async Task<IActionResult> AddCompany(int id)
-        //{
-        //    try
-        //    {
-        //        CompanyDTO getCompany = await _service.GetCompanyById(id);
-        //        return Ok(getCompany);
+        public async Task<IActionResult> GetAllJobs()
+        {
+            try
+            {
+                List<viewJobDTO> getAllJobs = await _service.GetAllJobs();
+                return Ok(getAllJobs);
 
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return BadRequest(new { error = ex.Message });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { error = ex.Message });
 
-        //    }
-        //}
+            }
+        }
 
 
-        //[HttpGet]
-        //[Route("/ListaEmpresas")]
+        [HttpPost]
+        [Route("/ModificarEmpleo")]
 
-        //public async Task<IActionResult> GetAllCompanies()
-        //{
-        //    try
-        //    {
-        //        List<CompanyDTO> getAllCompany = await _service.GetAllCompanies();
-        //        return Ok(getAllCompany);
+        public async Task<IActionResult> modifycompany([FromBody] viewJobDTO job)
+        {
+            try
+            {
+                await _service.ModifyJob(job);
+                return Ok(job);
 
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return BadRequest(new { error = ex.Message });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { error = ex.Message });
 
-        //    }
-        //}
-
-        //[HttpPost]
-        //[Route("/ModificarEmpresa")]
-
-        //public async Task<IActionResult> ModifyCompany([FromBody] CompanyDTO company)
-        //{
-        //    try
-        //    {
-        //        await _service.ModifyCompany(company);
-        //        return Ok(company);
-
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return BadRequest(new { error = ex.Message });
-
-        //    }
-        //}
-
+            }
+        }
     }
 }
