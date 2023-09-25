@@ -36,6 +36,7 @@ namespace BolsaDeTrabajo.Data.Inmplementations
                 };
 
                 await _context.Empresas.AddAsync(newEmpresa);
+                await _context.SaveChangesAsync();
 
                 return true;
             }
