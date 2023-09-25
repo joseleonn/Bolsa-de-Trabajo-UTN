@@ -3,13 +3,18 @@
 using System;
 using System.Collections.Generic;
 
-namespace BolsaDeTrabajo.Model.Models;
-
-public partial class TiposAdmin
+namespace BolsaDeTrabajo.Model.Models
 {
-    public int IdTipoAdmin { get; set; }
+    public partial class TiposAdmin
+    {
+        public TiposAdmin()
+        {
+            Admins = new HashSet<Admins>();
+        }
 
-    public string Descripcion { get; set; }
+        public int IdTipoAdmin { get; set; }
+        public string Descripcion { get; set; }
 
-    public virtual ICollection<Admins> Admins { get; set; } = new List<Admins>();
+        public virtual ICollection<Admins> Admins { get; set; }
+    }
 }

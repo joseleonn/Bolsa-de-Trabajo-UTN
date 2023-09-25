@@ -29,6 +29,7 @@ namespace BolsaDeTrabjo.Api.Controllers
             }
             catch (Exception ex)
             {
+
                 return BadRequest(new { error = ex.Message });
 
             }

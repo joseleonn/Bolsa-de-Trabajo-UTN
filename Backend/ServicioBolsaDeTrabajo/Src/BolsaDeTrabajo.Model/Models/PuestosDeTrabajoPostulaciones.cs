@@ -3,17 +3,15 @@
 using System;
 using System.Collections.Generic;
 
-namespace BolsaDeTrabajo.Model.Models;
-
-public partial class PuestosDeTrabajoPostulaciones
+namespace BolsaDeTrabajo.Model.Models
 {
-    public int IdPuestosDeTrabajoPostulaciones { get; set; }
+    public partial class PuestosDeTrabajoPostulaciones
+    {
+        public int IdPuestosDeTrabajoPostulaciones { get; set; }
+        public int IdPuestoDeTrabajo { get; set; }
+        public int IdPostulacion { get; set; }
 
-    public int IdPuestoDeTrabajo { get; set; }
-
-    public int IdPostulacion { get; set; }
-
-    public virtual Postulaciones IdPostulacionNavigation { get; set; }
-
-    public virtual PuestosDeTrabajo IdPuestoDeTrabajoNavigation { get; set; }
+        public virtual Postulaciones IdPostulacionNavigation { get; set; }
+        public virtual PuestosDeTrabajo IdPuestoDeTrabajoNavigation { get; set; }
+    }
 }

@@ -1,4 +1,5 @@
 ﻿using BolsaDeTrabajo.Data.Interfaces;
+using BolsaDeTrabajo.Model;
 using BolsaDeTrabajo.Model.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;

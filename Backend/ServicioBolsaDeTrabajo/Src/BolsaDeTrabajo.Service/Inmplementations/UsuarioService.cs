@@ -1,4 +1,5 @@
-﻿using BolsaDeTrabajo.Model.DTOs;
+﻿using BolsaDeTrabajo.Model;
+using BolsaDeTrabajo.Model.DTOs;
 using BolsaDeTrabajo.Model.Models;
 using BolsaDeTrabajo.Service.Interfaces;
 using Microsoft.EntityFrameworkCore;

@@ -3,13 +3,18 @@
 using System;
 using System.Collections.Generic;
 
-namespace BolsaDeTrabajo.Model.Models;
-
-public partial class EstadosPostulacion
+namespace BolsaDeTrabajo.Model.Models
 {
-    public int IdEstado { get; set; }
+    public partial class EstadosPostulacion
+    {
+        public EstadosPostulacion()
+        {
+            Postulaciones = new HashSet<Postulaciones>();
+        }
 
-    public string Descripcion { get; set; }
+        public int IdEstado { get; set; }
+        public string Descripcion { get; set; }
 
-    public virtual ICollection<Postulaciones> Postulaciones { get; set; } = new List<Postulaciones>();
+        public virtual ICollection<Postulaciones> Postulaciones { get; set; }
+    }
 }

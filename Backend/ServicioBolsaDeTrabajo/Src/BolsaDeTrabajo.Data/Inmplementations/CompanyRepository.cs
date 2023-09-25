@@ -1,4 +1,5 @@
 ﻿using BolsaDeTrabajo.Data.Interfaces;
+using BolsaDeTrabajo.Model;
 using BolsaDeTrabajo.Model.DTOs;
 using BolsaDeTrabajo.Model.Models;
 using Microsoft.EntityFrameworkCore;
@@ -24,7 +25,7 @@ namespace BolsaDeTrabajo.Data.Inmplementations
         {
             Empresas ifExists = await _context.Empresas.FirstOrDefaultAsync(e => e.Nombre == company.Nombre);
 
-            if(ifExists != null)
+            if(ifExists == null)
             {
                 Empresas newEmpresa = new Empresas()
                 {

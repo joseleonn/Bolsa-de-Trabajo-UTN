@@ -3,19 +3,22 @@
 using System;
 using System.Collections.Generic;
 
-namespace BolsaDeTrabajo.Model.Models;
-
-public partial class PuestosDeTrabajo
+namespace BolsaDeTrabajo.Model.Models
 {
-    public int IdPuesto { get; set; }
+    public partial class PuestosDeTrabajo
+    {
+        public PuestosDeTrabajo()
+        {
+            PuestosDeTrabajoPostulaciones = new HashSet<PuestosDeTrabajoPostulaciones>();
+        }
 
-    public string Descripcion { get; set; }
+        public int IdPuesto { get; set; }
+        public int IdEmpresa { get; set; }
+        public string Descripcion { get; set; }
+        public string Titulo { get; set; }
+        public bool Disponible { get; set; }
 
-    public string Titulo { get; set; }
-
-    public bool Disponible { get; set; }
-
-    public virtual ICollection<EmpresasPuestos> EmpresasPuestos { get; set; } = new List<EmpresasPuestos>();
-
-    public virtual ICollection<PuestosDeTrabajoPostulaciones> PuestosDeTrabajoPostulaciones { get; set; } = new List<PuestosDeTrabajoPostulaciones>();
+        public virtual Empresas IdEmpresaNavigation { get; set; }
+        public virtual ICollection<PuestosDeTrabajoPostulaciones> PuestosDeTrabajoPostulaciones { get; set; }
+    }
 }

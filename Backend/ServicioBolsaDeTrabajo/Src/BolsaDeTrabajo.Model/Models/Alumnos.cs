@@ -3,31 +3,27 @@
 using System;
 using System.Collections.Generic;
 
-namespace BolsaDeTrabajo.Model.Models;
-
-public partial class Alumnos
+namespace BolsaDeTrabajo.Model.Models
 {
-    public string Dni { get; set; }
+    public partial class Alumnos
+    {
+        public Alumnos()
+        {
+            Postulaciones = new HashSet<Postulaciones>();
+        }
 
-    public int IdUsuario { get; set; }
+        public string Dni { get; set; }
+        public int IdUsuario { get; set; }
+        public string Nombre { get; set; }
+        public string Apellido { get; set; }
+        public string Email { get; set; }
+        public string Celular { get; set; }
+        public string Nacionalidad { get; set; }
+        public string Pais { get; set; }
+        public string Ciudad { get; set; }
+        public string Direccion { get; set; }
 
-    public string Nombre { get; set; }
-
-    public string Apellido { get; set; }
-
-    public string Email { get; set; }
-
-    public string Celular { get; set; }
-
-    public string Nacionalidad { get; set; }
-
-    public string Pais { get; set; }
-
-    public string Ciudad { get; set; }
-
-    public string Direccion { get; set; }
-
-    public virtual Usuarios IdUsuarioNavigation { get; set; }
-
-    public virtual ICollection<Postulaciones> Postulaciones { get; set; } = new List<Postulaciones>();
+        public virtual Usuarios IdUsuarioNavigation { get; set; }
+        public virtual ICollection<Postulaciones> Postulaciones { get; set; }
+    }
 }

@@ -3,19 +3,16 @@
 using System;
 using System.Collections.Generic;
 
-namespace BolsaDeTrabajo.Model.Models;
-
-public partial class Tokens
+namespace BolsaDeTrabajo.Model.Models
 {
-    public string Token { get; set; }
+    public partial class Tokens
+    {
+        public string Token { get; set; }
+        public int IdUsuario { get; set; }
+        public string FechaGeneracion { get; set; }
+        public string FechaExpiracion { get; set; }
+        public bool Valido { get; set; }
 
-    public int IdUsuario { get; set; }
-
-    public string FechaGeneracion { get; set; }
-
-    public string FechaExpiracion { get; set; }
-
-    public bool Valido { get; set; }
-
-    public virtual Usuarios IdUsuarioNavigation { get; set; }
+        public virtual Usuarios IdUsuarioNavigation { get; set; }
+    }
 }

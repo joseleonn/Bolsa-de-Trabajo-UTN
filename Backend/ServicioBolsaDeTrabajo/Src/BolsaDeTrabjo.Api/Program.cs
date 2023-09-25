@@ -1,3 +1,4 @@
+using BolsaDeTrabajo.Model;
 using BolsaDeTrabajo.Model.Models;
 using BolsaDeTrabjo.Api;
 using Microsoft.EntityFrameworkCore;
