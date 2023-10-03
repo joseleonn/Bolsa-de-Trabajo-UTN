@@ -1,0 +1,12 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\Backend",
+    "\\Backend\\ServicioBolsaDeTrabajo",
+    "\\Backend\\ServicioBolsaDeTrabajo\\Src",
+    "\\Backend\\ServicioBolsaDeTrabajo\\Src\\BolsaDeTrabjo.Api",
+    "\\Backend\\ServicioBolsaDeTrabajo\\Src\\BolsaDeTrabjo.Api\\Controllers"
+  ],
+  "SelectedNode": "\\Backend\\ServicioBolsaDeTrabajo\\Src\\BolsaDeTrabjo.Api\\Controllers\\AuthController.cs",
+  "PreviewInSolutionExplorer": false
+}

@@ -1,43 +1,118 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using BolsaDeTrabajo.Data.Implementations;
+using BolsaDeTrabajo.Data.Interfaces;
+using BolsaDeTrabajo.Model.DTOs;
+using BolsaDeTrabajo.Model.Models;
+using BolsaDeTrabajo.Service.Helpers;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Tokens;
+using System;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
+using System.Threading.Tasks;
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-
-namespace BolsaDeTrabjo.Api.Controllers
+namespace BolsaDeTrabajo.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
     public class AuthController : ControllerBase
     {
-        // GET: api/<AuthController>
-        [HttpGet]
-        public IEnumerable<string> Get()
+         
+        private readonly IUsuarioRepository _usuarioRepository;
+        private readonly string secretKey;
+
+        public AuthController(IUsuarioRepository usuarioRepository, IConfiguration config)
         {
-            return new string[] { "value1", "value2" };
+            _usuarioRepository = usuarioRepository;
+            secretKey = config.GetSection("AppSettings:Key").ToString();
         }
 
-        // GET api/<AuthController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
+        [HttpPost("Login")]
+        public async Task<ActionResult<string>> Login([FromBody] AuthDTO user)
         {
-            return "value";
+            try
+            {
+                // Buscar el usuario en la base de datos por correo electrónico
+                var usuario = await _usuarioRepository.GetUsuarioByEmail(user.Email);
+
+                if (usuario == null)
+                {
+                    return BadRequest("Usuario no encontrado");
+                }
+
+                // Verificar si la contraseña coincide
+                if (usuario.Contrasenia != user.Contrasenia.GetSHA256())
+                {
+                    return BadRequest("Contraseña incorrecta");
+                }
+
+                // Generar un token JWT
+                var token = GenerateJwtToken(usuario);
+
+                return Ok(token);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest( $"Error {ex.Message}");
+            }
         }
 
-        // POST api/<AuthController>
-        [HttpPost]
-        public void Post([FromBody] string value)
+        [HttpPost("Registro")]
+        public async Task<ActionResult<string>> Registro([FromBody] UsuarioDTO newUser)
         {
+            try
+            {
+                // Verificar si el usuario ya existe en la base de datos
+                var existingUser = await _usuarioRepository.GetUsuarioByEmail(newUser.Email);
+                if (existingUser != null)
+                {
+                    return BadRequest("El usuario ya existe");
+                }
+
+                // Crear un nuevo usuario
+                var usuario = new Usuarios
+                {
+                    // Asigna las propiedades del usuario a partir de newUser
+                    // Esto depende de la estructura de UsuarioDTO y Usuarios
+                    // Ejemplo:
+                    Email = newUser.Email,
+                    Contrasenia = newUser.Contrasenia.GetSHA256(),
+                    TipoUsuario = newUser.TipoUsuario
+                };
+
+                // Insertar el nuevo usuario en la base de datos
+                await _usuarioRepository.InsertUsuario(usuario);
+
+                // Generar un token JWT para el nuevo usuario
+                var token = GenerateJwtToken(usuario);
+
+                return Ok(token);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest( $"Error interno del servidor: {ex.Message}");
+            }
         }
 
-        // PUT api/<AuthController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        private string GenerateJwtToken(Usuarios usuario)
         {
-        }
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var key = Encoding.ASCII.GetBytes(secretKey);
+            var tokenDescriptor = new SecurityTokenDescriptor()
+            {
+                Subject = new ClaimsIdentity(new Claim[]
+                {
+                    new Claim(ClaimTypes.NameIdentifier, usuario.IdUsuario.ToString()),
+                    new Claim(ClaimTypes.Email, usuario.Email),
+                    new Claim("Tipo_Usuario", usuario.TipoUsuario.ToString())
+                }),
+                Expires = DateTime.UtcNow.AddHours(1),
+                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
+            };
 
-        // DELETE api/<AuthController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
+            var token = tokenHandler.CreateToken(tokenDescriptor);
+            return tokenHandler.WriteToken(token);
         }
     }
 }

@@ -21,5 +21,7 @@ namespace BolsaDeTrabajo.Data.Interfaces
 
         // Eliminar un usuario por su ID
         Task DeleteUsuario(int id);
+        
+        Task<Usuarios?> GetUsuarioByEmail (string email);
     }
 }

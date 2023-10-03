@@ -31,27 +31,32 @@ const Login = () => {
     >
       <section className="relative flex flex-col justify-center  items-center lg:flex-row lg:h-screen lg:items-center">
         {/* Contenido del formulario */}
-        <div className="w-full px-4 py-8 sm:px-6 sm:py-12 lg:w-1/2 lg:px-8 lg:py-24 dark:bg-[#f3f3f3] rounded-[20px] shadow-xl ">
+        <div className="w-full px-4 py-8 sm:px-6 sm:py-12 lg:w-1/2 lg:px-8 lg:py-24 dark:bg-[#262526]  rounded-[20px] shadow-xl ">
           <div className="mx-auto max-w-md text-center">
-            <h1 className="text-2xl sm:text-3xl font-bold text-[#15171a]">
+            <h1 className="text-2xl sm:text-3xl font-bold light:text-[#15171a] dark:text-[#f3f3f3]">
               Bolsa De Trabajo
             </h1>
-            <p className="mt-4 text-[#15171a]">
+            <p className="mt-4 light:text-[#15171a] dark:text-[#f3f3f3]">
               Universidad Tecnológica Nacional
             </p>
-            <p className="text-[#15171a]">Facultad Regional Rosario</p>
+            <p className="light:text-[#15171a] dark:text-[#f3f3f3]">
+              Facultad Regional Rosario
+            </p>
           </div>
 
           <form className="mx-auto mt-8 max-w-md space-y-4" onSubmit={onSubmit}>
             <div>
-              <label htmlFor="email" className="sr-only">
+              <label
+                htmlFor="email"
+                className="sr-only dark:text-[#f3f3f3] light:text-[#15171a]"
+              >
                 Email
               </label>
 
               <div className="relative">
                 <input
                   type="email"
-                  className="w-full rounded-lg p-4 pe-12 text-sm shadow-sm"
+                  className="w-full rounded-lg p-4 pe-12 text-sm shadow-sm light:text-[#15171a] dark:text-[#f3f3f3]"
                   placeholder="pepito@frro.utn.edu.ar"
                   {...register("email", {
                     required: { value: true, message: "El email es requerido" },
@@ -104,7 +109,7 @@ const Login = () => {
             </div>
 
             <div className="flex flex-col sm:flex-row items-center justify-between">
-              <p className="text-sm text-[#15171a] mb-4 sm:mb-0">
+              <p className="text-sm light:text-[#15171a] dark:text-[#f3f3f3] mb-4 sm:mb-0">
                 No estás registrado?
                 <a className="underline" href="#">
                   Regístrate.

@@ -1,4 +1,5 @@
-﻿using BolsaDeTrabajo.Data.Inmplementations;
+﻿using BolsaDeTrabajo.Data.Implementations;
+using BolsaDeTrabajo.Data.Inmplementations;
 using BolsaDeTrabajo.Data.Interfaces;
 using BolsaDeTrabajo.Service.Helpers;
 using BolsaDeTrabajo.Service.Implementations;
@@ -13,7 +14,6 @@ namespace BolsaDeTrabjo.Api
         {
             //SERVICES
             builder.Services.AddScoped<IAdminService, AdminService>();
-            builder.Services.AddScoped<IAuthService, AuthService>();
             builder.Services.AddScoped<IEntrepriseService, EntrepriseService>();
             builder.Services.AddScoped<IStudentService, StudentService>();
             builder.Services.AddScoped<IUsuarioService, UsuarioService>();
@@ -25,6 +25,8 @@ namespace BolsaDeTrabjo.Api
             builder.Services.AddScoped<IAdminRepository, AdminRepository>();
             builder.Services.AddScoped<ICompanyRepository, CompanyRepository>();
             builder.Services.AddScoped<IJobRepository, JobRepository>();
+            builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
+
 
             //Helpers
             builder.Services.AddScoped<RabbitMQHelper>();

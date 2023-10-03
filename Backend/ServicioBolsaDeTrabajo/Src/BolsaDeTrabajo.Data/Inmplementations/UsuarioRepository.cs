@@ -56,5 +56,13 @@ namespace BolsaDeTrabajo.Data.Implementations
                 await _context.SaveChangesAsync();
             }
         }
+        public async Task<Usuarios?> GetUsuarioByEmail(string email)
+        {
+            // Buscar un usuario por su dirección de correo electrónico
+            return await _context.Usuarios.FirstOrDefaultAsync(u => u.Email == email);
+        }
+
+        
+
     }
 }
