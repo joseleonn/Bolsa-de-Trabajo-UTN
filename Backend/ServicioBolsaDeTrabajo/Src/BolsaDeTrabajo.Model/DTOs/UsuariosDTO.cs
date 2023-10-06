@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BolsaDeTrabajo.Model.DTOs
 {
-    public class UsuarioDTO
+    public class UsuariosDTO
     {
         public int IdUsuario { get; set; }
         public string Email { get; set; }

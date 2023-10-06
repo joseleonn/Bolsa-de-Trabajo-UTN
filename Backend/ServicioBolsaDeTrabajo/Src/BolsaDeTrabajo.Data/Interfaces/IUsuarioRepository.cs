@@ -1,4 +1,5 @@
-﻿using BolsaDeTrabajo.Model.Models;
+﻿using BolsaDeTrabajo.Model.DTOs;
+using BolsaDeTrabajo.Model.Models;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -8,20 +9,20 @@ namespace BolsaDeTrabajo.Data.Interfaces
     public interface IUsuarioRepository
     {
         // Obtener un usuario por su ID
-        Task<Usuarios?> GetUsuarioById(int id);
+        Task<UsuariosDTO?> GetUsuarioById(int id);
 
         // Obtener todos los usuarios
-        Task<IEnumerable<Usuarios>> GetAllUsuarios();
+        Task<List<UsuariosDTO>> GetAllUsuarios();
 
         // Insertar un nuevo usuario
-        Task<Usuarios?> InsertUsuario(Usuarios usuario);
+        Task<bool> InsertUsuario(UsuariosDTO usuario);
 
         // Actualizar un usuario existente
-        Task UpdateUsuario(Usuarios usuario);
+        Task<bool> UpdateUsuario(UsuariosDTO usuario);
 
         // Eliminar un usuario por su ID
         Task DeleteUsuario(int id);
         
-        Task<Usuarios?> GetUsuarioByEmail (string email);
+        Task<UsuariosDTO> GetUsuarioByEmail (string email);
     }
 }

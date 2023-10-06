@@ -10,8 +10,10 @@ namespace BolsaDeTrabajo.Service.Interfaces
 {
     public interface IAdminService
     {
+        Task InsertAdmin(AdminDTO admin);
         Task<AdminDTO> GetByIdAsync(int id);
-
+        Task<List<AdminDTO>> GetAllAdmins();
+        Task DeleteAdmin(int id);
         void TestEmail(string destinatario, string asunto, string mensaje);
     }
 }

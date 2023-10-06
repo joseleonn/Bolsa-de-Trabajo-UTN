@@ -553,3 +553,13 @@ C:\Users\qvedo\OneDrive\Escritorio\Bolsa-de-Trabajo-UTN\Backend\ServicioBolsaDeT
 C:\Users\qvedo\OneDrive\Escritorio\Bolsa-de-Trabajo-UTN\Backend\ServicioBolsaDeTrabajo\Src\BolsaDeTrabjo.Api\obj\Debug\net6.0\BolsaDeTrabjo.Api.csproj.CopyComplete
 C:\Users\qvedo\OneDrive\Escritorio\Bolsa-de-Trabajo-UTN\Backend\ServicioBolsaDeTrabajo\Src\BolsaDeTrabjo.Api\obj\Debug\net6.0\BolsaDeTrabjo.Api.genruntimeconfig.cache
 C:\Users\qvedo\OneDrive\Escritorio\Bolsa-de-Trabajo-UTN\Backend\ServicioBolsaDeTrabajo\Src\BolsaDeTrabjo.Api\obj\Debug\net6.0\ref\BolsaDeTrabjo.Api.dll
+C:\Users\tomas\Desktop\Facultad\Bolsa-de-Trabajo-UTN\Backend\ServicioBolsaDeTrabajo\Src\BolsaDeTrabjo.Api\obj\Debug\net6.0\BolsaDeTrabjo.Api.csproj.AssemblyReference.cache
+C:\Users\tomas\Desktop\Facultad\Bolsa-de-Trabajo-UTN\Backend\ServicioBolsaDeTrabajo\Src\BolsaDeTrabjo.Api\obj\Debug\net6.0\BolsaDeTrabjo.Api.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\tomas\Desktop\Facultad\Bolsa-de-Trabajo-UTN\Backend\ServicioBolsaDeTrabajo\Src\BolsaDeTrabjo.Api\obj\Debug\net6.0\BolsaDeTrabjo.Api.AssemblyInfoInputs.cache
+C:\Users\tomas\Desktop\Facultad\Bolsa-de-Trabajo-UTN\Backend\ServicioBolsaDeTrabajo\Src\BolsaDeTrabjo.Api\obj\Debug\net6.0\BolsaDeTrabjo.Api.AssemblyInfo.cs
+C:\Users\tomas\Desktop\Facultad\Bolsa-de-Trabajo-UTN\Backend\ServicioBolsaDeTrabajo\Src\BolsaDeTrabjo.Api\obj\Debug\net6.0\BolsaDeTrabjo.Api.csproj.CoreCompileInputs.cache
+C:\Users\tomas\Desktop\Facultad\Bolsa-de-Trabajo-UTN\Backend\ServicioBolsaDeTrabajo\Src\BolsaDeTrabjo.Api\obj\Debug\net6.0\BolsaDeTrabjo.Api.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\tomas\Desktop\Facultad\Bolsa-de-Trabajo-UTN\Backend\ServicioBolsaDeTrabajo\Src\BolsaDeTrabjo.Api\obj\Debug\net6.0\BolsaDeTrabjo.Api.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\tomas\Desktop\Facultad\Bolsa-de-Trabajo-UTN\Backend\ServicioBolsaDeTrabajo\Src\BolsaDeTrabjo.Api\obj\Debug\net6.0\BolsaDeTrabjo.Api.dll
+C:\Users\tomas\Desktop\Facultad\Bolsa-de-Trabajo-UTN\Backend\ServicioBolsaDeTrabajo\Src\BolsaDeTrabjo.Api\obj\Debug\net6.0\refint\BolsaDeTrabjo.Api.dll
+C:\Users\tomas\Desktop\Facultad\Bolsa-de-Trabajo-UTN\Backend\ServicioBolsaDeTrabajo\Src\BolsaDeTrabjo.Api\obj\Debug\net6.0\BolsaDeTrabjo.Api.pdb

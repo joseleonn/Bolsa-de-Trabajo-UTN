@@ -1,5 +1,6 @@
 ﻿using BolsaDeTrabajo.Data.Interfaces;
 using BolsaDeTrabajo.Model;
+using BolsaDeTrabajo.Model.DTOs;
 using BolsaDeTrabajo.Model.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
@@ -7,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace BolsaDeTrabajo.Data.Implementations
 {
@@ -19,31 +21,95 @@ namespace BolsaDeTrabajo.Data.Implementations
             _context = context;
         }
 
-        public async Task<Usuarios?> GetUsuarioById(int id)
+        public async Task<UsuariosDTO> GetUsuarioById(int id)
         {
-            // Buscar un usuario por su ID
-            return await _context.Usuarios.FindAsync(id);
+            Usuarios ifExists = await _context.Usuarios.FirstOrDefaultAsync(e => e.IdUsuario == id);
+
+            if (ifExists != null)
+            {
+                Usuarios usuarioById = await _context.Usuarios.FindAsync(id);
+
+                UsuariosDTO result = new UsuariosDTO()
+                {
+                    IdUsuario = usuarioById.IdUsuario,
+                    Email = usuarioById.Email,
+                    Contrasenia = usuarioById.Contrasenia,
+                    TipoUsuario = usuarioById.TipoUsuario
+
+                };
+                return result;
+            }
+            else
+            {
+                return null;
+            }
         }
 
-        public async Task<IEnumerable<Usuarios>> GetAllUsuarios()
+        public async Task<List<UsuariosDTO>> GetAllUsuarios()
         {
             // Obtener todos los usuarios
-            return await _context.Usuarios.ToListAsync();
+            List<Usuarios> users = await _context.Usuarios.ToListAsync();
+
+            // Mapea la lista de usuarios a una lista de objetos UsuariopDTO.
+            List<UsuariosDTO> results = users.Select(usuario => new UsuariosDTO
+            {
+                IdUsuario = usuario.IdUsuario,
+                Email = usuario.Email,
+                Contrasenia = usuario.Contrasenia,
+                TipoUsuario = usuario.TipoUsuario
+            }).ToList();
+
+            return results;
+
         }
 
-        public async Task<Usuarios?> InsertUsuario(Usuarios usuario)
+        public async Task<bool> InsertUsuario(UsuariosDTO usuario)
         {
-            // Insertar un nuevo usuario en la base de datos
-            EntityEntry<Usuarios> insertedUser = await _context.Usuarios.AddAsync(usuario);
-            await _context.SaveChangesAsync();
-            return insertedUser.Entity;
+            Usuarios ifExists = await _context.Usuarios.FirstOrDefaultAsync(e => e.Email == usuario.Email);
+
+            if (ifExists == null)
+            {
+                Usuarios newUsuario = new Usuarios()
+                {
+                    IdUsuario = usuario.IdUsuario,
+                    Email = usuario.Email,
+                    Contrasenia = usuario.Contrasenia,
+                    TipoUsuario = usuario.TipoUsuario
+
+                };
+
+                await _context.Usuarios.AddAsync(newUsuario);
+                await _context.SaveChangesAsync();
+
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
-        public async Task UpdateUsuario(Usuarios usuario)
+        public async Task<bool> UpdateUsuario(UsuariosDTO usuario)
         {
-            // Actualizar un usuario existente en la base de datos
-            _context.Entry(usuario).State = EntityState.Modified;
-            await _context.SaveChangesAsync();
+            // Buscar el usuario por su ID
+            Usuarios existingUser = await _context.Usuarios.FirstOrDefaultAsync(e => e.IdUsuario == usuario.IdUsuario);
+
+            if (existingUser != null)
+            {
+                existingUser.Email = usuario.Email;
+                existingUser.Contrasenia = usuario.Contrasenia;
+                existingUser.TipoUsuario = usuario.TipoUsuario;
+                // Actualiza otros campos si es necesario
+
+                // Marcar la entidad como modificada
+                _context.Entry(existingUser).State = EntityState.Modified;
+                await _context.SaveChangesAsync();
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public async Task DeleteUsuario(int id)
@@ -56,10 +122,28 @@ namespace BolsaDeTrabajo.Data.Implementations
                 await _context.SaveChangesAsync();
             }
         }
-        public async Task<Usuarios?> GetUsuarioByEmail(string email)
+        public async Task<UsuariosDTO> GetUsuarioByEmail(string email)
         {
-            // Buscar un usuario por su dirección de correo electrónico
-            return await _context.Usuarios.FirstOrDefaultAsync(u => u.Email == email);
+            Usuarios ifExists = await _context.Usuarios.FirstOrDefaultAsync(e => e.Email == email);
+
+            if (ifExists != null)
+            {
+                Usuarios usuarioByEmail = await _context.Usuarios.FindAsync(email);
+
+                UsuariosDTO result = new UsuariosDTO()
+                {
+                    IdUsuario = usuarioByEmail.IdUsuario,
+                    Email = usuarioByEmail.Email,
+                    Contrasenia = usuarioByEmail.Contrasenia,
+                    TipoUsuario = usuarioByEmail.TipoUsuario
+
+                };
+                return result;
+            }
+            else
+            {
+                return null;
+            }
         }
 
         

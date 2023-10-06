@@ -59,7 +59,7 @@ namespace BolsaDeTrabajo.Api.Controllers
         }
 
         [HttpPost("Registro")]
-        public async Task<ActionResult<string>> Registro([FromBody] UsuarioDTO newUser)
+        public async Task<ActionResult<string>> Registro([FromBody] UsuariosDTO newUser)
         {
             try
             {

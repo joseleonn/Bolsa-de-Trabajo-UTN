@@ -24,6 +24,17 @@ namespace BolsaDeTrabajo.Service.Inmplementations
             _rabbitMQHelper = rabbitMQHelper;
         }
 
+        public async Task InsertAdmin(AdminDTO admin)
+        {
+            if (admin != null)
+            {
+                await _adminRepository.InsertAdmin(admin);
+            }
+            else
+            {
+                throw new Exception("El admin es null");
+            }
+        }
         public async Task<AdminDTO> GetByIdAsync(int id)
         {
             Admins admin = await _adminRepository.GetAdminById(id);
@@ -43,6 +54,27 @@ namespace BolsaDeTrabajo.Service.Inmplementations
             }
 
            
+        }
+
+        public async Task<List<AdminDTO>> GetAllAdmins()
+        {
+            List<AdminDTO> listOfAdmins = await _adminRepository.GetAllAdmins();
+
+            if (listOfAdmins != null)
+            {
+                return listOfAdmins;
+
+            }
+            else
+            {
+                throw new Exception("Error al traer todos los admins");
+            }
+        }
+
+        public async Task DeleteAdmin(int id)
+        {
+            // Llama al método del repositorio para eliminar un usuario por su ID
+            await _adminRepository.DeleteAdmin(id);
         }
 
         public void TestEmail(string destinatario, string asunto, string mensaje)

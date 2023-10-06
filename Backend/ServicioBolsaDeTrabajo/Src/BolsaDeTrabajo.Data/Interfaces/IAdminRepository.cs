@@ -1,4 +1,5 @@
-﻿using BolsaDeTrabajo.Model.Models;
+﻿using BolsaDeTrabajo.Model.DTOs;
+using BolsaDeTrabajo.Model.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,8 +10,9 @@ namespace BolsaDeTrabajo.Data.Interfaces
 {
     public interface IAdminRepository
     {
-        Task<Admins?> InsertAdmin(Admins admin);
+        Task<Admins?> InsertAdmin(AdminDTO admin);
         Task<Admins?> GetAdminById(int id);
-
+        Task<List<AdminDTO>> GetAllAdmins();
+        Task DeleteAdmin(int id);
     }
 }

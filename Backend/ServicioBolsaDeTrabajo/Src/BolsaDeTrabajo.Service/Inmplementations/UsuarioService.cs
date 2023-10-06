@@ -1,107 +1,119 @@
-﻿using BolsaDeTrabajo.Model;
+﻿using BolsaDeTrabajo.Data.Interfaces;
 using BolsaDeTrabajo.Model.DTOs;
 using BolsaDeTrabajo.Model.Models;
 using BolsaDeTrabajo.Service.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace BolsaDeTrabajo.Service.Implementations
 {
     public class UsuarioService : IUsuarioService
     {
-        private readonly BolsaDeTrabajoUTNContext _context;
+        private readonly IUsuarioRepository _repository;
 
-        public UsuarioService(BolsaDeTrabajoUTNContext context)
+        public UsuarioService(IUsuarioRepository repository)
         {
-            _context = context;
+            _repository = repository;
         }
 
-        public async Task<UsuarioDTO> GetUsuarioByIdAsync(int id)
+        public async Task InsertUsuarioAsync(UsuariosDTO usuario)
         {
-            var usuario = await _context.Usuarios.FindAsync(id);
-
-            if (usuario == null)
+            if (usuario != null)
             {
-                return null;
+                await _repository.InsertUsuario(usuario);
             }
-
-            // Mapear el objeto de modelo a un DTO
-            var usuarioDTO = new UsuarioDTO
+            else
             {
-                IdUsuario = usuario.IdUsuario,
-                Email = usuario.Email,
-                Contrasenia = usuario.Contrasenia,
-                TipoUsuario = usuario.TipoUsuario,
-                // Mapear otros campos si es necesario
-            };
-
-            return usuarioDTO;
-        }
-
-        public async Task<IEnumerable<UsuarioDTO>> GetAllUsuariosAsync()
-        {
-            var usuarios = await _context.Usuarios.ToListAsync();
-
-            // Mapear la lista de objetos de modelo a una lista de DTOs
-            var usuariosDTO = usuarios.Select(usuario => new UsuarioDTO
-            {
-                IdUsuario = usuario.IdUsuario,
-                Email = usuario.Email,
-                Contrasenia = usuario.Contrasenia,
-                TipoUsuario = usuario.TipoUsuario,
-                // Mapear otros campos si es necesario
-            });
-
-            return usuariosDTO;
-        }
-
-        public async Task<UsuarioDTO> InsertUsuarioAsync(UsuarioDTO usuarioDTO)
-        {
-            // Mapear el DTO a un objeto de modelo
-            var usuarioModel = new Usuarios
-            {
-                Email = usuarioDTO.Email,
-                TipoUsuario = usuarioDTO.TipoUsuario,
-                Contrasenia = usuarioDTO.Contrasenia // Guardar la contraseña en texto claro en la base de datos
-                                                     // Mapear otros campos si es necesario
-            };
-
-            _context.Usuarios.Add(usuarioModel);
-            await _context.SaveChangesAsync();
-
-            // Mapear el objeto de modelo a un DTO y devolverlo
-            usuarioDTO.IdUsuario = usuarioModel.IdUsuario;
-            return usuarioDTO;
-        }
-
-        public async Task UpdateUsuarioAsync(UsuarioDTO usuarioDTO)
-        {
-            var usuarioModel = await _context.Usuarios.FindAsync(usuarioDTO.IdUsuario);
-
-            if (usuarioModel == null)
-            {
-                // Maneja el caso en que el usuario no existe
-                // Puedes lanzar una excepción, devolver un resultado específico, etc.
-                return;
+                throw new Exception("El usuario es null");
             }
+        }
+        public async Task<UsuariosDTO> GetUsuarioByIdAsync(int id)
+        {
+            if (id != null)
+            {
 
-            usuarioModel.Email = usuarioDTO.Email;
-            usuarioModel.TipoUsuario = usuarioDTO.TipoUsuario;
-            usuarioModel.Contrasenia = usuarioDTO.Contrasenia;
+               UsuariosDTO getUser = await _repository.GetUsuarioById(id);
+               if (getUser != null)
+                {
 
-            _context.Entry(usuarioModel).State = EntityState.Modified;
-            await _context.SaveChangesAsync();
+                    return getUser;
+
+                }
+                else
+                {
+
+                    throw new Exception("El usuario no existe");
+                }
+
+            }
+            else
+            {
+                throw new Exception("La id es null");
+            }
+        }
+
+        public async Task<List<UsuariosDTO>> GetAllUsuariosAsync()
+        {
+            List<UsuariosDTO> listOfUsuarios = await _repository.GetAllUsuarios();
+
+            if (listOfUsuarios != null)
+            {
+                return listOfUsuarios;
+            }
+            else
+            {
+                throw new Exception("Error al traer todos los usuarios");
+            }
+        }
+
+        
+
+        public async Task UpdateUsuarioAsync(UsuariosDTO usuario)
+        {
+            if (usuario != null)
+            {
+                bool result = await _repository.UpdateUsuario(usuario);
+                if (!result)
+                {
+                    throw new Exception("El usuario no fue modificado");
+                };
+            }
+            else
+            {
+                throw new Exception("La Empresa es null");
+            }
         }
 
         public async Task DeleteUsuarioAsync(int id)
         {
-            var usuarioModel = await _context.Usuarios.FindAsync(id);
-            if (usuarioModel != null)
+            // Llama al método del repositorio para eliminar un usuario por su ID
+            await _repository.DeleteUsuario(id);
+        }
+
+        public async Task<UsuariosDTO> GetUsuarioByEmailAsync(string email)
+        {
+            if (email != null)
             {
-                _context.Usuarios.Remove(usuarioModel);
-                await _context.SaveChangesAsync();
+
+                UsuariosDTO getUser = await _repository.GetUsuarioByEmail(email);
+                if (getUser != null)
+                {
+
+                    return getUser;
+
+                }
+                else
+                {
+
+                    throw new Exception("El usuario no existe");
+                }
+
+            }
+            else
+            {
+                throw new Exception("La id es null");
             }
         }
     }

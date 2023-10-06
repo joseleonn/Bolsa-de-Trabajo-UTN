@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace BolsaDeTrabajo.Api.Controllers
 {
@@ -21,7 +22,7 @@ namespace BolsaDeTrabajo.Api.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<UsuarioDTO>> GetById(int id)
+        public async Task<ActionResult<UsuariosDTO>> GetById(int id)
         {
             var usuario = await _usuarioService.GetUsuarioByIdAsync(id);
 
@@ -34,29 +35,31 @@ namespace BolsaDeTrabajo.Api.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<UsuarioDTO>>> GetAll()
+        public async Task<ActionResult<IEnumerable<UsuariosDTO>>> GetAll()
         {
             var usuarios = await _usuarioService.GetAllUsuariosAsync();
             return Ok(usuarios);
         }
 
         [HttpPost]
-        public async Task<ActionResult<UsuarioDTO>> Post([FromBody] UsuarioDTO usuarioDTO)
+        public async Task<IActionResult> InsertUsuarioAsync([FromBody] UsuariosDTO usuario)
         {
-            // Verifica si el modelo recibido es válido
-            if (!ModelState.IsValid)
+            try
             {
-                return BadRequest(ModelState);
+                await _usuarioService.InsertUsuarioAsync(usuario);
+                return CreatedAtAction(nameof(InsertUsuarioAsync), null);
+
             }
+            catch (Exception ex)
+            {
 
-            // Crea un nuevo objeto UsuarioDTO a partir del DTO recibido
-            var insertedUsuario = await _usuarioService.InsertUsuarioAsync(usuarioDTO);
+                return BadRequest(new { error = ex.Message });
 
-            return CreatedAtAction(nameof(GetById), new { id = insertedUsuario.IdUsuario }, insertedUsuario);
+            }
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> Put(int id, [FromBody] UsuarioDTO usuarioDTO)
+        public async Task<IActionResult> Put(int id, [FromBody] UsuariosDTO usuarioDTO)
         {
             if (id != usuarioDTO.IdUsuario)
             {
