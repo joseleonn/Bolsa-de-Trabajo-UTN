@@ -30,6 +30,8 @@ namespace BolsaDeTrabjo.Api
 
             //Helpers
             builder.Services.AddScoped<RabbitMQHelper>();
+            builder.Services.AddScoped<EmailHelper>();
+
         }
     }
 }
