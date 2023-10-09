@@ -1,37 +1,37 @@
 ﻿using BolsaDeTrabajo.Model.DTOs;
+using BolsaDeTrabajo.Service.Interfaces;
+using MailKit.Security;
+using MimeKit.Text;
+using MimeKit;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using MailKit.Security;
-using MimeKit;
-using MimeKit.Text;
-using MailKit.Net.Smtp;
 
-namespace BolsaDeTrabajo.Service.Helpers
+namespace BolsaDeTrabajo.Service.Inmplementations
 {
-    public class EmailHelper
+    public class EmailService : IEmailService
     {
-        private static string _Host = "smtp.gmail.com";
-        private static int _Port = 587;
+        private readonly string _Host = "smtp.gmail.com";
+        private readonly int _Port = 587;
 
-        private static string _NameSend = "Bolsa de Trabajo UTN";
+        private readonly string _NameSend = "API USUARIO";
 
-        private static string _Email = "josecaceresmusso3@gmail.com";
-        private static string _Password = "hhdtwchmgnvchjrv";
+        private readonly string _Email = "josecaceresmusso3@gmail.com";
+        private readonly string _Password = "hhdtwchmgnvchjrv";
 
-        public static bool SendEmail(EmailDTO correodto)
+        public async Task<bool> SendEmail(EmailDTO emaildto)
         {
             try
             {
                 var email = new MimeMessage();
                 email.From.Add(new MailboxAddress(_NameSend, _Email));
-                email.To.Add(MailboxAddress.Parse(correodto.Destinatario));
-                email.Subject = correodto.Asunto;
+                email.To.Add(MailboxAddress.Parse(emaildto.Destinatario));
+                email.Subject = emaildto.Asunto;
                 email.Body = new TextPart(TextFormat.Html)
                 {
-                    Text = correodto.Contenido
+                    Text = emaildto.Contenido
                 };
 
                 var smtp = new MailKit.Net.Smtp.SmtpClient();
@@ -49,5 +49,5 @@ namespace BolsaDeTrabajo.Service.Helpers
             }
 
         }
-}
+    }
 }

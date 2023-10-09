@@ -19,7 +19,7 @@ namespace BolsaDeTrabjo.Api
             builder.Services.AddScoped<IUsuarioService, UsuarioService>();
             builder.Services.AddScoped<ICompanyService, CompanyService>();
             builder.Services.AddScoped<IJobService, JobService>();
-
+            builder.Services.AddScoped<IEmailService, EmailService>();
 
             //REPOSITORIES
             builder.Services.AddScoped<IAdminRepository, AdminRepository>();
@@ -30,8 +30,7 @@ namespace BolsaDeTrabjo.Api
 
             //Helpers
             builder.Services.AddScoped<RabbitMQHelper>();
-            builder.Services.AddScoped<EmailHelper>();
-
+            builder.Services.AddScoped<GenerateToken>();
         }
     }
 }

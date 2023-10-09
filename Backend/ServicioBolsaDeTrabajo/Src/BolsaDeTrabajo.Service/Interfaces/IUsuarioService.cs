@@ -1,4 +1,5 @@
 ﻿using BolsaDeTrabajo.Model.DTOs;
+using BolsaDeTrabajo.Service.Implementations;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -11,5 +12,10 @@ namespace BolsaDeTrabajo.Service.Interfaces
         Task InsertUsuarioAsync(UsuariosDTO usuarioDTO);
         Task UpdateUsuarioAsync(UsuariosDTO usuarioDTO);
         Task DeleteUsuarioAsync(int id);
+
+        Task ChangePassword(UsuarioDTO user);
+
+        Task VerifyToken(string token);
+
     }
 }

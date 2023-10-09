@@ -1,5 +1,6 @@
 ﻿using BolsaDeTrabajo.Model.DTOs;
 using BolsaDeTrabajo.Model.Models;
+using BolsaDeTrabajo.Service.Implementations;
 using BolsaDeTrabajo.Service.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -78,6 +79,36 @@ namespace BolsaDeTrabajo.Api.Controllers
         {
             await _usuarioService.DeleteUsuarioAsync(id);
             return NoContent();
+        }
+
+        [HttpPost]
+        [Route("CambiarContrasenia")]
+        public async Task<ActionResult> ChangePassword([FromBody] UsuarioDTO usuarioDTO)
+        {
+            try
+            {
+                await _usuarioService.ChangePassword(usuarioDTO);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest();
+            }
+        }
+
+        [HttpPost]
+        [Route("VerificarToken/{token}")]
+        public async Task<ActionResult> VerifyToken(string token)
+        {
+            try
+            {
+                await _usuarioService.VerifyToken(token);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest("El token no coincide");
+            }
         }
     }
 }

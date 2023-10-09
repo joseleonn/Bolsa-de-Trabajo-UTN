@@ -73,7 +73,15 @@ builder.Services.AddSwaggerGen(setupAction =>
                 }, new List<string>() }
     });
 });
-
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowLocalhost5173", builder =>
+    {
+        builder.WithOrigins("http://localhost:5173")
+               .AllowAnyHeader()
+               .AllowAnyMethod();
+    });
+});
 
 
 var app = builder.Build();
@@ -89,6 +97,7 @@ app.UseHttpsRedirection();
 
 app.UseAuthentication();
 app.UseAuthorization();
+app.UseCors("AllowLocalhost5173");
 
 app.MapControllers();
 

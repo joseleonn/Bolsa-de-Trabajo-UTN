@@ -9,10 +9,13 @@ namespace BolsaDeTrabajo.Model.DTOs
     public class EmailDTO
     {
 
+
         public string? Destinatario { get; set; }
         public string? Asunto { get; set; }
 
         public string? Contenido { get; set; }
+
+
 
     }
 }

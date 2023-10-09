@@ -1,6 +1,8 @@
 ﻿using BolsaDeTrabajo.Data.Interfaces;
+using BolsaDeTrabajo.Model;
 using BolsaDeTrabajo.Model.DTOs;
 using BolsaDeTrabajo.Model.Models;
+using BolsaDeTrabajo.Service.Helpers;
 using BolsaDeTrabajo.Service.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
@@ -12,10 +14,13 @@ namespace BolsaDeTrabajo.Service.Implementations
     public class UsuarioService : IUsuarioService
     {
         private readonly IUsuarioRepository _repository;
-
-        public UsuarioService(IUsuarioRepository repository)
+        private readonly BolsaDeTrabajoUTNContext _context;
+        private readonly IEmailService _email;
+        public UsuarioService(IUsuarioRepository repository, BolsaDeTrabajoUTNContext context, IEmailService email)
         {
             _repository = repository;
+            _context = context;
+            _email = email;
         }
 
         public async Task InsertUsuarioAsync(UsuariosDTO usuario)
@@ -114,6 +119,63 @@ namespace BolsaDeTrabajo.Service.Implementations
             else
             {
                 throw new Exception("La id es null");
+            }
+        }
+
+        public async Task ChangePassword(UsuarioDTO user)
+        {
+            try
+            {
+                string token = GenerateToken.GenerateNumericToken();
+
+                Tokens newToken = new Tokens()
+                {
+                    Token = token,
+                    IdUsuario = user.IdUsuario,
+                    FechaGeneracion = DateTime.Now.ToString(),
+                    FechaExpiracion = DateTime.Now.AddDays(1).ToString(),
+                    Valido = true
+                };
+                await _context.Tokens.AddAsync(newToken);
+                await _context.SaveChangesAsync();
+
+                EmailDTO newEmail = new EmailDTO()
+                {
+                    Destinatario = user.Email,
+                    Asunto = "Cambiar Contraseña UTN",
+                    Contenido = newToken.Token
+
+                };
+                bool send = await _email.SendEmail(newEmail);
+
+                if (!send)
+                {
+                    throw new Exception("El mail no se envio");
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al enviar el token");
+            }
+
+
+        }
+
+        public async Task VerifyToken(string token)
+        {
+            try
+            {
+                Tokens ifTokenExist = await _context.Tokens.FirstOrDefaultAsync(t => t.Token == token);
+
+                if (ifTokenExist == null)
+                {
+                    throw new Exception("El token no existe");
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("No se pudo verificar el token");
             }
         }
     }
