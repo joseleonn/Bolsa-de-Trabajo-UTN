@@ -14,7 +14,7 @@ const Home = () => {
         animate={{ opacity: 1 }}
         className="flex flex-1  h-screen"
       >
-        <div className="flex flex-col justify-center   ">
+        <div className="flex flex-col justify-center w-full  ">
           <div>
             <h1 className="text-8xl font-epilogue font-semibold  dark:text-[#f3f3f3] tracking-tight lg:text-8xl  light:text-[#000000]">
               Bolsa de <span className="text-blue-600"> Trabajo</span>
@@ -43,7 +43,7 @@ const Home = () => {
             <img
               src={UTN_logo_white}
               alt="Universidad Tecnologica Nacional"
-              className="h-[60vh] w-[60vh] m-0 "
+              className="h-[65vh] w-[65vh] m-0 "
             />
 
             <h1 className="hidden flex justify-center lg:flex text-center font-epilogue text-[#f3f3f3] text-[80px] font-bold -mt-20">
