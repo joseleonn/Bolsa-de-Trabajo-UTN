@@ -1,10 +1,10 @@
 import { Route, Routes, useLocation } from "react-router-dom";
 import { Navbar, Perfil, Sidebar } from "./components";
-import { Home, JobDetail, Jobs, Login } from "./pages";
+import { Error404, Home, JobDetail, Jobs, Login } from "./pages";
+import { useAuth } from "./context/AuthContext";
 
 function App() {
-  const location = useLocation();
-
+  const {isLogin} = useAuth();
   return (
     <div className="relative sm:-8 p-4 dark:bg-[#151719]  min-h-screen flex flex-row ">
       {/* Mostrar Sidebar en todas las rutas excepto "/Login" */}
@@ -20,9 +20,17 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/Login" element={<Login />} />
+          <Route path="*" element={<Login />} />
+
+{isLogin && (
+  <>
+          <Route path="/empleos" element={<Jobs />} />
           <Route path="/empleos" element={<Jobs />} />
           <Route path="/empleos/:id" element={<JobDetail />} />
           <Route path="/perfil" element={<Perfil />} />
+          </>
+)}
+          
 
         </Routes>
       </div>

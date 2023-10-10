@@ -1,15 +1,17 @@
 import { Button } from "@nextui-org/react";
 import { UTN_logo_white } from "../assets";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useAuth } from "../context/AuthContext";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false); // Estado para mostrar/ocultar la contraseña
-
+  const {login, isLogin } = useAuth()
+  const navigate = useNavigate();
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
@@ -18,10 +20,21 @@ const Login = () => {
     register,
     formState: { errors },
   } = useForm();
-  console.log(errors);
-  const onSubmit = handleSubmit((data) => {
-    console.log(data);
-  });
+  const onSubmit = async (data) => {
+    try {
+      await login(data.email, data.password);
+      console.log(data.email)
+      console.log(data.password)
+    } catch (error) {
+      console.error("Error al iniciar sesión:", error);
+    }
+  };
+
+  useEffect(() => {
+    if (isLogin) {
+      navigate('/empleos')
+    }
+  },[isLogin])
   return (
     <motion.div
       initial={{ opacity: 0, x: 100 }}
@@ -44,7 +57,7 @@ const Login = () => {
             </p>
           </div>
 
-          <form className="mx-auto mt-8 max-w-md space-y-4" onSubmit={onSubmit}>
+          <form className="mx-auto mt-8 max-w-md space-y-4" onSubmit={handleSubmit(onSubmit)}>
             <div>
               <label
                 htmlFor="email"

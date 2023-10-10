@@ -4,22 +4,28 @@ import axios from 'axios';
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState({
+    email: '',
+    token: '',
+  });
+  const [isLogin, setIsLogin] = useState(false);
 
-  const login = async (username, password) => {
+  const login = async (email, contrasenia) => {
     try {
-      const response = await axios.post('URL_DE_TU_API/login', {
-        username,
-        password,
+      const response = await axios.post('https://localhost:7197/api/Auth/login', {
+        email,
+        contrasenia,
       });
-      setUser(response.data); // Almacena el usuario autenticado en el estado
+
+      setUser({email: email, token: response.data}); // Almacena el usuario autenticado en el estado
+      setIsLogin(true);
     } catch (error) {
       console.error('Error al iniciar sesión', error);
     }
   };
 
   return (
-    <AuthContext.Provider value={{ user, login }}>
+    <AuthContext.Provider value={{ user, login, isLogin }}>
       {children}
     </AuthContext.Provider>
   );
