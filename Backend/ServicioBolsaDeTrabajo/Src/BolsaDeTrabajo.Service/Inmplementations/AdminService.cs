@@ -28,7 +28,14 @@ namespace BolsaDeTrabajo.Service.Inmplementations
         {
             if (admin != null)
             {
-                await _adminRepository.InsertAdmin(admin);
+                Admins newAdmin = new Admins()
+                {
+                    IdAdmin = admin.IdAdmin,
+                    IdUsuario = admin.IdUsuario,
+                    RolAdmin = admin.RolAdmin,
+
+                };
+                await _adminRepository.InsertAdmin(newAdmin);
             }
             else
             {

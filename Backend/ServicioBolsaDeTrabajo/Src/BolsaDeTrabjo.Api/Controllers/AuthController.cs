@@ -34,7 +34,7 @@ namespace BolsaDeTrabajo.Api.Controllers
             try
             {
                 // Buscar el usuario en la base de datos por correo electrónico
-                var usuario = await _usuarioRepository.GetUsuarioByEmail(user.Email);
+                UsuariosDTO usuario = await _usuarioRepository.GetUsuarioByEmail(user.Email);
 
                 if (usuario == null)
                 {
@@ -42,13 +42,19 @@ namespace BolsaDeTrabajo.Api.Controllers
                 }
 
                 // Verificar si la contraseña coincide
-                if (usuario.Contrasenia != user.Contrasenia.GetSHA256())
+                if (usuario.Contrasenia != EncryptHelper.GetSHA256(user.Contrasenia))
                 {
                     return BadRequest("Contraseña incorrecta");
                 }
 
+                Usuarios newToken = new Usuarios()
+                {
+                    IdUsuario = usuario.IdUsuario,
+                    Email = usuario.Email,
+                    TipoUsuario = usuario.TipoUsuario
+                };
                 // Generar un token JWT
-                var token = GenerateJwtToken(usuario);
+                string token = GenerateJwtToken(newToken);
 
                 return Ok(token);
             }
@@ -71,18 +77,18 @@ namespace BolsaDeTrabajo.Api.Controllers
                 }
 
                 // Crear un nuevo usuario
-                var usuario = new Usuarios
+                Usuarios usuario = new Usuarios()
                 {
                     // Asigna las propiedades del usuario a partir de newUser
                     // Esto depende de la estructura de UsuarioDTO y Usuarios
                     // Ejemplo:
                     Email = newUser.Email,
-                    Contrasenia = newUser.Contrasenia.GetSHA256(),
+                    Contrasenia = EncryptHelper.GetSHA256(newUser.Contrasenia),
                     TipoUsuario = newUser.TipoUsuario
                 };
 
                 // Insertar el nuevo usuario en la base de datos
-                await _usuarioRepository.InsertUsuario(usuario);
+                await _usuarioRepository.InsertUsuario(newUser);
 
                 // Generar un token JWT para el nuevo usuario
                 var token = GenerateJwtToken(usuario);

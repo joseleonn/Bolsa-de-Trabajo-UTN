@@ -1,5 +1,5 @@
 import { Route, Routes, useLocation } from "react-router-dom";
-import { Navbar, Sidebar } from "./components";
+import { Navbar, Perfil, Sidebar } from "./components";
 import { Home, JobDetail, Jobs, Login } from "./pages";
 
 function App() {
@@ -22,6 +22,8 @@ function App() {
           <Route path="/Login" element={<Login />} />
           <Route path="/empleos" element={<Jobs />} />
           <Route path="/empleos/:id" element={<JobDetail />} />
+          <Route path="/perfil" element={<Perfil />} />
+
         </Routes>
       </div>
     </div>

@@ -128,14 +128,13 @@ namespace BolsaDeTrabajo.Data.Implementations
 
             if (ifExists != null)
             {
-                Usuarios usuarioByEmail = await _context.Usuarios.FindAsync(email);
 
                 UsuariosDTO result = new UsuariosDTO()
                 {
-                    IdUsuario = usuarioByEmail.IdUsuario,
-                    Email = usuarioByEmail.Email,
-                    Contrasenia = usuarioByEmail.Contrasenia,
-                    TipoUsuario = usuarioByEmail.TipoUsuario
+                    IdUsuario = ifExists.IdUsuario,
+                    Email = ifExists.Email,
+                    Contrasenia = ifExists.Contrasenia,
+                    TipoUsuario = ifExists.TipoUsuario
 
                 };
                 return result;

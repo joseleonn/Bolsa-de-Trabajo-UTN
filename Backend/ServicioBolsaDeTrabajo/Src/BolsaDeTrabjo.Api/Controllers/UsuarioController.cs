@@ -83,7 +83,7 @@ namespace BolsaDeTrabajo.Api.Controllers
 
         [HttpPost]
         [Route("CambiarContrasenia")]
-        public async Task<ActionResult> ChangePassword([FromBody] UsuarioDTO usuarioDTO)
+        public async Task<ActionResult> ChangePassword([FromBody] UsuariosDTO usuarioDTO)
         {
             try
             {

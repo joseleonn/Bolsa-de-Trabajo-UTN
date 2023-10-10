@@ -27,7 +27,15 @@ namespace BolsaDeTrabajo.Service.Implementations
         {
             if (usuario != null)
             {
-                await _repository.InsertUsuario(usuario);
+                UsuariosDTO newUser = new UsuariosDTO()
+                {
+                    Email = usuario.Email,
+                    Contrasenia = EncryptHelper.GetSHA256(usuario.Contrasenia),
+                    TipoUsuario = usuario.TipoUsuario
+
+                };
+
+                await _repository.InsertUsuario(newUser);
             }
             else
             {
@@ -122,7 +130,7 @@ namespace BolsaDeTrabajo.Service.Implementations
             }
         }
 
-        public async Task ChangePassword(UsuarioDTO user)
+        public async Task ChangePassword(UsuariosDTO user)
         {
             try
             {

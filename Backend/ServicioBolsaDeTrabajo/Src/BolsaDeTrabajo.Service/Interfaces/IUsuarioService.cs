@@ -13,7 +13,7 @@ namespace BolsaDeTrabajo.Service.Interfaces
         Task UpdateUsuarioAsync(UsuariosDTO usuarioDTO);
         Task DeleteUsuarioAsync(int id);
 
-        Task ChangePassword(UsuarioDTO user);
+        Task ChangePassword(UsuariosDTO user);
 
         Task VerifyToken(string token);
 

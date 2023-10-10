@@ -25,7 +25,7 @@ const Navbar = () => {
         <input
           type="text"
           placeholder="Buscar empleos"
-          className="flex w-full font-epilogue font-normal text-[14px] placeholder:text-[#4b5264] text-white bg-transparent outline-none "
+          className="flex w-full font-epilogue font-normal text-[14px] placeholder:text-[#4b5264] text-black bg-transparent outline-none "
         />
         <div className="w-[72px] h-full rounded-[20px] bg-[#afb2b7] flex justify-center items-center cursor-pointer">
           <img

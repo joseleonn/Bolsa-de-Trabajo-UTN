@@ -563,3 +563,12 @@ C:\Users\tomas\Desktop\Facultad\Bolsa-de-Trabajo-UTN\Backend\ServicioBolsaDeTrab
 C:\Users\tomas\Desktop\Facultad\Bolsa-de-Trabajo-UTN\Backend\ServicioBolsaDeTrabajo\Src\BolsaDeTrabjo.Api\obj\Debug\net6.0\BolsaDeTrabjo.Api.dll
 C:\Users\tomas\Desktop\Facultad\Bolsa-de-Trabajo-UTN\Backend\ServicioBolsaDeTrabajo\Src\BolsaDeTrabjo.Api\obj\Debug\net6.0\refint\BolsaDeTrabjo.Api.dll
 C:\Users\tomas\Desktop\Facultad\Bolsa-de-Trabajo-UTN\Backend\ServicioBolsaDeTrabajo\Src\BolsaDeTrabjo.Api\obj\Debug\net6.0\BolsaDeTrabjo.Api.pdb
+C:\Users\josecm\Desktop\Bolsa-de-Trabajo-UTN\Backend\ServicioBolsaDeTrabajo\Src\BolsaDeTrabjo.Api\bin\Debug\net6.0\BouncyCastle.Cryptography.dll
+C:\Users\josecm\Desktop\Bolsa-de-Trabajo-UTN\Backend\ServicioBolsaDeTrabajo\Src\BolsaDeTrabjo.Api\bin\Debug\net6.0\MailKit.dll
+C:\Users\josecm\Desktop\Bolsa-de-Trabajo-UTN\Backend\ServicioBolsaDeTrabajo\Src\BolsaDeTrabjo.Api\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\josecm\Desktop\Bolsa-de-Trabajo-UTN\Backend\ServicioBolsaDeTrabajo\Src\BolsaDeTrabjo.Api\bin\Debug\net6.0\MimeKit.dll
+C:\Users\josecm\Desktop\Bolsa-de-Trabajo-UTN\Backend\ServicioBolsaDeTrabajo\Src\BolsaDeTrabjo.Api\bin\Debug\net6.0\System.Formats.Asn1.dll
+C:\Users\josecm\Desktop\Bolsa-de-Trabajo-UTN\Backend\ServicioBolsaDeTrabajo\Src\BolsaDeTrabjo.Api\bin\Debug\net6.0\System.Security.Cryptography.Pkcs.dll
+C:\Users\josecm\Desktop\Bolsa-de-Trabajo-UTN\Backend\ServicioBolsaDeTrabajo\Src\BolsaDeTrabjo.Api\bin\Debug\net6.0\System.Text.Encoding.CodePages.dll
+C:\Users\josecm\Desktop\Bolsa-de-Trabajo-UTN\Backend\ServicioBolsaDeTrabajo\Src\BolsaDeTrabjo.Api\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Security.Cryptography.Pkcs.dll
+C:\Users\josecm\Desktop\Bolsa-de-Trabajo-UTN\Backend\ServicioBolsaDeTrabajo\Src\BolsaDeTrabjo.Api\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Text.Encoding.CodePages.dll

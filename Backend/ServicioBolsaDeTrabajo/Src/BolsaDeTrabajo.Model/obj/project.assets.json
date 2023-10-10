@@ -3228,11 +3228,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\josecm\\Desktop\\Nueva carpeta\\Bolsa-de-Trabajo-UTN\\Backend\\ServicioBolsaDeTrabajo\\Src\\BolsaDeTrabajo.Model\\BolsaDeTrabajo.Model.csproj",
+      "projectUniqueName": "C:\\Users\\josecm\\Desktop\\Bolsa-de-Trabajo-UTN\\Backend\\ServicioBolsaDeTrabajo\\Src\\BolsaDeTrabajo.Model\\BolsaDeTrabajo.Model.csproj",
       "projectName": "BolsaDeTrabajo.Model",
-      "projectPath": "C:\\Users\\josecm\\Desktop\\Nueva carpeta\\Bolsa-de-Trabajo-UTN\\Backend\\ServicioBolsaDeTrabajo\\Src\\BolsaDeTrabajo.Model\\BolsaDeTrabajo.Model.csproj",
+      "projectPath": "C:\\Users\\josecm\\Desktop\\Bolsa-de-Trabajo-UTN\\Backend\\ServicioBolsaDeTrabajo\\Src\\BolsaDeTrabajo.Model\\BolsaDeTrabajo.Model.csproj",
       "packagesPath": "C:\\Users\\josecm\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\josecm\\Desktop\\Nueva carpeta\\Bolsa-de-Trabajo-UTN\\Backend\\ServicioBolsaDeTrabajo\\Src\\BolsaDeTrabajo.Model\\obj\\",
+      "outputPath": "C:\\Users\\josecm\\Desktop\\Bolsa-de-Trabajo-UTN\\Backend\\ServicioBolsaDeTrabajo\\Src\\BolsaDeTrabajo.Model\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\josecm\\AppData\\Roaming\\NuGet\\NuGet.Config",
