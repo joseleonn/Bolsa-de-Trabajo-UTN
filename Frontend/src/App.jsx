@@ -1,10 +1,13 @@
-import { Route, Routes, useLocation } from "react-router-dom";
-import { Navbar, Perfil, Sidebar } from "./components";
+import { Route, Routes } from "react-router-dom";
+import { ChangePassword, Navbar, Perfil, Sidebar } from "./components";
 import { Error404, Home, JobDetail, Jobs, Login } from "./pages";
 import { useAuth } from "./context/AuthContext";
+import LoadingSpinner from "./components/LoadingSpinner";
+import { useLoading } from "./context/LoadingContext";
 
 function App() {
   const {isLogin} = useAuth();
+  const {isLoading} = useLoading()
   return (
     <div className="relative sm:-8 p-4 dark:bg-[#151719]  min-h-screen flex flex-row ">
       {/* Mostrar Sidebar en todas las rutas excepto "/Login" */}
@@ -16,12 +19,12 @@ function App() {
       <div className="flex-1 max-sm:w-full  mx-auto sm:pr-5 ">
         {/* Mostrar Navbar en todas las rutas  */}
         <Navbar />
-
+        {isLoading && <LoadingSpinner />}
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/Login" element={<Login />} />
           <Route path="*" element={<Login />} />
-
+          <Route path="/cambiar-contrasena" element={<ChangePassword />} />
 {isLogin && (
   <>
           <Route path="/empleos" element={<Jobs />} />

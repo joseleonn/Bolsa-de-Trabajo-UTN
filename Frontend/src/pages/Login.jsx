@@ -1,5 +1,3 @@
-import { Button } from "@nextui-org/react";
-import { UTN_logo_white } from "../assets";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
@@ -7,7 +5,8 @@ import { useContext, useEffect, useState } from "react";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useAuth } from "../context/AuthContext";
-
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false); // Estado para mostrar/ocultar la contraseña
   const {login, isLogin } = useAuth()
@@ -42,9 +41,10 @@ const Login = () => {
       exit={{ opacity: 0, x: -100 }}
       transition={{ duration: 0.5 }}
     >
-      <section className="relative flex flex-col justify-center  items-center lg:flex-row lg:h-screen lg:items-center">
+      <section className="relative flex flex-col justify-center  items-center lg:flex-row lg:h-screen lg:items-center ">
+        <ToastContainer/>
         {/* Contenido del formulario */}
-        <div className="w-full px-4 py-8 sm:px-6 sm:py-12 lg:w-1/2 lg:px-8 lg:py-24 dark:bg-[#262526]  rounded-[20px] shadow-xl ">
+        <div className="w-full px-4 py-8 sm:px-6 sm:py-12 lg:w-1/2 lg:px-8 lg:py-24 dark:bg-[#18181B]  rounded-[20px] shadow-xl ">
           <div className="mx-auto max-w-md text-center">
             <h1 className="text-2xl sm:text-3xl font-bold light:text-[#15171a] dark:text-[#f3f3f3]">
               Bolsa De Trabajo
@@ -122,12 +122,20 @@ const Login = () => {
             </div>
 
             <div className="flex flex-col sm:flex-row items-center justify-between">
-              <p className="text-sm light:text-[#15171a] dark:text-[#f3f3f3] mb-4 sm:mb-0">
+              <div className="flex flex-col"><p className="text-sm light:text-[#15171a] dark:text-[#f3f3f3] mb-4 sm:mb-0">
                 No estás registrado?
                 <a className="underline" href="#">
                   Regístrate.
                 </a>
               </p>
+              <p className="text-sm light:text-[#15171a] dark:text-[#f3f3f3] mb-4 sm:mb-0">
+                <Link 
+                to="/cambiar-contrasena"
+                className="underline" href="#">
+                  Cambiar contraseña.
+                </Link>
+              </p></div>
+              
               <div className="flex flex-wrap sm:flex-nowrap items-center p-3">
                 <motion.button
                   whileHover={{ scale: 1.05 }}
