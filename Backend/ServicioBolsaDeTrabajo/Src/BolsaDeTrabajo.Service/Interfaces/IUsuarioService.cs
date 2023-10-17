@@ -9,11 +9,10 @@ namespace BolsaDeTrabajo.Service.Interfaces
     {
         Task<UsuariosDTO> GetUsuarioByIdAsync(int id);
         Task<List<UsuariosDTO>> GetAllUsuariosAsync();
-        Task InsertUsuarioAsync(UsuariosDTO usuarioDTO);
         Task UpdateUsuarioAsync(UsuariosDTO usuarioDTO);
         Task DeleteUsuarioAsync(int id);
 
-        Task ChangePassword(UsuariosDTO user);
+        Task ChangePassword(string email);
 
         Task VerifyToken(string token);
 

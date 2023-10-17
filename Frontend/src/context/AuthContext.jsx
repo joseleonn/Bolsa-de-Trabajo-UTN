@@ -34,7 +34,7 @@ const login = async (email, contrasenia) => {
   };
 
   return (
-    <AuthContext.Provider value={{ user, login, isLogin }}>
+    <AuthContext.Provider value={{ user, login, isLogin, setUser}}>
       {children}
     </AuthContext.Provider>
   );

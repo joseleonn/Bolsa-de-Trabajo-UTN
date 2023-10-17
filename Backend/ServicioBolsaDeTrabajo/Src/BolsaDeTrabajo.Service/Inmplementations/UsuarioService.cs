@@ -23,25 +23,6 @@ namespace BolsaDeTrabajo.Service.Implementations
             _email = email;
         }
 
-        public async Task InsertUsuarioAsync(UsuariosDTO usuario)
-        {
-            if (usuario != null)
-            {
-                UsuariosDTO newUser = new UsuariosDTO()
-                {
-                    Email = usuario.Email,
-                    Contrasenia = EncryptHelper.GetSHA256(usuario.Contrasenia),
-                    TipoUsuario = usuario.TipoUsuario
-
-                };
-
-                await _repository.InsertUsuario(newUser);
-            }
-            else
-            {
-                throw new Exception("El usuario es null");
-            }
-        }
         public async Task<UsuariosDTO> GetUsuarioByIdAsync(int id)
         {
             if (id != null)
@@ -85,18 +66,30 @@ namespace BolsaDeTrabajo.Service.Implementations
 
         public async Task UpdateUsuarioAsync(UsuariosDTO usuario)
         {
-            if (usuario != null)
+            try
             {
-                bool result = await _repository.UpdateUsuario(usuario);
-                if (!result)
+                Usuarios ifUserExist = await _context.Usuarios.FirstOrDefaultAsync(u => u.Email == usuario.Email);
+
+                if(ifUserExist != null)
                 {
-                    throw new Exception("El usuario no fue modificado");
-                };
+                    usuario.Contrasenia = EncryptHelper.GetSHA256(usuario.Contrasenia);
+
+                    bool result = await _repository.UpdateUsuario(usuario);
+                    if (!result)
+                    {
+                        throw new Exception("El usuario no fue modificado");
+
+                    }
+                }
+                else
+                {
+                    throw new Exception("El usuario no fue encontrado");
+                }
             }
-            else
+            catch
             {
-                throw new Exception("La Empresa es null");
-            }
+                throw new Exception("hubo un error en modificar");        
+        }
         }
 
         public async Task DeleteUsuarioAsync(int id)
@@ -130,16 +123,22 @@ namespace BolsaDeTrabajo.Service.Implementations
             }
         }
 
-        public async Task ChangePassword(UsuariosDTO user)
+        public async Task ChangePassword(string email)
         {
             try
             {
+                Usuarios ifUserExist = await _context.Usuarios.FirstOrDefaultAsync(u => u.Email == email);
+
+                if(ifUserExist == null)
+                {
+                    throw new Exception("El usuario no fue encontrado");
+                }
                 string token = GenerateToken.GenerateNumericToken();
 
                 Tokens newToken = new Tokens()
                 {
                     Token = token,
-                    IdUsuario = user.IdUsuario,
+                    IdUsuario = ifUserExist.IdUsuario,
                     FechaGeneracion = DateTime.Now.ToString(),
                     FechaExpiracion = DateTime.Now.AddDays(1).ToString(),
                     Valido = true
@@ -149,7 +148,7 @@ namespace BolsaDeTrabajo.Service.Implementations
 
                 EmailDTO newEmail = new EmailDTO()
                 {
-                    Destinatario = user.Email,
+                    Destinatario = email,
                     Asunto = "Cambiar Contraseña UTN",
                     Contenido = newToken.Token
 

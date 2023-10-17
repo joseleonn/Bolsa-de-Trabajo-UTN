@@ -31,6 +31,8 @@ namespace BolsaDeTrabjo.Api
             //Helpers
             builder.Services.AddScoped<RabbitMQHelper>();
             builder.Services.AddScoped<GenerateToken>();
+            builder.Services.AddScoped<EncryptHelper>();
+
         }
     }
 }

@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import { ChangePassword, Navbar, Perfil, Sidebar } from "./components";
+import { ChangePassword, ChangePasswordForm, CodeChangePassword, Navbar, Perfil, Sidebar } from "./components";
 import { Error404, Home, JobDetail, Jobs, Login } from "./pages";
 import { useAuth } from "./context/AuthContext";
 import LoadingSpinner from "./components/LoadingSpinner";
@@ -25,6 +25,10 @@ function App() {
           <Route path="/Login" element={<Login />} />
           <Route path="*" element={<Login />} />
           <Route path="/cambiar-contrasena" element={<ChangePassword />} />
+          <Route path="/cambiar-contrasena/codigo" element={<CodeChangePassword />} />
+          <Route path="/cambiar-contrasena/formulario" element={<ChangePasswordForm />} />
+
+
 {isLogin && (
   <>
           <Route path="/empleos" element={<Jobs />} />

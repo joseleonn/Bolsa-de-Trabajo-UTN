@@ -15,7 +15,6 @@ namespace BolsaDeTrabajo.Data.Implementations
     public class UsuarioRepository : IUsuarioRepository
     {
         private readonly BolsaDeTrabajoUTNContext _context;
-
         public UsuarioRepository(BolsaDeTrabajoUTNContext context)
         {
             _context = context;
@@ -92,13 +91,12 @@ namespace BolsaDeTrabajo.Data.Implementations
         public async Task<bool> UpdateUsuario(UsuariosDTO usuario)
         {
             // Buscar el usuario por su ID
-            Usuarios existingUser = await _context.Usuarios.FirstOrDefaultAsync(e => e.IdUsuario == usuario.IdUsuario);
+            Usuarios existingUser = await _context.Usuarios.FirstOrDefaultAsync(e => e.Email == usuario.Email);
 
             if (existingUser != null)
             {
                 existingUser.Email = usuario.Email;
                 existingUser.Contrasenia = usuario.Contrasenia;
-                existingUser.TipoUsuario = usuario.TipoUsuario;
                 // Actualiza otros campos si es necesario
 
                 // Marcar la entidad como modificada

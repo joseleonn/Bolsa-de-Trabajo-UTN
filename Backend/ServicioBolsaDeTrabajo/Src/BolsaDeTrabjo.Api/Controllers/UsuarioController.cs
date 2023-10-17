@@ -42,36 +42,19 @@ namespace BolsaDeTrabajo.Api.Controllers
             return Ok(usuarios);
         }
 
-        [HttpPost]
-        public async Task<IActionResult> InsertUsuarioAsync([FromBody] UsuariosDTO usuario)
+
+        [HttpPost("CambiarContrasenia")]
+        public async Task<IActionResult> Put([FromBody] UsuariosDTO usuarioDTO)
         {
             try
             {
-                await _usuarioService.InsertUsuarioAsync(usuario);
-                return CreatedAtAction(nameof(InsertUsuarioAsync), null);
-
+                await _usuarioService.UpdateUsuarioAsync(usuarioDTO);
+                return Ok("contra modificada");
             }
-            catch (Exception ex)
+            catch(Exception ex)
             {
-
-                return BadRequest(new { error = ex.Message });
-
+                return BadRequest("error al modificar contra" + ex);
             }
-        }
-
-        [HttpPut("{id}")]
-        public async Task<IActionResult> Put(int id, [FromBody] UsuariosDTO usuarioDTO)
-        {
-            if (id != usuarioDTO.IdUsuario)
-            {
-                return BadRequest();
-            }
-
-            // Aquí estamos enviando el objeto UsuarioDTO al servicio para que se actualice,
-            // incluyendo la contraseña si se proporciona.
-            await _usuarioService.UpdateUsuarioAsync(usuarioDTO);
-
-            return NoContent();
         }
 
         [HttpDelete("{id}")]
@@ -82,17 +65,17 @@ namespace BolsaDeTrabajo.Api.Controllers
         }
 
         [HttpPost]
-        [Route("CambiarContrasenia")]
-        public async Task<ActionResult> ChangePassword([FromBody] UsuariosDTO usuarioDTO)
+        [Route("GenerarToken/{email}")]
+        public async Task<ActionResult> ChangePassword(string email)
         {
             try
             {
-                await _usuarioService.ChangePassword(usuarioDTO);
+                await _usuarioService.ChangePassword(email);
                 return Ok();
             }
-            catch (Exception ex)
+            catch
             {
-                return BadRequest();
+                return BadRequest("Hubo un error al enviar el mail");
             }
         }
 

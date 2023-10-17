@@ -9,7 +9,7 @@ using static System.Net.Mime.MediaTypeNames;
 namespace BolsaDeTrabajo.Service.Helpers
 {
     
-        public static class EncryptHelper
+        public class EncryptHelper
         {
             public static string GetSHA256 (string text)
             {
