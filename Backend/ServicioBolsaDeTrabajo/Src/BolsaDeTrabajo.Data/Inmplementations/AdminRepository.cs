@@ -52,7 +52,7 @@ namespace BolsaDeTrabajo.Data.Inmplementations
                 Admins newAdmin = new Admins()
                 {
                     IdUsuario = admin.IdUsuario,
-                    RolAdmin = 1
+                    RolAdmin = admin.RolAdmin
                 };
 
                 await _context.Admins.AddAsync(newAdmin);

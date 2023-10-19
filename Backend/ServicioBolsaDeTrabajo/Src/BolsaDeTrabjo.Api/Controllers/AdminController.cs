@@ -33,19 +33,19 @@ namespace BolsaDeTrabjo.Api.Controllers
             return Ok(user);
         }
 
-        [HttpPost]
-        [Route("/TestEmail")]
-        public ActionResult TestEmail(string destinatario, string asunto, string mensaje)
-        {
-            try
-            {
-                _adminService.TestEmail(destinatario, asunto, mensaje);
-                return Ok();
-            }
-            catch {
-                return BadRequest();
-            }
-        }
+        //[HttpPost]
+        //[Route("/TestEmail")]
+        //public ActionResult TestEmail(string destinatario, string asunto, string mensaje)
+        //{
+        //    try
+        //    {
+        //        _adminService.TestEmail(destinatario, asunto, mensaje);
+        //        return Ok();
+        //    }
+        //    catch {
+        //        return BadRequest();
+        //    }
+        //}
 
         [HttpPost]
         [Route("/InsertNewAdmin")]
@@ -53,7 +53,7 @@ namespace BolsaDeTrabjo.Api.Controllers
         {
             try
             {
-                await _adminRepository.InsertAdmin(admin);
+                await _adminService.InsertAdmin(admin);
                 return CreatedAtAction(nameof(NewAdmin), null);
 
             }
@@ -64,7 +64,13 @@ namespace BolsaDeTrabjo.Api.Controllers
 
             }
         }
-
+        [HttpDelete]
+        [Route("/DeleteAdmin")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            await _adminService.DeleteAdmin(id);
+            return NoContent();
+        }
 
         [HttpGet]
         public async Task<ActionResult<IEnumerable<AdminDTO>>> GetAll()

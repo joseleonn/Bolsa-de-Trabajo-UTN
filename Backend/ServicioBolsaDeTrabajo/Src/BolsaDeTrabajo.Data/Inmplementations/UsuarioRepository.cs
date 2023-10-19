@@ -97,6 +97,7 @@ namespace BolsaDeTrabajo.Data.Implementations
             {
                 existingUser.Email = usuario.Email;
                 existingUser.Contrasenia = usuario.Contrasenia;
+                existingUser.TipoUsuario = usuario.TipoUsuario;
                 // Actualiza otros campos si es necesario
 
                 // Marcar la entidad como modificada

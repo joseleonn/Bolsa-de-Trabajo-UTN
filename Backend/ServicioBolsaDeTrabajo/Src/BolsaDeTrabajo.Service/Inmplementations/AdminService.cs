@@ -15,19 +15,29 @@ namespace BolsaDeTrabajo.Service.Inmplementations
     public class AdminService : IAdminService
     {
         private readonly IAdminRepository _adminRepository;
+        private readonly IUsuarioRepository _usuarioRepository;
 
-        private readonly RabbitMQHelper _rabbitMQHelper;
-
-        public AdminService(IAdminRepository adminRepository, RabbitMQHelper rabbitMQHelper)
+        public AdminService(IUsuarioRepository usuarioRepository, IAdminRepository adminRepository)
         {
             _adminRepository = adminRepository;
-            _rabbitMQHelper = rabbitMQHelper;
+            _usuarioRepository = usuarioRepository;
         }
 
         public async Task InsertAdmin(AdminDTO admin)
         {
             if (admin != null)
             {
+                UsuariosDTO usuario = await _usuarioRepository.GetUsuarioById(admin.IdUsuario);
+
+                UsuariosDTO modifiedUser = new UsuariosDTO()
+                {
+                    IdUsuario = usuario.IdUsuario,
+                    Email = usuario.Email,
+                    Contrasenia = usuario.Contrasenia,
+                    TipoUsuario = 3
+                };
+                await _usuarioRepository.UpdateUsuario(modifiedUser);
+
                 await _adminRepository.InsertAdmin(admin);
             }
             else
@@ -74,12 +84,24 @@ namespace BolsaDeTrabajo.Service.Inmplementations
         public async Task DeleteAdmin(int id)
         {
             // Llama al método del repositorio para eliminar un usuario por su ID
-            await _adminRepository.DeleteAdmin(id);
-        }
+            Admins admin = await _adminRepository.GetAdminById(id);
+            if (admin != null)
+            {
+                UsuariosDTO usuario = await _usuarioRepository.GetUsuarioById(admin.IdUsuario);
 
-        public void TestEmail(string destinatario, string asunto, string mensaje)
-        {
-            _rabbitMQHelper.SendRabbitMessage(destinatario, asunto,  mensaje);
+                UsuariosDTO modifiedUser = new UsuariosDTO()
+                {
+                    IdUsuario = usuario.IdUsuario,
+                    Email = usuario.Email,
+                    Contrasenia = usuario.Contrasenia,
+                    TipoUsuario = 1
+                };
+
+                await _usuarioRepository.UpdateUsuario(modifiedUser);
+            }
+            await _adminRepository.DeleteAdmin(id);
+
+
         }
     }
 }
