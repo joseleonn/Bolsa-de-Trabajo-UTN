@@ -1,4 +1,6 @@
-﻿using BolsaDeTrabajo.Data.Interfaces;
+﻿using BolsaDeTrabajo.Data.Implementations;
+using BolsaDeTrabajo.Data.Inmplementations;
+using BolsaDeTrabajo.Data.Interfaces;
 using BolsaDeTrabajo.Model;
 using BolsaDeTrabajo.Model.DTOs;
 using BolsaDeTrabajo.Model.Models;
@@ -14,15 +16,54 @@ namespace BolsaDeTrabajo.Service.Implementations
     public class UsuarioService : IUsuarioService
     {
         private readonly IUsuarioRepository _repository;
+        private readonly IAdminRepository _adminRepository;
         private readonly BolsaDeTrabajoUTNContext _context;
         private readonly IEmailService _email;
-        public UsuarioService(IUsuarioRepository repository, BolsaDeTrabajoUTNContext context, IEmailService email)
+        public UsuarioService(IAdminRepository adminRepository, IUsuarioRepository repository, BolsaDeTrabajoUTNContext context, IEmailService email)
         {
+            _adminRepository = adminRepository;
             _repository = repository;
             _context = context;
             _email = email;
         }
 
+        public async Task<UsuariosDTO> CreateNewUser(UsuariosDTO newUser)
+        {
+            try
+            {
+                // Verificar si el usuario ya existe en la base de datos
+                var existingUser = await _repository.GetUsuarioByEmail(newUser.Email);
+                if (existingUser != null)
+                {
+                    throw new Exception("El usuario ya existe");
+                }
+
+                // Insertar el nuevo usuario en la base de datos y obtener el usuario con el IdUsuario asignado
+                await _repository.InsertUsuario(newUser);
+
+                UsuariosDTO insertedUser = await _repository.GetUsuarioByEmail(newUser.Email);
+
+
+                if (insertedUser != null && newUser.TipoUsuario == 3)
+                {
+                    // Crear un administrador si el tipo de usuario es 3
+                    AdminDTO newAdmin = new AdminDTO()
+                    {
+                        IdUsuario = insertedUser.IdUsuario,
+                        RolAdmin = 1
+                    };
+                    
+                    await _adminRepository.InsertAdmin(newAdmin);
+                }
+
+                return insertedUser;
+            }
+            catch (Exception ex)
+            {
+                // Manejo de errores
+                return null;
+            }
+        }
         public async Task<UsuariosDTO> GetUsuarioByIdAsync(int id)
         {
             if (id != null)

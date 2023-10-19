@@ -3,6 +3,7 @@ using BolsaDeTrabajo.Data.Interfaces;
 using BolsaDeTrabajo.Model.DTOs;
 using BolsaDeTrabajo.Model.Models;
 using BolsaDeTrabajo.Service.Helpers;
+using BolsaDeTrabajo.Service.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
@@ -18,14 +19,15 @@ namespace BolsaDeTrabajo.Api.Controllers
     [ApiController]
     public class AuthController : ControllerBase
     {
-         
-        private readonly IUsuarioRepository _usuarioRepository;
+        IUsuarioRepository _usuarioRepository;
+        private readonly IUsuarioService _usuarioService;
         private readonly IAdminRepository _adminRepository;
         private readonly string secretKey;
 
-        public AuthController(IUsuarioRepository usuarioRepository, IConfiguration config, IAdminRepository adminRepository)
+        public AuthController(IUsuarioRepository usuarioRepository, IUsuarioService usuarioService, IConfiguration config, IAdminRepository adminRepository)
         {
             _usuarioRepository = usuarioRepository;
+            _usuarioService = usuarioService;
             secretKey = config.GetSection("AppSettings:Key").ToString();
             _adminRepository = adminRepository;
         }
@@ -66,46 +68,71 @@ namespace BolsaDeTrabajo.Api.Controllers
             }
         }
 
+        //[HttpPost("Registro")]
+        //public async Task<ActionResult<string>> Registro([FromBody] UsuariosDTO newUser)
+        //{
+        //    try
+        //    {
+        //        // Verificar si el usuario ya existe en la base de datos
+        //        var existingUser = await _usuarioRepository.GetUsuarioByEmail(newUser.Email);
+        //        if (existingUser != null)
+        //        {
+        //            return BadRequest("El usuario ya existe");
+        //        }
+        //
+        //        // Insertar el nuevo usuario en la base de datos y obtener el usuario con el IdUsuario asignado
+        //        await _usuarioRepository.InsertUsuario(newUser);
+        //
+        //        UsuariosDTO insertedUser = await _usuarioRepository.GetUsuarioByEmail(newUser.Email);
+        //
+        //        if (insertedUser != null)
+        //        {
+        //            // En este punto, insertedUser.IdUsuario contendrá el ID asignado automáticamente.
+        //            if (insertedUser.TipoUsuario == 3)
+        //            {
+        //                AdminDTO newAdmin = new AdminDTO()
+        //                {
+        //                    IdUsuario = insertedUser.IdUsuario,
+        //                    RolAdmin = 1
+        //                };
+        //
+        //                try
+        //                {
+        //                    await _adminRepository.InsertAdmin(newAdmin);
+        //                }
+        //                catch (Exception ex)
+        //                {
+        //                    return BadRequest(new { error = ex.Message });
+        //                }
+        //            }
+        //
+        //            // Generar un token JWT para el nuevo usuario
+        //            var token = GenerateJwtToken(newUser);
+        //
+        //            return Ok(token);
+        //        }
+        //        else
+        //        {
+        //            return BadRequest("Error al insertar el usuario.");
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return BadRequest($"Error interno del servidor: {ex.Message}");
+        //    }
+        //}
+
         [HttpPost("Registro")]
         public async Task<ActionResult<string>> Registro([FromBody] UsuariosDTO newUser)
         {
             try
             {
-                // Verificar si el usuario ya existe en la base de datos
-                var existingUser = await _usuarioRepository.GetUsuarioByEmail(newUser.Email);
-                if (existingUser != null)
+                var result = await _usuarioService.CreateNewUser(newUser);
+
+                if (result != null)
                 {
-                    return BadRequest("El usuario ya existe");
-                }
-
-                // Insertar el nuevo usuario en la base de datos y obtener el usuario con el IdUsuario asignado
-                await _usuarioRepository.InsertUsuario(newUser);
-
-                UsuariosDTO insertedUser = await _usuarioRepository.GetUsuarioByEmail(newUser.Email);
-
-                if (insertedUser != null)
-                {
-                    // En este punto, insertedUser.IdUsuario contendrá el ID asignado automáticamente.
-                    if (insertedUser.TipoUsuario == 3)
-                    {
-                        AdminDTO newAdmin = new AdminDTO()
-                        {
-                            IdUsuario = insertedUser.IdUsuario,
-                            RolAdmin = 1
-                        };
-
-                        try
-                        {
-                            await _adminRepository.InsertAdmin(newAdmin);
-                        }
-                        catch (Exception ex)
-                        {
-                            return BadRequest(new { error = ex.Message });
-                        }
-                    }
-
                     // Generar un token JWT para el nuevo usuario
-                    var token = GenerateJwtToken(newUser);
+                    var token = GenerateJwtToken(result);
 
                     return Ok(token);
                 }
@@ -119,7 +146,6 @@ namespace BolsaDeTrabajo.Api.Controllers
                 return BadRequest($"Error interno del servidor: {ex.Message}");
             }
         }
-
         private string GenerateJwtToken(UsuariosDTO usuario)
         {
             var tokenHandler = new JwtSecurityTokenHandler();

@@ -7,6 +7,7 @@ namespace BolsaDeTrabajo.Service.Interfaces
 {
     public interface IUsuarioService
     {
+        Task<UsuariosDTO> CreateNewUser(UsuariosDTO newUser);
         Task<UsuariosDTO> GetUsuarioByIdAsync(int id);
         Task<List<UsuariosDTO>> GetAllUsuariosAsync();
         Task UpdateUsuarioAsync(UsuariosDTO usuarioDTO);
