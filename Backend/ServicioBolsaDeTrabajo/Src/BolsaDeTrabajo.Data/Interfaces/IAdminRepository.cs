@@ -10,7 +10,7 @@ namespace BolsaDeTrabajo.Data.Interfaces
 {
     public interface IAdminRepository
     {
-        Task<Admins?> InsertAdmin(Admins admin);
+        Task<bool> InsertAdmin(AdminDTO admin);
         Task<Admins?> GetAdminById(int id);
         Task<List<AdminDTO>> GetAllAdmins();
         Task DeleteAdmin(int id);

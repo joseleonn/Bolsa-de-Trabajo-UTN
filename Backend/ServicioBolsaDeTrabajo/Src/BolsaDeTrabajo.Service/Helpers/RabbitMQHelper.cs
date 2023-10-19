@@ -15,19 +15,6 @@ namespace BolsaDeTrabajo.Service.Helpers
     {
         private readonly RabbitMQ.Client.IModel _channel;
 
-        public RabbitMQHelper()
-        {
-            // Crear la conexión y el canal a RabbitMQ (puedes hacerlo en el constructor o en otro lugar apropiado)
-            var factory = new ConnectionFactory()
-            {
-                HostName = "localhost", // O la dirección IP de tu servidor RabbitMQ
-                UserName = "guest",
-                Password = "guest"
-            };
-
-            var connection = factory.CreateConnection();
-            _channel = connection.CreateModel();
-        }
 
         public void SendRabbitMessage(string destinatario, string asunto, string mensaje)
         {

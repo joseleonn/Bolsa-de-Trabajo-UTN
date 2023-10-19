@@ -1,4 +1,7 @@
-﻿using BolsaDeTrabajo.Model.Models;
+﻿using BolsaDeTrabajo.Data.Interfaces;
+using BolsaDeTrabajo.Model.DTOs;
+using BolsaDeTrabajo.Model.Models;
+using BolsaDeTrabajo.Service.Implementations;
 using BolsaDeTrabajo.Service.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,9 +14,11 @@ namespace BolsaDeTrabjo.Api.Controllers
     public class AdminController : ControllerBase
     {
         private readonly IAdminService _adminService;
-        public AdminController(IAdminService adminService)
+        private readonly IAdminRepository _adminRepository;
+        public AdminController(IAdminService adminService, IAdminRepository adminRepository)
         {
             _adminService = adminService;
+            _adminRepository = adminRepository;
         }
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
@@ -40,6 +45,32 @@ namespace BolsaDeTrabjo.Api.Controllers
             catch {
                 return BadRequest();
             }
+        }
+
+        [HttpPost]
+        [Route("/InsertNewAdmin")]
+        public async Task<IActionResult> NewAdmin([FromBody] AdminDTO admin)
+        {
+            try
+            {
+                await _adminRepository.InsertAdmin(admin);
+                return CreatedAtAction(nameof(NewAdmin), null);
+
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest(new { error = ex.Message });
+
+            }
+        }
+
+
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<AdminDTO>>> GetAll()
+        {
+            var usuarios = await _adminService.GetAllAdmins();
+            return Ok(usuarios);
         }
 
     }

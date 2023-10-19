@@ -44,12 +44,25 @@ namespace BolsaDeTrabajo.Data.Inmplementations
 
         }
 
-        public async Task<Admins?> InsertAdmin(Admins admin)
+        public async Task<bool> InsertAdmin(AdminDTO admin)
         {
-            //ACCEDEMOS A LA ENTIDAD CON EntityEntry
-            EntityEntry<Admins> insertedUser = await _context.Admins.AddAsync(admin);
-            await _context.SaveChangesAsync();
-            return insertedUser.Entity;
+            Admins ifexist = await _context.Admins.FirstOrDefaultAsync(e => e.IdUsuario == admin.IdUsuario);
+            if (ifexist == null)
+            {
+                Admins newAdmin = new Admins()
+                {
+                    IdUsuario = admin.IdUsuario,
+                    RolAdmin = 1
+                };
+
+                await _context.Admins.AddAsync(newAdmin);
+                await _context.SaveChangesAsync();
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public async Task DeleteAdmin(int id)

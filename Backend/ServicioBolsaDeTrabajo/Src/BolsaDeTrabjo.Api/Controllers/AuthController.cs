@@ -20,12 +20,14 @@ namespace BolsaDeTrabajo.Api.Controllers
     {
          
         private readonly IUsuarioRepository _usuarioRepository;
+        private readonly IAdminRepository _adminRepository;
         private readonly string secretKey;
 
-        public AuthController(IUsuarioRepository usuarioRepository, IConfiguration config)
+        public AuthController(IUsuarioRepository usuarioRepository, IConfiguration config, IAdminRepository adminRepository)
         {
             _usuarioRepository = usuarioRepository;
             secretKey = config.GetSection("AppSettings:Key").ToString();
+            _adminRepository = adminRepository;
         }
 
         [HttpPost("Login")]
@@ -47,7 +49,7 @@ namespace BolsaDeTrabajo.Api.Controllers
                     return BadRequest("Contraseña incorrecta");
                 }
 
-                Usuarios newToken = new Usuarios()
+                UsuariosDTO newToken = new UsuariosDTO()
                 {
                     IdUsuario = usuario.IdUsuario,
                     Email = usuario.Email,
@@ -76,32 +78,49 @@ namespace BolsaDeTrabajo.Api.Controllers
                     return BadRequest("El usuario ya existe");
                 }
 
-                // Crear un nuevo usuario
-                Usuarios usuario = new Usuarios()
-                {
-                    // Asigna las propiedades del usuario a partir de newUser
-                    // Esto depende de la estructura de UsuarioDTO y Usuarios
-                    // Ejemplo:
-                    Email = newUser.Email,
-                    Contrasenia = EncryptHelper.GetSHA256(newUser.Contrasenia),
-                    TipoUsuario = newUser.TipoUsuario
-                };
-
-                // Insertar el nuevo usuario en la base de datos
+                // Insertar el nuevo usuario en la base de datos y obtener el usuario con el IdUsuario asignado
                 await _usuarioRepository.InsertUsuario(newUser);
 
-                // Generar un token JWT para el nuevo usuario
-                var token = GenerateJwtToken(usuario);
+                UsuariosDTO insertedUser = await _usuarioRepository.GetUsuarioByEmail(newUser.Email);
 
-                return Ok(token);
+                if (insertedUser != null)
+                {
+                    // En este punto, insertedUser.IdUsuario contendrá el ID asignado automáticamente.
+                    if (insertedUser.TipoUsuario == 3)
+                    {
+                        AdminDTO newAdmin = new AdminDTO()
+                        {
+                            IdUsuario = insertedUser.IdUsuario,
+                            RolAdmin = 1
+                        };
+
+                        try
+                        {
+                            await _adminRepository.InsertAdmin(newAdmin);
+                        }
+                        catch (Exception ex)
+                        {
+                            return BadRequest(new { error = ex.Message });
+                        }
+                    }
+
+                    // Generar un token JWT para el nuevo usuario
+                    var token = GenerateJwtToken(newUser);
+
+                    return Ok(token);
+                }
+                else
+                {
+                    return BadRequest("Error al insertar el usuario.");
+                }
             }
             catch (Exception ex)
             {
-                return BadRequest( $"Error interno del servidor: {ex.Message}");
+                return BadRequest($"Error interno del servidor: {ex.Message}");
             }
         }
 
-        private string GenerateJwtToken(Usuarios usuario)
+        private string GenerateJwtToken(UsuariosDTO usuario)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(secretKey);

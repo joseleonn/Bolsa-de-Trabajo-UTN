@@ -82,3 +82,15 @@ C:\Users\tomas\Desktop\Facultad\Bolsa-de-Trabajo-UTN\Backend\ServicioBolsaDeTrab
 C:\Users\tomas\Desktop\Facultad\Bolsa-de-Trabajo-UTN\Backend\ServicioBolsaDeTrabajo\Src\BolsaDeTrabajo.Model\obj\Debug\net6.0\refint\BolsaDeTrabajo.Model.dll
 C:\Users\tomas\Desktop\Facultad\Bolsa-de-Trabajo-UTN\Backend\ServicioBolsaDeTrabajo\Src\BolsaDeTrabajo.Model\obj\Debug\net6.0\BolsaDeTrabajo.Model.pdb
 C:\Users\tomas\Desktop\Facultad\Bolsa-de-Trabajo-UTN\Backend\ServicioBolsaDeTrabajo\Src\BolsaDeTrabajo.Model\obj\Debug\net6.0\ref\BolsaDeTrabajo.Model.dll
+C:\Users\tomia\OneDrive\Escritorio\Bolsa-de-Trabajo-UTN\Backend\ServicioBolsaDeTrabajo\Src\BolsaDeTrabajo.Model\bin\Debug\net6.0\BolsaDeTrabajo.Model.deps.json
+C:\Users\tomia\OneDrive\Escritorio\Bolsa-de-Trabajo-UTN\Backend\ServicioBolsaDeTrabajo\Src\BolsaDeTrabajo.Model\bin\Debug\net6.0\BolsaDeTrabajo.Model.dll
+C:\Users\tomia\OneDrive\Escritorio\Bolsa-de-Trabajo-UTN\Backend\ServicioBolsaDeTrabajo\Src\BolsaDeTrabajo.Model\bin\Debug\net6.0\BolsaDeTrabajo.Model.pdb
+C:\Users\tomia\OneDrive\Escritorio\Bolsa-de-Trabajo-UTN\Backend\ServicioBolsaDeTrabajo\Src\BolsaDeTrabajo.Model\obj\Debug\net6.0\BolsaDeTrabajo.Model.csproj.AssemblyReference.cache
+C:\Users\tomia\OneDrive\Escritorio\Bolsa-de-Trabajo-UTN\Backend\ServicioBolsaDeTrabajo\Src\BolsaDeTrabajo.Model\obj\Debug\net6.0\BolsaDeTrabajo.Model.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\tomia\OneDrive\Escritorio\Bolsa-de-Trabajo-UTN\Backend\ServicioBolsaDeTrabajo\Src\BolsaDeTrabajo.Model\obj\Debug\net6.0\BolsaDeTrabajo.Model.AssemblyInfoInputs.cache
+C:\Users\tomia\OneDrive\Escritorio\Bolsa-de-Trabajo-UTN\Backend\ServicioBolsaDeTrabajo\Src\BolsaDeTrabajo.Model\obj\Debug\net6.0\BolsaDeTrabajo.Model.AssemblyInfo.cs
+C:\Users\tomia\OneDrive\Escritorio\Bolsa-de-Trabajo-UTN\Backend\ServicioBolsaDeTrabajo\Src\BolsaDeTrabajo.Model\obj\Debug\net6.0\BolsaDeTrabajo.Model.csproj.CoreCompileInputs.cache
+C:\Users\tomia\OneDrive\Escritorio\Bolsa-de-Trabajo-UTN\Backend\ServicioBolsaDeTrabajo\Src\BolsaDeTrabajo.Model\obj\Debug\net6.0\BolsaDeTrabajo.Model.dll
+C:\Users\tomia\OneDrive\Escritorio\Bolsa-de-Trabajo-UTN\Backend\ServicioBolsaDeTrabajo\Src\BolsaDeTrabajo.Model\obj\Debug\net6.0\refint\BolsaDeTrabajo.Model.dll
+C:\Users\tomia\OneDrive\Escritorio\Bolsa-de-Trabajo-UTN\Backend\ServicioBolsaDeTrabajo\Src\BolsaDeTrabajo.Model\obj\Debug\net6.0\BolsaDeTrabajo.Model.pdb
+C:\Users\tomia\OneDrive\Escritorio\Bolsa-de-Trabajo-UTN\Backend\ServicioBolsaDeTrabajo\Src\BolsaDeTrabajo.Model\obj\Debug\net6.0\ref\BolsaDeTrabajo.Model.dll
