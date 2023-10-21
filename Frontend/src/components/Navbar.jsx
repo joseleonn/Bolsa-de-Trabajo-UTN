@@ -8,6 +8,7 @@ import Login from "../pages/Login";
 import Loading from "./Loading";
 import { useAuth } from "../context/AuthContext";
 import { Button } from "@nextui-org/react";
+import BotButton from "../components/BotButton";
 
 const itemVariants = {
   open: {
@@ -20,7 +21,7 @@ const itemVariants = {
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
-  const {isLogin} = useAuth();
+  const { isLogin } = useAuth();
   return (
     <div className="sm:flex  flex-row justify-between gap-4 mt-2 max-w-full   ">
       <div className="sm:flex hidden lg:flex-1  flex flex-row max-w-[458px]   py-2 pl-4 pr-2 h-[52px] bg-[#f3f3f3] rounded-[100px]">
@@ -38,36 +39,39 @@ const Navbar = () => {
         </div>
       </div>
       <div className="sm:flex hidden gap-4 ">
+        <BotButton />
         {isLogin ? (
           <>
-          <Link to={"/"}>
-        <Button
-          color="danger"
-        size="lg"
-          // handleClick=""
-          styles="bg-red-600 text-white hover:bg-red-800 "
-        >Cerrar Sesion</Button>
-      </Link></>
+            <Link to={"/"}>
+              <Button
+                color="danger"
+                size="lg"
+                // handleClick=""
+                styles="bg-red-600 text-white hover:bg-red-800 "
+              >
+                Cerrar Sesion
+              </Button>
+            </Link>
+          </>
         ) : (
-        
-        <div className="flex gap-3">  <Link to={"/Login"}>
-        <CustomButton
-          btnType=""
-          title="Iniciar Sesion"
-          // handleClick=""
-          styles="bg-[#f3f3f3] text-[#15171a] hover:bg-[#afb2b7] "
-        />
-      </Link>
-
-      <CustomButton
-        btnType=""
-        title="Registrarse"
-        // handleClick={}
-        styles="bg-blue-600 text-[#f3f3f3] hover:bg-blue-800 "
-      /></div>
-        
+          <div className="flex gap-3">
+            {" "}
+            <Link to={"/Login"}>
+              <CustomButton
+                btnType=""
+                title="Iniciar Sesion"
+                // handleClick=""
+                styles="bg-[#f3f3f3] text-[#15171a] hover:bg-[#afb2b7] "
+              />
+            </Link>
+            <CustomButton
+              btnType=""
+              title="Registrarse"
+              // handleClick={}
+              styles="bg-blue-600 text-[#f3f3f3] hover:bg-blue-800 "
+            />
+          </div>
         )}
-      
       </div>
 
       {/* MOVIL */}
@@ -85,6 +89,7 @@ const Navbar = () => {
           className="menu  mr-[40px] max-w-[200px]  sm:hidden "
         >
           <div className="flex  justify-end mt-[4px]">
+            <BotButton />
             <motion.button
               whileTap={{ scale: 0.97 }}
               onClick={() => setIsOpen(!isOpen)}
@@ -138,33 +143,36 @@ const Navbar = () => {
               </motion.li>
             ))}
             <li>
-             {isLogin ? (
-               <div>
-                <Button color="danger" fullWidth={true}> Cerrar Sesion</Button>
-               </div>
-             ) : (
-              <div className="sm:hidden flex gap-3 justify-center  ">
-              <Link to={"/Login"}>
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.9 }}
-                  // handleClick=""
-                  className="bg-[#afb2b7] rounded-[10px] p-2 font-epilogue text-l font-semibold text-[#15171a] hover:bg-[#7f8084] mb-2  "
-                >
-                  Acceder
-                </motion.button>
-              </Link>
+              {isLogin ? (
+                <div>
+                  <Button color="danger" fullWidth={true}>
+                    {" "}
+                    Cerrar Sesion
+                  </Button>
+                </div>
+              ) : (
+                <div className="sm:hidden flex gap-3 justify-center  ">
+                  <Link to={"/Login"}>
+                    <motion.button
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.9 }}
+                      // handleClick=""
+                      className="bg-[#afb2b7] rounded-[10px] p-2 font-epilogue text-l font-semibold text-[#15171a] hover:bg-[#7f8084] mb-2  "
+                    >
+                      Acceder
+                    </motion.button>
+                  </Link>
 
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.9 }}
-                // handleClick={}
-                className="bg-blue-600 rounded-[10px] p-2 font-epilogue text-l font-semibold  text-[#f3f3f3] hover:bg-blue-800 mb-2 "
-              >
-                Inscribirse
-              </motion.button>
-            </div>
-             )}
+                  <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.9 }}
+                    // handleClick={}
+                    className="bg-blue-600 rounded-[10px] p-2 font-epilogue text-l font-semibold  text-[#f3f3f3] hover:bg-blue-800 mb-2 "
+                  >
+                    Inscribirse
+                  </motion.button>
+                </div>
+              )}
             </li>
           </motion.ul>
         </motion.nav>

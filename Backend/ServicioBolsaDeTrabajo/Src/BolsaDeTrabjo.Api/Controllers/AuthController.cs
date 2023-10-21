@@ -46,7 +46,7 @@ namespace BolsaDeTrabajo.Api.Controllers
                 }
 
                 // Verificar si la contraseña coincide
-                if (usuario.Contrasenia != EncryptHelper.GetSHA256(user.Contrasenia))
+                if (usuario.Contrasenia != user.Contrasenia)
                 {
                     return BadRequest("Contraseña incorrecta");
                 }
