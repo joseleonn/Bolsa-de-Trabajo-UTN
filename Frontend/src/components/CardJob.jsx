@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react'
 import {
   Card,
   CardHeader,
@@ -6,16 +6,17 @@ import {
   CardFooter,
   Avatar,
   Button,
-  useDisclosure,
-} from "@nextui-org/react";
-import ModalJob from "./ModalJob";
+  useDisclosure
+} from '@nextui-org/react'
+import ModalJob from './ModalJob'
+import { useNavigate } from 'react-router-dom'
 
 const CardJob = ({ title, description, company, handleClick }) => {
-  const { isOpen, onOpen, onOpenChange } = useDisclosure();
+  const { isOpen, onOpen, onOpenChange } = useDisclosure()
 
   return (
     <div className="cursor-pointer" onClick={handleClick}>
-      {" "}
+      {' '}
       <Card className="max-w-[340px] ">
         <CardHeader className="justify-between mt-[10px]">
           <div className="flex gap-5">
@@ -32,7 +33,7 @@ const CardJob = ({ title, description, company, handleClick }) => {
             className=" bg-blue-600 text-white font-epilogue border-default-200"
             radius="full"
             size="sm"
-            // onPress={() => setIsFollowed(!isFollowed)}
+            onPress={handleClick}
           >
             Postularse
           </Button>
@@ -48,7 +49,7 @@ const CardJob = ({ title, description, company, handleClick }) => {
         </CardFooter>
       </Card>
     </div>
-  );
-};
+  )
+}
 
-export default CardJob;
+export default CardJob

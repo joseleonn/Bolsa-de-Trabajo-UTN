@@ -19,6 +19,7 @@ namespace BolsaDeTrabajo.Data.Interfaces
         Task<List<viewJobDTO>> GetAllJobs();
         Task<bool> ModifyJob(viewJobDTO job);
 
+        Task AplyJob(AplyJobDTO aplyJob);
 
 
     }

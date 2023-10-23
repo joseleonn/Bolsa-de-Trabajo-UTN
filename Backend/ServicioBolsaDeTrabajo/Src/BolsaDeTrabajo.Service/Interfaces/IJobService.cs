@@ -16,6 +16,8 @@ namespace BolsaDeTrabajo.Service.Interfaces
 
         Task ModifyJob(viewJobDTO job);
 
+        Task AplyJob(AplyJobDTO aply);
+
 
     }
 }

@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using BolsaDeTrabajo.Model.DTOs;
+using BolsaDeTrabajo.Service.Interfaces;
+using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -8,11 +10,26 @@ namespace BolsaDeTrabjo.Api.Controllers
     [ApiController]
     public class StudentController : ControllerBase
     {
-        // GET: api/<StudentController>
-        [HttpGet]
-        public IEnumerable<string> Get()
+
+        private readonly IStudentService _service;
+
+        public StudentController(IStudentService service)
         {
-            return new string[] { "value1", "value2" };
+            _service = service;
+        }
+        [HttpGet]
+        [Route("TodosLosEstudiantes")]
+        public async Task<IActionResult>GetAllStudents()
+        {
+            try
+            {
+                List<StudentDTO> response =await _service.GetAllStudents();
+                return Ok(response);
+            }
+            catch(Exception ex)
+            {
+                return BadRequest("Error al listar datos: " + ex.Message);
+            }
         }
 
         // GET api/<StudentController>/5
@@ -24,8 +41,19 @@ namespace BolsaDeTrabjo.Api.Controllers
 
         // POST api/<StudentController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        [Route("CrearUsuarioEstudiante")]
+        public async Task<IActionResult> AddStudent([FromBody] StudentDTO student)
         {
+            try
+            {
+                await _service.AddStudent(student);
+
+                return CreatedAtAction(nameof(AddStudent), null);
+            }
+            catch
+            {
+                return BadRequest();
+            }
         }
 
         // PUT api/<StudentController>/5

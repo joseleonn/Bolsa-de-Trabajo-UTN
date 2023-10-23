@@ -3593,19 +3593,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\qvedo\\.nuget\\packages\\": {}
+    "C:\\Users\\josecm\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\qvedo\\OneDrive\\Escritorio\\Bolsa-de-Trabajo-UTN\\Backend\\ServicioBolsaDeTrabajo\\Src\\BolsaDeTrabajo.Service\\BolsaDeTrabajo.Service.csproj",
+      "projectUniqueName": "C:\\Users\\josecm\\Desktop\\Bolsa-de-Trabajo-UTN\\Backend\\ServicioBolsaDeTrabajo\\Src\\BolsaDeTrabajo.Service\\BolsaDeTrabajo.Service.csproj",
       "projectName": "BolsaDeTrabajo.Service",
-      "projectPath": "C:\\Users\\qvedo\\OneDrive\\Escritorio\\Bolsa-de-Trabajo-UTN\\Backend\\ServicioBolsaDeTrabajo\\Src\\BolsaDeTrabajo.Service\\BolsaDeTrabajo.Service.csproj",
-      "packagesPath": "C:\\Users\\qvedo\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\qvedo\\OneDrive\\Escritorio\\Bolsa-de-Trabajo-UTN\\Backend\\ServicioBolsaDeTrabajo\\Src\\BolsaDeTrabajo.Service\\obj\\",
+      "projectPath": "C:\\Users\\josecm\\Desktop\\Bolsa-de-Trabajo-UTN\\Backend\\ServicioBolsaDeTrabajo\\Src\\BolsaDeTrabajo.Service\\BolsaDeTrabajo.Service.csproj",
+      "packagesPath": "C:\\Users\\josecm\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\josecm\\Desktop\\Bolsa-de-Trabajo-UTN\\Backend\\ServicioBolsaDeTrabajo\\Src\\BolsaDeTrabajo.Service\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\qvedo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\josecm\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -3619,8 +3619,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\qvedo\\OneDrive\\Escritorio\\Bolsa-de-Trabajo-UTN\\Backend\\ServicioBolsaDeTrabajo\\Src\\BolsaDeTrabajo.Data\\BolsaDeTrabajo.Data.csproj": {
-              "projectPath": "C:\\Users\\qvedo\\OneDrive\\Escritorio\\Bolsa-de-Trabajo-UTN\\Backend\\ServicioBolsaDeTrabajo\\Src\\BolsaDeTrabajo.Data\\BolsaDeTrabajo.Data.csproj"
+            "C:\\Users\\josecm\\Desktop\\Bolsa-de-Trabajo-UTN\\Backend\\ServicioBolsaDeTrabajo\\Src\\BolsaDeTrabajo.Data\\BolsaDeTrabajo.Data.csproj": {
+              "projectPath": "C:\\Users\\josecm\\Desktop\\Bolsa-de-Trabajo-UTN\\Backend\\ServicioBolsaDeTrabajo\\Src\\BolsaDeTrabajo.Data\\BolsaDeTrabajo.Data.csproj"
             }
           }
         }
@@ -3668,7 +3668,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
       }
     }
   }

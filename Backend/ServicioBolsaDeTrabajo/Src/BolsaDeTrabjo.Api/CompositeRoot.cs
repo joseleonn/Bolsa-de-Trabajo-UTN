@@ -5,6 +5,7 @@ using BolsaDeTrabajo.Service.Helpers;
 using BolsaDeTrabajo.Service.Implementations;
 using BolsaDeTrabajo.Service.Inmplementations;
 using BolsaDeTrabajo.Service.Interfaces;
+using BolsaDeTrabjo.Api.Helpers;
 
 namespace BolsaDeTrabjo.Api
 {
@@ -26,12 +27,13 @@ namespace BolsaDeTrabjo.Api
             builder.Services.AddScoped<ICompanyRepository, CompanyRepository>();
             builder.Services.AddScoped<IJobRepository, JobRepository>();
             builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
+            builder.Services.AddScoped<IStudentRepository, StudentRepository>();
 
 
             //Helpers
             builder.Services.AddScoped<RabbitMQHelper>();
             builder.Services.AddScoped<GenerateToken>();
-            builder.Services.AddScoped<EncryptHelper>();
+            builder.Services.AddScoped<IEncryptHelper, EncryptHelper>();
 
         }
     }

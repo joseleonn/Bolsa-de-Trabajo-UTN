@@ -3,6 +3,7 @@ using BolsaDeTrabajo.Model;
 using BolsaDeTrabajo.Model.DTOs;
 using BolsaDeTrabajo.Model.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -153,6 +154,73 @@ namespace BolsaDeTrabajo.Data.Inmplementations
 
         }
 
+
+        public async Task AplyJob(AplyJobDTO aplyJob)
+        {
+            try
+            {
+                PuestosDeTrabajo ifJobExist = await _context.PuestosDeTrabajo.FirstOrDefaultAsync(j => j.IdPuesto == aplyJob.idJob);
+                Usuarios ifUserExist = await _context.Usuarios
+                    .Include(u => u.Alumnos)
+                    .FirstOrDefaultAsync(u => u.Email == aplyJob.userEmail);
+
+                if (ifJobExist == null)
+                {
+                    throw new Exception("El trabajo no existe");
+                }
+                if (ifUserExist == null)
+                {
+                    throw new Exception("El alumno no existe");
+                }
+
+                using (IDbContextTransaction transaction = _context.Database.BeginTransaction())
+                {
+                    try
+                    {
+                        Alumnos student = ifUserExist.Alumnos.FirstOrDefault(); // O utiliza otro método para seleccionar un alumno específico
+
+                        if (student != null) { 
+                           Postulaciones ifAplyExist = await _context.Postulaciones.FirstOrDefaultAsync(p => p.DniAlumno == student.Dni && p.IdPostulacion == aplyJob.idJob);
+                        if (ifAplyExist != null)
+                        {
+                            throw new Exception("Ya estas postulado");
+                        }
+                        Postulaciones newAply = new Postulaciones()
+                        {
+                            DniAlumno = student.Dni,
+                            Estado = 1, //cambiar en otro momento
+                            
+                        };
+                    
+
+                        await _context.Postulaciones.AddAsync(newAply);
+                        await _context.SaveChangesAsync();
+
+                        PuestosDeTrabajoPostulaciones newJobAply = new PuestosDeTrabajoPostulaciones()
+                        {
+                            IdPuestoDeTrabajo = aplyJob.idJob,
+                            IdPostulacion = newAply.IdPostulacion
+                        };
+
+                        await _context.PuestosDeTrabajoPostulaciones.AddAsync(newJobAply);
+                        await _context.SaveChangesAsync();
+                        transaction.Commit();
+                        }
+                         
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                        transaction.Rollback();
+                        throw new Exception("Ocurrió un error al agregar la postulación", ex);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al cargar en la base de datos", ex);
+            }
+        }
 
     }
 }

@@ -1,15 +1,17 @@
-import { Button } from "@nextui-org/react";
-import React from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
-import { back } from "../assets";
+import { Button } from '@nextui-org/react'
+import React from 'react'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
+import { back } from '../assets'
+import useAplyJob from '../hooks/useAplyJob'
+import { ToastContainer } from 'react-toastify'
 
 const JobDetail = () => {
-  const { state } = useLocation();
-  const navigate = useNavigate();
-
+  const { state } = useLocation()
+  const navigate = useNavigate()
+  const { aplyJob } = useAplyJob()
   const handleNavigate = () => {
-    navigate(`/Empleos`);
-  };
+    navigate(`/Empleos`)
+  }
   return (
     <div className="dark:bg-[#18181B] shadow-xl rounded-[20px] p-[40px] mt-[70px] flex flex-wrap gap-3 items-center w-full justify-center md:justify-start">
       <div className="w-full">
@@ -19,7 +21,7 @@ const JobDetail = () => {
 
         <div className="mt-[40px]">
           <p className="font-epilogue ">{state.description}</p>
-
+          <ToastContainer />
           <ul className="mt-[20px]">
             <span className="light:text-[#FFFFFF] font-epilogue font-semibold text-[30px] mt-[30px]">
               Requisitos
@@ -51,15 +53,14 @@ const JobDetail = () => {
           <Button
             className=" bg-blue-600 text-white font-epilogue border-default-200  "
             radius="full"
-
-            // onPress={() => setIsFollowed(!isFollowed)}
+            onPress={() => aplyJob(state.idPuesto)}
           >
             Postularse
           </Button>
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default JobDetail;
+export default JobDetail

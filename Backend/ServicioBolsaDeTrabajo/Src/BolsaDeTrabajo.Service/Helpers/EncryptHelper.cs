@@ -1,38 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
-using System.Security.Cryptography;
-using static System.Net.Mime.MediaTypeNames;
 
-namespace BolsaDeTrabajo.Service.Helpers
+namespace BolsaDeTrabjo.Api.Helpers
 {
-    
-        public class EncryptHelper
+    public class EncryptHelper : IEncryptHelper
+    {
+        public string GetSHA256(string Clave)
         {
-            public static string GetSHA256 (string text)
+            using (SHA256 sha256 = SHA256Managed.Create())
             {
-            string hash = string.Empty;
-
-            using (SHA256 sha256 = SHA256.Create())
-            {
-
-                //OBETENR EL HASH DEL TEXTO RECIBIDO 
-
-                byte[] hashvalue = sha256.ComputeHash(Encoding.UTF8.GetBytes(text));
-
-
-                //CONVERTIR EL ARRAY BYTE EN CADENA DE TEXTO
-
-                foreach (byte b in hashvalue)
+                ASCIIEncoding encoding = new ASCIIEncoding();
+                byte[] stream = sha256.ComputeHash(encoding.GetBytes(Clave));
+                StringBuilder sb = new StringBuilder();
+                for (int i = 0; i < stream.Length; i++)
                 {
-                    hash += $"{b:X2}";
+                    sb.AppendFormat("{0:x2}", stream[i]);
                 }
-                return hash;
+                return sb.ToString();
             }
         }
-
-        }
-    
+    }
 }
