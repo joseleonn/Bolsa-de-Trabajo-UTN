@@ -132,12 +132,12 @@ const LoginForm = () => {
               >
                 <Button color="primary">Iniciar Sesion</Button>
               </motion.div>
-              <Link to={"/"}>
+              <Link to="/">
                 <motion.div
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.9 }}
                 >
-                  <Button>Volver</Button>
+                  <Button type="submit">Volver</Button>
                 </motion.div>
               </Link>
             </div>

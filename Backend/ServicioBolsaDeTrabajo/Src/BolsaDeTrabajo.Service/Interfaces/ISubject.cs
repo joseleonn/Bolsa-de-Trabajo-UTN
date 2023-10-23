@@ -10,8 +10,8 @@ namespace BolsaDeTrabajo.Service.Interfaces
 {
     public interface ISubject
     {
-        void RegisterObserver(IObserver observer);
-        void RemoveObserver(IObserver observer);
+        void RegisterObserver(IEmailNotificationObserver observer);
+        void RemoveObserver(IEmailNotificationObserver observer);
         void NotifyObservers(viewJobDTO viewJob);
     }
 }

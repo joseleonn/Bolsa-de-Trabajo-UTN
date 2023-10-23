@@ -21,13 +21,16 @@ namespace BolsaDeTrabjo.Api
             builder.Services.AddScoped<IJobService, JobService>();
             builder.Services.AddScoped<IEmailService, EmailService>();
             builder.Services.AddScoped<ISubject, Subject>();
-            builder.Services.AddScoped<ISuscriptorRepository, SuscriptorRepository>();
+
+            //patron de diseno
+            builder.Services.AddScoped<IEmailNotificationObserver, EmailNotificationObserver>();
 
             //REPOSITORIES
             builder.Services.AddScoped<IAdminRepository, AdminRepository>();
             builder.Services.AddScoped<ICompanyRepository, CompanyRepository>();
             builder.Services.AddScoped<IJobRepository, JobRepository>();
             builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
+            builder.Services.AddScoped<ISuscriptorRepository, SuscriptorRepository>();
 
 
             //Helpers

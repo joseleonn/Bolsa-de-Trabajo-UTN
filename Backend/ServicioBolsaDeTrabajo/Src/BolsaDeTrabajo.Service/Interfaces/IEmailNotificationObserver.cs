@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace BolsaDeTrabajo.Service.Interfaces
 {
-    public interface IObserver
+    public interface IEmailNotificationObserver
     {
-        Task<bool> Update(viewJobDTO job);
+        Task<bool> NotifySubscriptors();
     }
 }

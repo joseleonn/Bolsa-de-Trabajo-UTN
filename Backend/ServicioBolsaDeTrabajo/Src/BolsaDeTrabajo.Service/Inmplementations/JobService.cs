@@ -15,12 +15,12 @@ namespace BolsaDeTrabajo.Service.Inmplementations
     public class JobService : IJobService
     {
         private readonly IJobRepository _repository;
-        private readonly ISubject _subject; // Inyecta el Subject en el constructor
+        private readonly IEmailNotificationObserver _emailNotify; // Inyecta el Subject en el constructor
 
-        public JobService(IJobRepository repository, ISubject subject)
+        public JobService(IJobRepository repository, IEmailNotificationObserver emailNotify)
         {
             _repository = repository;
-            _subject = subject;
+            _emailNotify = emailNotify;
         }
 
         public async Task<bool> AddJob(AddJobDTO job)
@@ -37,7 +37,7 @@ namespace BolsaDeTrabajo.Service.Inmplementations
                     Disponible = job.Disponible
                 };
                 // Luego de agregar el trabajo, notifica a los observadores.
-                _subject.NotifyObservers(viewJob);
+                 _emailNotify.NotifySubscriptors();
                 return true;
             }
             else

@@ -2,6 +2,7 @@
 using BolsaDeTrabajo.Data.Interfaces;
 using BolsaDeTrabajo.Model;
 using BolsaDeTrabajo.Model.DTOs;
+using BolsaDeTrabajo.Service.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -9,9 +10,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BolsaDeTrabajo.Service.Interfaces
+namespace BolsaDeTrabajo.Service.Inmplementations
 {
-    public class EmailNotificationObserver : IObserver
+    public class EmailNotificationObserver : IEmailNotificationObserver
     {
         private readonly IEmailService _email;
         private readonly ISuscriptorRepository _suscriptorRepository;
@@ -26,14 +27,14 @@ namespace BolsaDeTrabajo.Service.Interfaces
         }
 
 
-        public async Task<bool> Update(viewJobDTO job)
+        public async Task<bool> NotifySubscriptors()
         {
             try
             {
                 // Obtén la lista de suscriptores
                 List<SuscriptoresDTO> suscriptores = await _suscriptorRepository.GetAllSuscriptores();
 
-                foreach (var suscriptor in suscriptores)
+                foreach (SuscriptoresDTO suscriptor in suscriptores)
                 {
                     // Obtiene el email del suscriptor basado en su IdUsuario
                     UsuariosDTO user = await _usuarioRepository.GetUsuarioById(suscriptor.IdUsuario);
@@ -45,7 +46,7 @@ namespace BolsaDeTrabajo.Service.Interfaces
                         {
                             Destinatario = user.Email,
                             Asunto = "Nuevos trabajos",
-                            Contenido = ("Nuevos trabajos Disponibles! Consultalos en la web!")
+                            Contenido = "Nuevos trabajos Disponibles! Consultalos en la web!"
                         };
 
                         bool send = await _email.SendEmail(newEmail);

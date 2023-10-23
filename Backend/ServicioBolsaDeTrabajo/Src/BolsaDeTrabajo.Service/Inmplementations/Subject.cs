@@ -10,25 +10,30 @@ namespace BolsaDeTrabajo.Service.Inmplementations
 {
     public class Subject : ISubject
     {
-        private List<IObserver> observers = new List<IObserver>();
+        private List<IEmailNotificationObserver> observers = new List<IEmailNotificationObserver>();
 
-        public void RegisterObserver(IObserver observer)
+        public void NotifyObservers(viewJobDTO viewJob)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void RegisterObserver(IEmailNotificationObserver observer)
         {
             observers.Add(observer);
         }
 
-        public void RemoveObserver(IObserver observer)
+        public void RemoveObserver(IEmailNotificationObserver observer)
         {
             observers.Remove(observer);
         }
 
-        public void NotifyObservers(viewJobDTO job)
-        {
-            foreach (var observer in observers)
-            {
-                observer.Update(job);
-            }
-        }
+        //public void NotifyObservers(viewJobDTO job)
+        //{
+        //    foreach (var observer in observers)
+        //    {
+        //        observer.Update(job);
+        //    }
+        //}
     }
 }
 
