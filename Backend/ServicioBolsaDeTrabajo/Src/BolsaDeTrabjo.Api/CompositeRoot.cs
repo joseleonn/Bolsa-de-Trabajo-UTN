@@ -20,6 +20,8 @@ namespace BolsaDeTrabjo.Api
             builder.Services.AddScoped<ICompanyService, CompanyService>();
             builder.Services.AddScoped<IJobService, JobService>();
             builder.Services.AddScoped<IEmailService, EmailService>();
+            builder.Services.AddScoped<ISubject, Subject>();
+            builder.Services.AddScoped<ISuscriptorRepository, SuscriptorRepository>();
 
             //REPOSITORIES
             builder.Services.AddScoped<IAdminRepository, AdminRepository>();

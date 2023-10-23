@@ -12,6 +12,7 @@ namespace BolsaDeTrabajo.Model.Models
             Admins = new HashSet<Admins>();
             Alumnos = new HashSet<Alumnos>();
             Empresas = new HashSet<Empresas>();
+            Suscriptores = new HashSet<Suscriptores>();
             Tokens = new HashSet<Tokens>();
         }
 
@@ -24,6 +25,7 @@ namespace BolsaDeTrabajo.Model.Models
         public virtual ICollection<Admins> Admins { get; set; }
         public virtual ICollection<Alumnos> Alumnos { get; set; }
         public virtual ICollection<Empresas> Empresas { get; set; }
+        public virtual ICollection<Suscriptores> Suscriptores { get; set; }
         public virtual ICollection<Tokens> Tokens { get; set; }
     }
 }

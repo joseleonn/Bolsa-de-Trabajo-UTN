@@ -2,11 +2,10 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
-using BolsaDeTrabajo.Model.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
-namespace BolsaDeTrabajo.Model
+namespace BolsaDeTrabajo.Model.Models
 {
     public partial class BolsaDeTrabajoUTNContext : DbContext
     {
@@ -22,10 +21,12 @@ namespace BolsaDeTrabajo.Model
         public virtual DbSet<Admins> Admins { get; set; }
         public virtual DbSet<Alumnos> Alumnos { get; set; }
         public virtual DbSet<Empresas> Empresas { get; set; }
+        public virtual DbSet<EmpresasPuestos> EmpresasPuestos { get; set; }
         public virtual DbSet<EstadosPostulacion> EstadosPostulacion { get; set; }
         public virtual DbSet<Postulaciones> Postulaciones { get; set; }
         public virtual DbSet<PuestosDeTrabajo> PuestosDeTrabajo { get; set; }
         public virtual DbSet<PuestosDeTrabajoPostulaciones> PuestosDeTrabajoPostulaciones { get; set; }
+        public virtual DbSet<Suscriptores> Suscriptores { get; set; }
         public virtual DbSet<TiposAdmin> TiposAdmin { get; set; }
         public virtual DbSet<TiposUsuarios> TiposUsuarios { get; set; }
         public virtual DbSet<Tokens> Tokens { get; set; }
@@ -33,6 +34,8 @@ namespace BolsaDeTrabajo.Model
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.UseCollation("Modern_Spanish_CI_AS");
+
             modelBuilder.Entity<Admins>(entity =>
             {
                 entity.HasKey(e => e.IdAdmin);
@@ -136,6 +139,27 @@ namespace BolsaDeTrabajo.Model
                     .HasConstraintName("FK_Empresas_Usuarios");
             });
 
+            modelBuilder.Entity<EmpresasPuestos>(entity =>
+            {
+                entity.HasKey(e => e.IdEmpresaPuestos);
+
+                entity.ToTable("Empresas_Puestos");
+
+                entity.Property(e => e.IdEmpresaPuestos)
+                    .ValueGeneratedNever()
+                    .HasColumnName("Id_Empresa_Puestos");
+
+                entity.Property(e => e.IdEmpresa).HasColumnName("Id_Empresa");
+
+                entity.Property(e => e.IdPuestosDeTrabajo).HasColumnName("Id_PuestosDeTrabajo");
+
+                entity.HasOne(d => d.IdEmpresaNavigation)
+                    .WithMany(p => p.EmpresasPuestos)
+                    .HasForeignKey(d => d.IdEmpresa)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Empresas_Puestos_Empresas");
+            });
+
             modelBuilder.Entity<EstadosPostulacion>(entity =>
             {
                 entity.HasKey(e => e.IdEstado);
@@ -188,12 +212,6 @@ namespace BolsaDeTrabajo.Model
                 entity.Property(e => e.Titulo)
                     .IsRequired()
                     .HasMaxLength(50);
-
-                entity.HasOne(d => d.IdEmpresaNavigation)
-                    .WithMany(p => p.PuestosDeTrabajo)
-                    .HasForeignKey(d => d.IdEmpresa)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_PuestosDeTrabajo_Empresas");
             });
 
             modelBuilder.Entity<PuestosDeTrabajoPostulaciones>(entity =>
@@ -219,6 +237,23 @@ namespace BolsaDeTrabajo.Model
                     .HasForeignKey(d => d.IdPuestoDeTrabajo)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_PuestosDeTrabajo_Postulaciones_PuestosDeTrabajo");
+            });
+
+            modelBuilder.Entity<Suscriptores>(entity =>
+            {
+                entity.HasKey(e => e.IdSuscriptor);
+
+                entity.Property(e => e.IdSuscriptor)
+                    .ValueGeneratedNever()
+                    .HasColumnName("id_suscriptor");
+
+                entity.Property(e => e.IdUsuario).HasColumnName("id_usuario");
+
+                entity.HasOne(d => d.IdUsuarioNavigation)
+                    .WithMany(p => p.Suscriptores)
+                    .HasForeignKey(d => d.IdUsuario)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Suscriptores_Usuarios");
             });
 
             modelBuilder.Entity<TiposAdmin>(entity =>

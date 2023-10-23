@@ -18,7 +18,6 @@ namespace BolsaDeTrabajo.Model.Models
         public string Titulo { get; set; }
         public bool Disponible { get; set; }
 
-        public virtual Empresas IdEmpresaNavigation { get; set; }
         public virtual ICollection<PuestosDeTrabajoPostulaciones> PuestosDeTrabajoPostulaciones { get; set; }
     }
 }

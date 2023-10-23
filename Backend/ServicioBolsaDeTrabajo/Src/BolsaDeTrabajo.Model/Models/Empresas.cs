@@ -9,7 +9,7 @@ namespace BolsaDeTrabajo.Model.Models
     {
         public Empresas()
         {
-            PuestosDeTrabajo = new HashSet<PuestosDeTrabajo>();
+            EmpresasPuestos = new HashSet<EmpresasPuestos>();
         }
 
         public int IdEmpresa { get; set; }
@@ -20,6 +20,6 @@ namespace BolsaDeTrabajo.Model.Models
         public string Direccion { get; set; }
 
         public virtual Usuarios IdUsuarioNavigation { get; set; }
-        public virtual ICollection<PuestosDeTrabajo> PuestosDeTrabajo { get; set; }
+        public virtual ICollection<EmpresasPuestos> EmpresasPuestos { get; set; }
     }
 }
