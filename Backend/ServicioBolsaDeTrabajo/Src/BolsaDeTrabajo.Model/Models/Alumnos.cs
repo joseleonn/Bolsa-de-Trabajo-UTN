@@ -18,6 +18,7 @@ namespace BolsaDeTrabajo.Model.Models
         public string Apellido { get; set; }
         public string Email { get; set; }
         public string Celular { get; set; }
+        public byte[]? Curriculum { get; set; }
         public string Nacionalidad { get; set; }
         public string Pais { get; set; }
         public string Ciudad { get; set; }

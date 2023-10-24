@@ -50,5 +50,56 @@ namespace BolsaDeTrabajo.Service.Inmplementations
                 throw new Exception("error en el service" + ex);
             }
         }
+
+        public async Task PostPDF(byte[] file, string studentDNI)
+        {
+            try
+            {
+                await _repository.PostPDF(file, studentDNI);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("error en el service" + ex);
+            }
+        }
+
+        public async Task<byte[]> GetPDF(string studentDni)
+        {
+            try
+            {
+                byte[] response = await _repository.GetPDF(studentDni);
+
+                return response;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public async Task<StudentDTO> GetStudentById(int id)
+        {
+            try
+            {
+                StudentDTO response = await _repository.GetStudentById(id);
+                return response;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("error en el service" + ex);
+            }
+        }
+
+        public async Task ModifyUserAndStudent(StudentDTO student)
+        {
+            try
+            {
+               await _repository.ModifyUserAndStudent(student);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("error en el service" + ex);
+            }
+        }
     }
 }

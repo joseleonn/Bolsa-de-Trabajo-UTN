@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "UcjtnGCj1eS9IZ5lw065q81+qgGasC+tI/6jaOJLsx2RpAH37zDx5oemyjFVfDcXApZF1Z/b7KwYiSPNXjPHew==",
+  "dgSpecHash": "ibo1Wl0U78dsg2n3mq+cHu3ubAg3jdnkKa2OuM3nrm4a82Vu3xUSqDHCHiyub8Wbzavv8NpfFq1k9ZOvJnYYvw==",
   "success": true,
   "projectFilePath": "C:\\Users\\josecm\\Desktop\\Nueva carpeta\\Bolsa-de-Trabajo-UTN\\Backend\\ServicioBolsaDeTrabajo\\Src\\BolsaDeTrabajo.Model\\BolsaDeTrabajo.Model.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\josecm\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\josecm\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",
+    "C:\\Users\\josecm\\.nuget\\packages\\microsoft.aspnetcore.http.features\\5.0.17\\microsoft.aspnetcore.http.features.5.0.17.nupkg.sha512",
     "C:\\Users\\josecm\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "C:\\Users\\josecm\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
     "C:\\Users\\josecm\\.nuget\\packages\\microsoft.data.sqlclient\\5.0.2\\microsoft.data.sqlclient.5.0.2.nupkg.sha512",
@@ -45,6 +46,7 @@
     "C:\\Users\\josecm\\.nuget\\packages\\system.globalization\\4.3.0\\system.globalization.4.3.0.nupkg.sha512",
     "C:\\Users\\josecm\\.nuget\\packages\\system.identitymodel.tokens.jwt\\6.21.0\\system.identitymodel.tokens.jwt.6.21.0.nupkg.sha512",
     "C:\\Users\\josecm\\.nuget\\packages\\system.io\\4.3.0\\system.io.4.3.0.nupkg.sha512",
+    "C:\\Users\\josecm\\.nuget\\packages\\system.io.pipelines\\5.0.2\\system.io.pipelines.5.0.2.nupkg.sha512",
     "C:\\Users\\josecm\\.nuget\\packages\\system.memory\\4.5.4\\system.memory.4.5.4.nupkg.sha512",
     "C:\\Users\\josecm\\.nuget\\packages\\system.memory.data\\1.0.2\\system.memory.data.1.0.2.nupkg.sha512",
     "C:\\Users\\josecm\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512",

@@ -14,9 +14,34 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(c =>
+{
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" });
+    c.OperationFilter<FileUploadOperation>();
 
-//CONNECT TO DATABASE
+    // Define la seguridad una sola vez
+    c.AddSecurityDefinition("MyTestAuth", new OpenApiSecurityScheme
+    {
+        Type = SecuritySchemeType.Http,
+        Scheme = "Bearer",
+        Description = "Acá pegar el token generado al loguearse."
+    });
+
+    c.AddSecurityRequirement(new OpenApiSecurityRequirement
+    {
+        {
+            new OpenApiSecurityScheme
+            {
+                Reference = new OpenApiReference
+                {
+                    Type = ReferenceType.SecurityScheme,
+                    Id = "MyTestAuth"
+                }
+            },
+            new List<string>()
+        }
+    });
+});//CONNECT TO DATABASE
 builder.Services.AddDbContext<BolsaDeTrabajoUTNContext>(opt => opt.UseSqlServer(builder.Configuration.GetConnectionString("SQLchain")));
 
 //DEPENDENCY INJECTION
@@ -52,27 +77,6 @@ builder.Services.AddAuthorization(options =>
     options.AddPolicy("Admin", policy => policy.RequireClaim("Tipo_Usuario", "3"));
 });
 
-builder.Services.AddSwaggerGen(setupAction =>
-{
-    setupAction.AddSecurityDefinition("MyTestAuth", new OpenApiSecurityScheme() //Esto va a permitir usar swagger con el token.
-    {
-        Type = SecuritySchemeType.Http,
-        Scheme = "Bearer",
-        Description = "Acá pegar el token generado al loguearse."
-    });
-
-    setupAction.AddSecurityRequirement(new OpenApiSecurityRequirement
-    {
-        {
-            new OpenApiSecurityScheme
-            {
-                Reference = new OpenApiReference
-                {
-                    Type = ReferenceType.SecurityScheme,
-                    Id = "MyTestAuth" } //Tiene que coincidir con el id seteado arriba en la definición
-                }, new List<string>() }
-    });
-});
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowLocalhost5173", builder =>
@@ -90,7 +94,10 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerUI(c =>
+    {
+        c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+    });
 }
 
 app.UseHttpsRedirection();

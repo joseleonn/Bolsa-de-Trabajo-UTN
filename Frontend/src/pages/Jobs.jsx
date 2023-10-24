@@ -1,24 +1,23 @@
-import React, { useEffect, useState } from "react";
-import { motion } from "framer-motion";
-import { CardJob } from "../components";
-import { jobsTest } from "../constants";
-import { useNavigate } from "react-router-dom";
-import { useData } from "../context/DataContext";
+import React, { useEffect, useState } from 'react'
+import { motion } from 'framer-motion'
+import { CardJob } from '../components'
+import { useNavigate } from 'react-router-dom'
+import { useData } from '../context/DataContext'
 
 const Jobs = () => {
-  const navigate = useNavigate();
-  const [shouldAnimate, setShouldAnimate] = useState(false);
-  const {jobs} = useData();
+  const navigate = useNavigate()
+  const [shouldAnimate, setShouldAnimate] = useState(false)
+  const { jobs } = useData()
   useEffect(() => {
     // Activa la animación después de un pequeño retraso
     setTimeout(() => {
-      setShouldAnimate(true);
-    }, 200);
-  }, []);
+      setShouldAnimate(true)
+    }, 200)
+  }, [])
 
   const handleNavigate = (job) => {
-    navigate(`/Empleos/${job.id}`, { state: job });
-  };
+    navigate(`/Empleos/${job.idPuesto}`, { state: job })
+  }
 
   return (
     <div className="mt-[100px] flex flex-wrap gap-3 items-center w-full justify-center md:justify-start">
@@ -40,7 +39,7 @@ const Jobs = () => {
         </motion.div>
       ))}
     </div>
-  );
-};
+  )
+}
 
-export default Jobs;
+export default Jobs

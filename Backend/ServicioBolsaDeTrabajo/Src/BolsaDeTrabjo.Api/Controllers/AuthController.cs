@@ -23,13 +23,15 @@ namespace BolsaDeTrabajo.Api.Controllers
         private readonly IUsuarioService _usuarioService;
         private readonly IAdminRepository _adminRepository;
         private readonly string secretKey;
+        private readonly IEncryptHelper _encryptHelper;
 
-        public AuthController(IUsuarioRepository usuarioRepository, IUsuarioService usuarioService, IConfiguration config, IAdminRepository adminRepository)
+        public AuthController(IUsuarioRepository usuarioRepository, IUsuarioService usuarioService, IConfiguration config, IAdminRepository adminRepository, IEncryptHelper encryptHelper)
         {
             _usuarioRepository = usuarioRepository;
             _usuarioService = usuarioService;
             secretKey = config.GetSection("AppSettings:Key").ToString();
             _adminRepository = adminRepository;
+            _encryptHelper = encryptHelper;
         }
 
         [HttpPost("Login")]
@@ -46,7 +48,8 @@ namespace BolsaDeTrabajo.Api.Controllers
                 }
 
                 // Verificar si la contraseña coincide
-                if (usuario.Contrasenia != user.Contrasenia)
+                string hashPassword = _encryptHelper.GetSHA256(user.Contrasenia);
+                if (usuario.Contrasenia != hashPassword)
                 {
                     return BadRequest("Contraseña incorrecta");
                 }

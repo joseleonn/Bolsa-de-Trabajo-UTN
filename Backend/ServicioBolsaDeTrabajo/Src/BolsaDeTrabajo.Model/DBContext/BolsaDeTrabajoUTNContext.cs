@@ -75,6 +75,8 @@ namespace BolsaDeTrabajo.Model.Models
                     .IsRequired()
                     .HasMaxLength(255);
 
+                entity.Property(e => e.Curriculum);
+
                 entity.Property(e => e.Ciudad)
                     .IsRequired()
                     .HasMaxLength(255);

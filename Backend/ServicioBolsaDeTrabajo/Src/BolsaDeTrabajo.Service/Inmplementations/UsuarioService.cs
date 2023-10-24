@@ -42,6 +42,7 @@ namespace BolsaDeTrabajo.Service.Implementations
                 }
 
                 // Insertar el nuevo usuario en la base de datos y obtener el usuario con el IdUsuario asignado
+                _encrypt.GetSHA256(newUser.Contrasenia);
                 await _repository.InsertUsuario(newUser);
 
                 UsuariosDTO insertedUser = await _repository.GetUsuarioByEmail(newUser.Email);

@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using BolsaDeTrabajo.Model;
 using BolsaDeTrabajo.Model.DTOs;
+using System.Net;
 
 namespace BolsaDeTrabajo.Data.Inmplementations
 {
@@ -118,7 +119,149 @@ namespace BolsaDeTrabajo.Data.Inmplementations
             }
         }
 
+        public async Task PostPDF(byte[] file, string studentDNI)
+        {
 
+
+            using (IDbContextTransaction transaction = _context.Database.BeginTransaction())
+            {
+                try 
+                {
+
+                    Alumnos student = await _context.Alumnos.FirstOrDefaultAsync(a => a.Dni == studentDNI);
+                    if (student == null)
+                    {
+                        throw new Exception("El alumno no existe");
+                    }
+
+
+                    student.Curriculum = file;
+
+                    await _context.SaveChangesAsync();
+                    transaction.Commit();
+
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    transaction.Rollback();
+                    throw new Exception("Ocurrió un error al agregar la el curriculum", ex);
+                }
+            
+            }
+
+
+
+        }
+
+        public async Task<byte[]> GetPDF(string studentDni)
+        {
+            try
+            {
+                Alumnos student = await _context.Alumnos.FirstOrDefaultAsync(s => s.Dni == studentDni);
+
+                if (student == null)
+                {
+                    throw new Exception("No se encontró ningún estudiante con el DNI " + studentDni);
+                }
+
+                return student.Curriculum;
+            }
+            catch(Exception ex)
+            {
+                throw new Exception("Error al traer el pdf");
+            }
+       
+        }
+
+        public async Task<StudentDTO> GetStudentById(int id)
+        {
+            try
+            {
+                Usuarios user = await _context.Usuarios.FirstOrDefaultAsync(u => u.IdUsuario == id);
+                Alumnos student = await _context.Alumnos.FirstOrDefaultAsync(a=> a.IdUsuario == id);
+
+                if (student !=null)
+                {
+                    StudentDTO response = new StudentDTO()
+                    {
+                    Email = user.Email,
+                    Dni = student.Dni ,
+                    Nombre= student.Nombre,
+                    Apellido = student.Apellido,
+                    Celular = student.Celular,
+                    Nacionalidad = student.Nacionalidad,
+                    Pais = student.Pais,
+                    Ciudad = student.Ciudad,
+                    Direccion = student.Direccion,
+                    Curriculum = student.Curriculum,
+                    
+                    };
+
+                    return response;
+                }
+                else
+                {
+                    throw new Exception("No existe el usuario" );
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al traer todos los datos" + ex);
+            }
+        }
+
+        public async Task ModifyUserAndStudent(StudentDTO student)
+        {
+            try
+            {
+                Usuarios ifUserExist = await _context.Usuarios.FirstOrDefaultAsync(u => u.Email == student.Email);
+                Alumnos ifStudentExist = await _context.Alumnos.FirstOrDefaultAsync(a => a.Dni == student.Dni);
+
+                if (ifStudentExist == null) {
+                    throw new Exception("El dni no fue encontrado");
+                }
+                if(ifStudentExist == null)
+                {
+                    throw new Exception("El mail no fue encontrado");
+                }
+                ifUserExist.Email = student.Email;
+                ifUserExist.Contrasenia = ifUserExist.Contrasenia;
+                ifUserExist.TipoUsuario = ifUserExist.TipoUsuario;
+
+                ifStudentExist.Curriculum = ifStudentExist.Curriculum;
+                ifStudentExist.Nombre = student.Nombre;
+                ifStudentExist.Apellido = student.Apellido;
+                ifStudentExist.Celular = student.Celular;
+                ifStudentExist.Nacionalidad = student.Nacionalidad;
+                ifStudentExist.Pais = student.Pais;
+                ifStudentExist.Ciudad = student.Ciudad;
+                ifStudentExist.Direccion = student.Direccion;
+                using (IDbContextTransaction transaction = _context.Database.BeginTransaction())
+                {
+                    try
+                    {
+               
+                      
+                        await _context.SaveChangesAsync();
+
+                        transaction.Commit();
+                    }
+                    catch(Exception ex)
+                    {
+                        transaction.Rollback();
+                        throw new Exception(ex.Message);
+                    }
+                }
+
+            }
+            catch(Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
     }
 
 }

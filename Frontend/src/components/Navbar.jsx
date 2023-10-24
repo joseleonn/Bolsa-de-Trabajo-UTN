@@ -1,27 +1,24 @@
-import { useState } from "react";
-import { search, menu, UTN_logo, UTNletra } from "../assets";
-import CustomButton from "./CustomButton";
-import { Link, useNavigate } from "react-router-dom";
-import { navlinks } from "../constants";
-import { motion } from "framer-motion";
-import Login from "../pages/Login";
-import Loading from "./Loading";
-import { useAuth } from "../context/AuthContext";
-import { Button } from "@nextui-org/react";
-import BotButton from "../components/BotButton";
+import { useState } from 'react'
+import { search, menu, UTN_logo, UTNletra } from '../assets'
+import CustomButton from './CustomButton'
+import { Link, useNavigate } from 'react-router-dom'
+import { navlinks } from '../constants'
+import { motion } from 'framer-motion'
+import { useAuth } from '../context/AuthContext'
+import { Button } from '@nextui-org/react'
 
 const itemVariants = {
   open: {
     opacity: 1,
     y: 0,
-    transition: { type: "spring", stiffness: 300, damping: 24 },
+    transition: { type: 'spring', stiffness: 300, damping: 24 }
   },
-  closed: { opacity: 0, y: 20, transition: { duration: 0.2 } },
-};
+  closed: { opacity: 0, y: 20, transition: { duration: 0.2 } }
+}
 const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const navigate = useNavigate();
-  const { isLogin } = useAuth();
+  const [isOpen, setIsOpen] = useState(false)
+  const navigate = useNavigate()
+  const { isLogin } = useAuth()
   return (
     <div className="sm:flex  flex-row justify-between gap-4 mt-2 max-w-full   ">
       <div className="sm:flex hidden lg:flex-1  flex flex-row max-w-[458px]   py-2 pl-4 pr-2 h-[52px] bg-[#f3f3f3] rounded-[100px]">
@@ -39,10 +36,9 @@ const Navbar = () => {
         </div>
       </div>
       <div className="sm:flex hidden gap-4 ">
-        <BotButton />
         {isLogin ? (
           <>
-            <Link to={"/"}>
+            <Link to={'/'}>
               <Button
                 color="danger"
                 size="lg"
@@ -55,8 +51,8 @@ const Navbar = () => {
           </>
         ) : (
           <div className="flex gap-3">
-            {" "}
-            <Link to={"/Login"}>
+            {' '}
+            <Link to={'/Login'}>
               <CustomButton
                 btnType=""
                 title="Iniciar Sesion"
@@ -77,7 +73,7 @@ const Navbar = () => {
       {/* MOVIL */}
       <div
         className={`fixed w-full flex justify-between sm:hidden ${
-          isOpen && "z-50"
+          isOpen && 'z-50'
         }`}
       >
         <Link className=" h-[70px] " to="/">
@@ -85,11 +81,10 @@ const Navbar = () => {
         </Link>
         <motion.nav
           initial={false}
-          animate={isOpen ? "open" : "closed"}
+          animate={isOpen ? 'open' : 'closed'}
           className="menu  mr-[40px] max-w-[200px]  sm:hidden "
         >
           <div className="flex  justify-end mt-[4px]">
-            <BotButton />
             <motion.button
               whileTap={{ scale: 0.97 }}
               onClick={() => setIsOpen(!isOpen)}
@@ -101,23 +96,23 @@ const Navbar = () => {
           <motion.ul
             variants={{
               open: {
-                clipPath: "inset(0% 0% 0% 0% round 10px)",
+                clipPath: 'inset(0% 0% 0% 0% round 10px)',
                 transition: {
-                  type: "spring",
+                  type: 'spring',
                   bounce: 0,
                   duration: 0.7,
                   delayChildren: 0.3,
-                  staggerChildren: 0.05,
-                },
+                  staggerChildren: 0.05
+                }
               },
               closed: {
-                clipPath: "inset(10% 50% 90% 50% round 10px)",
+                clipPath: 'inset(10% 50% 90% 50% round 10px)',
                 transition: {
-                  type: "spring",
+                  type: 'spring',
                   bounce: 0,
-                  duration: 0.3,
-                },
-              },
+                  duration: 0.3
+                }
+              }
             }}
             className="bg-[#f3f3f3] p-4 gap-5 flex flex-col "
           >
@@ -129,7 +124,7 @@ const Navbar = () => {
                 key={link.name}
                 onClick={() => {
                   if (!link.disabled) {
-                    navigate(link.link);
+                    navigate(link.link)
                   }
                 }}
                 variants={itemVariants}
@@ -146,13 +141,13 @@ const Navbar = () => {
               {isLogin ? (
                 <div>
                   <Button color="danger" fullWidth={true}>
-                    {" "}
+                    {' '}
                     Cerrar Sesion
                   </Button>
                 </div>
               ) : (
                 <div className="sm:hidden flex gap-3 justify-center  ">
-                  <Link to={"/Login"}>
+                  <Link to={'/Login'}>
                     <motion.button
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.9 }}
@@ -178,7 +173,7 @@ const Navbar = () => {
         </motion.nav>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Navbar;
+export default Navbar
