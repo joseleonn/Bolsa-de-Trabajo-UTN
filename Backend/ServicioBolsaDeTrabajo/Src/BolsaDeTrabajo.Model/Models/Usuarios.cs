@@ -27,5 +27,6 @@ namespace BolsaDeTrabajo.Model.Models
         public virtual ICollection<Empresas> Empresas { get; set; }
         public virtual ICollection<Suscriptores> Suscriptores { get; set; }
         public virtual ICollection<Tokens> Tokens { get; set; }
+        public virtual ICollection<PuestosDeTrabajoPostulaciones> PuestosDeTrabajoPostulaciones { get; set; }
     }
 }

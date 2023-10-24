@@ -118,3 +118,18 @@ C:\Users\tomia\OneDrive\Escritorio\Bolsa-de-Trabajo-UTN\Backend\ServicioBolsaDeT
 C:\Users\tomia\OneDrive\Escritorio\Bolsa-de-Trabajo-UTN\Backend\ServicioBolsaDeTrabajo\Src\BolsaDeTrabajo.Data\obj\Debug\net6.0\refint\BolsaDeTrabajo.Data.dll
 C:\Users\tomia\OneDrive\Escritorio\Bolsa-de-Trabajo-UTN\Backend\ServicioBolsaDeTrabajo\Src\BolsaDeTrabajo.Data\obj\Debug\net6.0\BolsaDeTrabajo.Data.pdb
 C:\Users\tomia\OneDrive\Escritorio\Bolsa-de-Trabajo-UTN\Backend\ServicioBolsaDeTrabajo\Src\BolsaDeTrabajo.Data\obj\Debug\net6.0\ref\BolsaDeTrabajo.Data.dll
+C:\Users\josecm\Desktop\Nueva carpeta\Bolsa-de-Trabajo-UTN\Backend\ServicioBolsaDeTrabajo\Src\BolsaDeTrabajo.Data\obj\Debug\net6.0\BolsaDeTrabajo.Data.csproj.AssemblyReference.cache
+C:\Users\josecm\Desktop\Nueva carpeta\Bolsa-de-Trabajo-UTN\Backend\ServicioBolsaDeTrabajo\Src\BolsaDeTrabajo.Data\obj\Debug\net6.0\BolsaDeTrabajo.Data.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\josecm\Desktop\Nueva carpeta\Bolsa-de-Trabajo-UTN\Backend\ServicioBolsaDeTrabajo\Src\BolsaDeTrabajo.Data\obj\Debug\net6.0\BolsaDeTrabajo.Data.AssemblyInfoInputs.cache
+C:\Users\josecm\Desktop\Nueva carpeta\Bolsa-de-Trabajo-UTN\Backend\ServicioBolsaDeTrabajo\Src\BolsaDeTrabajo.Data\obj\Debug\net6.0\BolsaDeTrabajo.Data.AssemblyInfo.cs
+C:\Users\josecm\Desktop\Nueva carpeta\Bolsa-de-Trabajo-UTN\Backend\ServicioBolsaDeTrabajo\Src\BolsaDeTrabajo.Data\obj\Debug\net6.0\BolsaDeTrabajo.Data.csproj.CoreCompileInputs.cache
+C:\Users\josecm\Desktop\Nueva carpeta\Bolsa-de-Trabajo-UTN\Backend\ServicioBolsaDeTrabajo\Src\BolsaDeTrabajo.Data\obj\Debug\net6.0\BolsaDeTrabajo.Data.dll
+C:\Users\josecm\Desktop\Nueva carpeta\Bolsa-de-Trabajo-UTN\Backend\ServicioBolsaDeTrabajo\Src\BolsaDeTrabajo.Data\obj\Debug\net6.0\refint\BolsaDeTrabajo.Data.dll
+C:\Users\josecm\Desktop\Nueva carpeta\Bolsa-de-Trabajo-UTN\Backend\ServicioBolsaDeTrabajo\Src\BolsaDeTrabajo.Data\obj\Debug\net6.0\BolsaDeTrabajo.Data.pdb
+C:\Users\josecm\Desktop\Nueva carpeta\Bolsa-de-Trabajo-UTN\Backend\ServicioBolsaDeTrabajo\Src\BolsaDeTrabajo.Data\bin\Debug\net6.0\BolsaDeTrabajo.Data.deps.json
+C:\Users\josecm\Desktop\Nueva carpeta\Bolsa-de-Trabajo-UTN\Backend\ServicioBolsaDeTrabajo\Src\BolsaDeTrabajo.Data\bin\Debug\net6.0\BolsaDeTrabajo.Data.dll
+C:\Users\josecm\Desktop\Nueva carpeta\Bolsa-de-Trabajo-UTN\Backend\ServicioBolsaDeTrabajo\Src\BolsaDeTrabajo.Data\bin\Debug\net6.0\BolsaDeTrabajo.Data.pdb
+C:\Users\josecm\Desktop\Nueva carpeta\Bolsa-de-Trabajo-UTN\Backend\ServicioBolsaDeTrabajo\Src\BolsaDeTrabajo.Data\bin\Debug\net6.0\BolsaDeTrabajo.Model.dll
+C:\Users\josecm\Desktop\Nueva carpeta\Bolsa-de-Trabajo-UTN\Backend\ServicioBolsaDeTrabajo\Src\BolsaDeTrabajo.Data\bin\Debug\net6.0\BolsaDeTrabajo.Model.pdb
+C:\Users\josecm\Desktop\Nueva carpeta\Bolsa-de-Trabajo-UTN\Backend\ServicioBolsaDeTrabajo\Src\BolsaDeTrabajo.Data\obj\Debug\net6.0\BolsaDeTrabajo.Data.csproj.CopyComplete
+C:\Users\josecm\Desktop\Nueva carpeta\Bolsa-de-Trabajo-UTN\Backend\ServicioBolsaDeTrabajo\Src\BolsaDeTrabajo.Data\obj\Debug\net6.0\ref\BolsaDeTrabajo.Data.dll

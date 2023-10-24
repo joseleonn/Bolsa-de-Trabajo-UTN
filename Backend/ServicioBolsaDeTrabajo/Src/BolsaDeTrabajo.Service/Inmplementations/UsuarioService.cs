@@ -19,12 +19,15 @@ namespace BolsaDeTrabajo.Service.Implementations
         private readonly IAdminRepository _adminRepository;
         private readonly BolsaDeTrabajoUTNContext _context;
         private readonly IEmailService _email;
-        public UsuarioService(IAdminRepository adminRepository, IUsuarioRepository repository, BolsaDeTrabajoUTNContext context, IEmailService email)
+        private readonly IEncryptHelper _encrypt;
+        public UsuarioService(IAdminRepository adminRepository, IUsuarioRepository repository, BolsaDeTrabajoUTNContext context, IEmailService email, IEncryptHelper encrypt)
         {
             _adminRepository = adminRepository;
             _repository = repository;
             _context = context;
             _email = email;
+            _encrypt = encrypt;
+
         }
 
         public async Task<UsuariosDTO> CreateNewUser(UsuariosDTO newUser)
@@ -113,8 +116,7 @@ namespace BolsaDeTrabajo.Service.Implementations
 
                 if(ifUserExist != null)
                 {
-                    usuario.Contrasenia = EncryptHelper.GetSHA256(usuario.Contrasenia);
-
+                    usuario.Contrasenia = _encrypt.GetSHA256(usuario.Contrasenia);
                     bool result = await _repository.UpdateUsuario(usuario);
                     if (!result)
                     {

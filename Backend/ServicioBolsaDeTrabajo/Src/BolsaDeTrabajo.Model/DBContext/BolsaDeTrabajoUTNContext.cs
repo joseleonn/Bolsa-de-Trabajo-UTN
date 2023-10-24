@@ -225,6 +225,8 @@ namespace BolsaDeTrabajo.Model.Models
                 entity.Property(e => e.IdPostulacion).HasColumnName("Id_Postulacion");
 
                 entity.Property(e => e.IdPuestoDeTrabajo).HasColumnName("Id_PuestoDeTrabajo");
+                entity.Property(e => e.IdUsuario).HasColumnName("Id_Usuario");
+
 
                 entity.HasOne(d => d.IdPostulacionNavigation)
                     .WithMany(p => p.PuestosDeTrabajoPostulaciones)
@@ -237,6 +239,13 @@ namespace BolsaDeTrabajo.Model.Models
                     .HasForeignKey(d => d.IdPuestoDeTrabajo)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_PuestosDeTrabajo_Postulaciones_PuestosDeTrabajo");
+
+
+                entity.HasOne(d => d.IdUsuariosNavigation)
+                    .WithMany(p => p.PuestosDeTrabajoPostulaciones)
+                    .HasForeignKey(d => d.IdUsuario)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_MiTabla_Usuarios");
             });
 
             modelBuilder.Entity<Suscriptores>(entity =>

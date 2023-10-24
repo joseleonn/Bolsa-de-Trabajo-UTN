@@ -86,6 +86,18 @@ namespace BolsaDeTrabajo.Service.Inmplementations
             }
 
         }
+        public async Task AplyJob(AplyJobDTO aply)
+        {
+            try
+            {
+                await _repository.AplyJob(aply);
 
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error en el service" + ex.Message);
+            }
+
+        }
     }
 }

@@ -98,5 +98,24 @@ namespace BolsaDeTrabjo.Api.Controllers
 
             }
         }
+
+
+        [HttpPost]
+        [Route("AplicarEmpleo")]
+
+        public async Task<IActionResult> AplyJob([FromBody] AplyJobDTO aplyJob)
+        {
+            try
+            {
+                await _service.AplyJob(aplyJob);
+                return Ok();
+
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { error = ex.Message });
+
+            }
+        }
     }
 }

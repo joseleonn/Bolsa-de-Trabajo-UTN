@@ -1,16 +1,17 @@
 ﻿using BolsaDeTrabajo.Model.DTOs;
+using BolsaDeTrabajo.Model.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BolsaDeTrabajo.Service.Interfaces
+namespace BolsaDeTrabajo.Data.Interfaces
 {
-    public interface IStudentService
+    public interface IStudentRepository
     {
-        Task AddStudent(StudentDTO student);
-
+        Task AddUserAndStudent(StudentDTO newStudent);
         Task<List<StudentDTO>> GetAllStudents();
+
     }
 }
