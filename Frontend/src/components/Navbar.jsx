@@ -18,7 +18,11 @@ const itemVariants = {
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false)
   const navigate = useNavigate()
-  const { isLogin } = useAuth()
+  const { isLogin, logout } = useAuth()
+  const handleLogout = () => {
+    logout()
+  }
+
   return (
     <div className="sm:flex  flex-row justify-between gap-4 mt-2 max-w-full   ">
       <div className="sm:flex hidden lg:flex-1  flex flex-row max-w-[458px]   py-2 pl-4 pr-2 h-[52px] bg-[#f3f3f3] rounded-[100px]">
@@ -42,7 +46,7 @@ const Navbar = () => {
               <Button
                 color="danger"
                 size="lg"
-                // handleClick=""
+                onPress={handleLogout}
                 styles="bg-red-600 text-white hover:bg-red-800 "
               >
                 Cerrar Sesion

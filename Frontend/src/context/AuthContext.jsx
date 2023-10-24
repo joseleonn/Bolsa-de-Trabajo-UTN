@@ -5,6 +5,7 @@ import { useLoading } from './LoadingContext'
 import jwtDecode from 'jwt-decode'
 
 const AuthContext = createContext()
+const TOKEN_KEY = 'authToken' // Una clave para el token en el Local Storage
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState({
@@ -16,6 +17,31 @@ export const AuthProvider = ({ children }) => {
   const [isLogin, setIsLogin] = useState(false)
   const { errorMessage, successMessage } = useNotify()
   const { toggleLoading } = useLoading()
+  // Función para guardar el token en el Local Storage
+  const saveTokenToLocalStorage = (token) => {
+    localStorage.setItem(TOKEN_KEY, token)
+  }
+
+  // Función para verificar si existe un token válido en el Local Storage
+  const checkTokenInLocalStorage = () => {
+    const token = localStorage.getItem(TOKEN_KEY)
+    if (token) {
+      const decodedToken = jwtDecode(token)
+      if (decodedToken.exp * 1000 > Date.now()) {
+        setUser({
+          idUser: decodedToken.nameid,
+          email: decodedToken.email,
+          tipoUsuario: decodedToken.Tipo_Usuario,
+          token: token
+        })
+        setIsLogin(true)
+      }
+    }
+  }
+
+  useEffect(() => {
+    checkTokenInLocalStorage()
+  }, [])
 
   const login = async (email, contrasenia) => {
     toggleLoading(true)
@@ -32,8 +58,9 @@ export const AuthProvider = ({ children }) => {
         email: jwtDecode(response.data).email,
         tipoUsuario: jwtDecode(response.data).Tipo_Usuario,
         token: response.data
-      }) // Almacena el usuario autenticado en el estado
-
+      })
+      // Guardar el token en el Local Storage
+      saveTokenToLocalStorage(response.data)
       setIsLogin(true)
       successMessage('Accediste Correctamente')
     } catch (error) {
@@ -44,14 +71,16 @@ export const AuthProvider = ({ children }) => {
     }
   }
 
+  const logout = () => {
+    localStorage.removeItem(TOKEN_KEY)
+  }
   return (
-    <AuthContext.Provider value={{ user, login, isLogin, setUser }}>
+    <AuthContext.Provider value={{ user, login, isLogin, setUser, logout }}>
       {children}
     </AuthContext.Provider>
   )
 }
 
-// Hook personalizado para acceder al contexto
 export const useAuth = () => {
   const context = useContext(AuthContext)
   if (!context) {
