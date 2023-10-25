@@ -1,5 +1,7 @@
 ﻿using BolsaDeTrabajo.Model.DTOs;
+using BolsaDeTrabajo.Model.Models;
 using BolsaDeTrabajo.Service.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BolsaDeTrabjo.Api.Controllers
@@ -109,6 +111,24 @@ namespace BolsaDeTrabjo.Api.Controllers
             {
                 await _service.AplyJob(aplyJob);
                 return Ok();
+
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { error = ex.Message });
+
+            }
+        }
+
+        [HttpGet]
+        [Route("MisPostulaciones/{id}")]
+        [Authorize]
+        public async Task<IActionResult> GetAllAplicatedJobs(int id)
+        {
+            try
+            {
+                List<MyAplicatedJobsDTO> getAllJobs = await _service.GetAllJobsAplicated(id);
+                return Ok(getAllJobs);
 
             }
             catch (Exception ex)

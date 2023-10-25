@@ -19,6 +19,7 @@ export const DataProvider = ({ children }) => {
     direccion: '',
     curriculum: ''
   })
+  const [jobsAplicated, setJobsAplicated] = useState([])
 
   const { user } = useAuth()
   useEffect(() => {
@@ -47,7 +48,6 @@ export const DataProvider = ({ children }) => {
     const getDataStudent = async () => {
       if (user.tipoUsuario === student) {
         try {
-          console.log('entro')
           const response = await axios.get(
             `https://localhost:7197/api/Student/${user.idUser}`,
             {
@@ -65,9 +65,38 @@ export const DataProvider = ({ children }) => {
 
     getDataStudent()
   }, [user])
+
+  useEffect(() => {
+    const getJobsAplicated = async () => {
+      if (user.tipoUsuario === student) {
+        try {
+          const response = await axios.get(
+            `https://localhost:7197/api/Job/MisPostulaciones/${user.idUser}`,
+            {
+              headers: {
+                Authorization: `Bearer ${user.token}` // Agrega el token JWT en el encabezado 'Authorization'
+              }
+            }
+          )
+          setJobsAplicated([...response.data])
+        } catch (error) {
+          console.error('Error al traer empleos', error)
+        }
+      }
+    }
+
+    getJobsAplicated()
+  }, [user])
   return (
     <DataContext.Provider
-      value={{ jobs, setJobs, studentData, setStudentData }}
+      value={{
+        jobs,
+        setJobs,
+        studentData,
+        setStudentData,
+        jobsAplicated,
+        setJobsAplicated
+      }}
     >
       {children}
     </DataContext.Provider>

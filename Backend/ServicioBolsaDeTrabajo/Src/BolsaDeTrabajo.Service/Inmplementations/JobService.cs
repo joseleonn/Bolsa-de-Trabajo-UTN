@@ -99,5 +99,19 @@ namespace BolsaDeTrabajo.Service.Inmplementations
             }
 
         }
+
+        public async Task<List<MyAplicatedJobsDTO>> GetAllJobsAplicated(int idUser)
+        {
+            try
+            {
+                List<MyAplicatedJobsDTO> result = await _repository.GetAllJobsAplicated(idUser);
+
+                return result;
+            }
+            catch(Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
     }
 }

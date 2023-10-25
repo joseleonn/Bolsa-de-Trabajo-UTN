@@ -41,6 +41,11 @@ const JobDetail = () => {
             Somos una empresa constructora que se dedica a construir cosas no
             construidas, construyendo de manera construida
           </p>
+
+          <span className="light:text-[#FFFFFF] font-epilogue font-semibold text-[30px] mt-[30px]">
+            Puesto {state.titulo}
+          </span>
+          <p className="light:text-[#FFFFFF]">{state.descripcion}</p>
         </div>
         <div className="flex justify-end mt-[10px] gap-2">
           <Button

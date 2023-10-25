@@ -1,4 +1,5 @@
 ﻿using BolsaDeTrabajo.Model.DTOs;
+using BolsaDeTrabajo.Model.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,5 +18,6 @@ namespace BolsaDeTrabajo.Service.Interfaces
         Task ModifyJob(viewJobDTO job);
 
         Task AplyJob(AplyJobDTO aply);
+        Task<List<MyAplicatedJobsDTO>> GetAllJobsAplicated(int idUser);
     }
 }

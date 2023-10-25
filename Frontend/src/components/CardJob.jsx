@@ -9,8 +9,10 @@ import {
   useDisclosure
 } from '@nextui-org/react'
 import ModalJob from './ModalJob'
+import { useData } from '../context/DataContext'
 
-const CardJob = ({ title, description, company, handleClick }) => {
+const CardJob = ({ idJob, title, description, company, handleClick }) => {
+  const { jobsAplicated } = useData()
   return (
     <div className="cursor-pointer" onClick={handleClick}>
       {' '}
@@ -26,14 +28,18 @@ const CardJob = ({ title, description, company, handleClick }) => {
               </h5>
             </div>
           </div>
-          <Button
-            className=" bg-blue-600 text-white font-epilogue border-default-200"
-            radius="full"
-            size="sm"
-            onClick={handleClick}
-          >
-            Postularse
-          </Button>
+          {jobsAplicated.some((job) => job.idPuesto === idJob) ? (
+            <p>Aplicado</p>
+          ) : (
+            <Button
+              className=" bg-blue-600 text-white font-epilogue border-default-200"
+              radius="full"
+              size="sm"
+              onClick={handleClick}
+            >
+              Postularse
+            </Button>
+          )}
         </CardHeader>
         <CardBody className="px-3 py-0 text-small text-default-400">
           <p className="truncate">{description}</p>

@@ -223,5 +223,60 @@ namespace BolsaDeTrabajo.Data.Inmplementations
             }
         }
 
+        public async Task<List<MyAplicatedJobsDTO>> GetAllJobsAplicated(int idUser)
+        {
+            try
+            {
+                Alumnos ifAlumnExist = await _context.Alumnos.FirstOrDefaultAsync(a => a.IdUsuario == idUser);
+
+                if (ifAlumnExist != null)
+                {
+                    List<PuestosDeTrabajoPostulaciones> jobsAplicated = await _context.PuestosDeTrabajoPostulaciones
+                        .Where(p => p.IdUsuario == idUser)
+                        .ToListAsync();
+
+                    List<MyAplicatedJobsDTO> jobsDTOList = new List<MyAplicatedJobsDTO>();
+
+                    foreach (var jobAplicated in jobsAplicated)
+                    {
+                        PuestosDeTrabajo jobs = await _context.PuestosDeTrabajo
+                            .FirstOrDefaultAsync(p => p.IdPuesto == jobAplicated.IdPuestoDeTrabajo);
+
+                        Postulaciones tablaPostulaciones = await _context.Postulaciones
+                            .FirstOrDefaultAsync(p => p.IdPostulacion == jobAplicated.IdPostulacion);
+                        Empresas company = await _context.Empresas
+                           .FirstOrDefaultAsync(p => p.IdEmpresa == jobs.IdEmpresa);
+
+                        if (jobs != null && tablaPostulaciones != null)
+                        {
+                            MyAplicatedJobsDTO dto = new MyAplicatedJobsDTO
+                            {
+                                IdPostulacion = jobAplicated.IdPostulacion,
+                                IdPuesto = jobAplicated.IdPuestoDeTrabajo,
+                                DniAlumno = ifAlumnExist.Dni,
+                                Estado = tablaPostulaciones.Estado,
+                                Titulo = jobs.Titulo,
+                                Descripcion = jobs.Descripcion,
+                                IdEmpresa = jobs.IdEmpresa,
+                                RazonSocial = company.Nombre,
+                            };
+
+                            jobsDTOList.Add(dto);
+                        }
+                    }
+
+                    return jobsDTOList;
+                }
+                else
+                {
+                    throw new Exception("El usuario no es alumno");
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
     }
 }

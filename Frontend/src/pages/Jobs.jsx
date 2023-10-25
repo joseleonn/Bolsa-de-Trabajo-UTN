@@ -31,6 +31,7 @@ const Jobs = () => {
           transition={{ duration: 0.5, delay: index * 0.2 }} // Añade un pequeño retraso a cada animación
         >
           <CardJob
+            idJob={job.idPuesto}
             title={job.titulo}
             company={job.idEmpresa}
             description={job.descripcion}
