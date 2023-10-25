@@ -76,7 +76,7 @@ const Navbar = () => {
 
       {/* MOVIL */}
       <div
-        className={`fixed w-full  mt-[-10px] z-50 bg-[#18181B] h-[70px] flex justify-between sm:hidden p-4`}
+        className={`fixed w-full  mt-[-25px] z-50 bg-[#18181B] h-[70px] flex justify-between sm:hidden p-4 `}
       >
         <Link className=" h-[70px] " to="/">
           <img src={UTNletra} alt="logo" className=" " />
