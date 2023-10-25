@@ -16,7 +16,7 @@ const CardJob = ({ idJob, title, description, company, handleClick }) => {
   return (
     <div className="cursor-pointer" onClick={handleClick}>
       {' '}
-      <Card className="max-w-[340px] ">
+      <Card className="w-[340px] ">
         <CardHeader className="justify-between mt-[10px]">
           <div className="flex gap-5">
             <div className="flex flex-col gap-1 items-start justify-center">

@@ -1,9 +1,7 @@
 import { Button } from '@nextui-org/react'
 import React from 'react'
-import { Link, useLocation, useNavigate } from 'react-router-dom'
-import { back } from '../assets'
+import { useLocation, useNavigate } from 'react-router-dom'
 import useAplyJob from '../hooks/useAply'
-import { ToastContainer } from 'react-toastify'
 
 const JobDetail = () => {
   const { state } = useLocation()
@@ -15,8 +13,6 @@ const JobDetail = () => {
   }
   return (
     <div className="dark:bg-[#18181B] shadow-xl rounded-[20px] p-[40px] mt-[70px] flex flex-wrap gap-3 items-center w-full justify-center md:justify-start">
-      <ToastContainer />
-
       <div className="w-full">
         <h1 className="light:text-[#FFFFFF] text-center font-bold font-epilogue text-[50px] ">
           {state.title}
