@@ -122,7 +122,7 @@ namespace BolsaDeTrabjo.Api.Controllers
 
         [HttpGet]
         [Route("MisPostulaciones/{id}")]
-        [Authorize]
+        //[Authorize]
         public async Task<IActionResult> GetAllAplicatedJobs(int id)
         {
             try

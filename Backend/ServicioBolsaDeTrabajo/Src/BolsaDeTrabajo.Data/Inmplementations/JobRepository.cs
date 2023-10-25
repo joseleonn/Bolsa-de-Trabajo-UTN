@@ -2,10 +2,12 @@
 using BolsaDeTrabajo.Model;
 using BolsaDeTrabajo.Model.DTOs;
 using BolsaDeTrabajo.Model.Models;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
 using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -225,57 +227,62 @@ namespace BolsaDeTrabajo.Data.Inmplementations
 
         public async Task<List<MyAplicatedJobsDTO>> GetAllJobsAplicated(int idUser)
         {
-            try
+            ///////////////////////////////////////////////////////////////////////////////////////////////////////
+            //            //CONSULTA COMPLEJA PARA AGILIZAR RESPUESTA, se utiliza ADO.NET ya que entity framework no permite mappear los datos con un DTO y lo que yo necesito devolver es un dto ya que son varias consultas a varias tablas.
+            ///////////////////////////////////////////////////////////////////////////////////////////
+            ///                                 ESTE ES EL STORE PROCEDURE QUE ESTA EN LA BASE DE DATOS DE AZURE.
+            ///
+            //////////////////////////////////////////////////////
+            //            CREATE PROCEDURE GetJobsAplicated
+            //    @idUser INT
+            //AS
+            //BEGIN
+            //    SELECT p.Id_Postulacion, p.Id_PuestosDeTrabajo_Postulaciones, a.Dni, po.Estado, j.Titulo, j.Descripcion, j.Id_Empresa, e.Nombre AS RazonSocial
+            //    FROM PuestosDeTrabajo_Postulaciones p
+            //    JOIN PuestosDeTrabajo j ON p.Id_PuestoDeTrabajo = j.Id_Puesto
+            //    JOIN Postulaciones po ON p.Id_Postulacion = po.Id_Postulacion
+            //    JOIN Empresas e ON j.Id_Empresa = e.Id_Empresa
+            //    JOIN Alumnos a ON a.Id_Usuario = @idUser
+            //    WHERE p.Id_Usuario = @idUser;
+            //            END;
+            /// 
+            /// /////////////////////////////////////////////////////
+            Alumnos ifAlumnExist = await _context.Alumnos.FirstOrDefaultAsync(a => a.IdUsuario == idUser);
+
+            if (ifAlumnExist == null)
             {
-                Alumnos ifAlumnExist = await _context.Alumnos.FirstOrDefaultAsync(a => a.IdUsuario == idUser);
+                throw new Exception("El usuario no es alumno");
+            }
 
-                if (ifAlumnExist != null)
+            List<MyAplicatedJobsDTO> jobsAplicated = new List<MyAplicatedJobsDTO>();
+
+            using (var command = _context.Database.GetDbConnection().CreateCommand())
+            {
+                command.CommandText = "EXECUTE GetJobsAplicated @idUser";
+                command.Parameters.Add(new SqlParameter("@idUser", idUser));
+
+                await _context.Database.OpenConnectionAsync();
+
+                using (DbDataReader result = await command.ExecuteReaderAsync())
                 {
-                    List<PuestosDeTrabajoPostulaciones> jobsAplicated = await _context.PuestosDeTrabajoPostulaciones
-                        .Where(p => p.IdUsuario == idUser)
-                        .ToListAsync();
-
-                    List<MyAplicatedJobsDTO> jobsDTOList = new List<MyAplicatedJobsDTO>();
-
-                    foreach (var jobAplicated in jobsAplicated)
+                    while (await result.ReadAsync())
                     {
-                        PuestosDeTrabajo jobs = await _context.PuestosDeTrabajo
-                            .FirstOrDefaultAsync(p => p.IdPuesto == jobAplicated.IdPuestoDeTrabajo);
-
-                        Postulaciones tablaPostulaciones = await _context.Postulaciones
-                            .FirstOrDefaultAsync(p => p.IdPostulacion == jobAplicated.IdPostulacion);
-                        Empresas company = await _context.Empresas
-                           .FirstOrDefaultAsync(p => p.IdEmpresa == jobs.IdEmpresa);
-
-                        if (jobs != null && tablaPostulaciones != null)
+                        jobsAplicated.Add(new MyAplicatedJobsDTO
                         {
-                            MyAplicatedJobsDTO dto = new MyAplicatedJobsDTO
-                            {
-                                IdPostulacion = jobAplicated.IdPostulacion,
-                                IdPuesto = jobAplicated.IdPuestoDeTrabajo,
-                                DniAlumno = ifAlumnExist.Dni,
-                                Estado = tablaPostulaciones.Estado,
-                                Titulo = jobs.Titulo,
-                                Descripcion = jobs.Descripcion,
-                                IdEmpresa = jobs.IdEmpresa,
-                                RazonSocial = company.Nombre,
-                            };
-
-                            jobsDTOList.Add(dto);
-                        }
+                            IdPostulacion = result.GetInt32(0),
+                            IdPuesto = result.GetInt32(1),
+                            DniAlumno = result.GetString(2),
+                            Estado = result.GetInt32(3),
+                            Titulo = result.GetString(4),
+                            Descripcion = result.GetString(5),
+                            IdEmpresa = result.GetInt32(6),
+                            RazonSocial = result.GetString(7)
+                        });
                     }
+                }
+            }
 
-                    return jobsDTOList;
-                }
-                else
-                {
-                    throw new Exception("El usuario no es alumno");
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
+            return jobsAplicated;
         }
 
     }
