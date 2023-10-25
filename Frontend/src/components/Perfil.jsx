@@ -31,7 +31,7 @@ const Perfil = () => {
   return (
     <div className="w-full flex justify-center  ">
       <ToastContainer />
-      <div className="dark:bg-[#18181B] shadow-xl rounded-[20px] p-[40px] mt-[70px] h-[500px] flex flex-wrap gap-3 w-1/2 items-center justify-center md:justify-start">
+      <div className="dark:bg-[#18181B] shadow-xl rounded-[20px] p-[40px] mt-[70px] h-[500px] flex flex-wrap gap-3 w-full items-center justify-center md:justify-start">
         <div className="w-full">
           <div className="flex justify-between p-2">
             <span>{user.email}</span>
