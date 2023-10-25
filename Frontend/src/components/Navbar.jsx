@@ -42,7 +42,7 @@ const Navbar = () => {
       <div className="sm:flex hidden gap-4 ">
         {isLogin ? (
           <>
-            <Link to={'/'}>
+            <Link to="/">
               <Button
                 color="danger"
                 size="lg"
@@ -56,7 +56,7 @@ const Navbar = () => {
         ) : (
           <div className="flex gap-3">
             {' '}
-            <Link to={'/Login'}>
+            <Link to="/Login">
               <CustomButton
                 btnType=""
                 title="Iniciar Sesion"
@@ -76,9 +76,7 @@ const Navbar = () => {
 
       {/* MOVIL */}
       <div
-        className={`fixed w-full flex justify-between sm:hidden ${
-          isOpen && 'z-50'
-        }`}
+        className={`fixed w-full  mt-[-10px] z-50 bg-[#18181B] h-[70px] flex justify-between sm:hidden p-4`}
       >
         <Link className=" h-[70px] " to="/">
           <img src={UTNletra} alt="logo" className=" " />
@@ -143,15 +141,21 @@ const Navbar = () => {
             ))}
             <li>
               {isLogin ? (
-                <div>
-                  <Button color="danger" fullWidth={true}>
-                    {' '}
-                    Cerrar Sesion
-                  </Button>
-                </div>
+                <>
+                  <Link to="/">
+                    <Button
+                      color="danger"
+                      size="lg"
+                      onPress={handleLogout}
+                      styles="bg-red-600 text-white hover:bg-red-800 "
+                    >
+                      Cerrar Sesion
+                    </Button>
+                  </Link>
+                </>
               ) : (
                 <div className="sm:hidden flex gap-3 justify-center  ">
-                  <Link to={'/Login'}>
+                  <Link to="/Login">
                     <motion.button
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.9 }}

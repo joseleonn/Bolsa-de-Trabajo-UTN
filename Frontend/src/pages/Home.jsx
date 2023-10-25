@@ -1,13 +1,13 @@
-import { Typewriter } from "react-simple-typewriter";
-import { UTN_logo_white } from "../assets";
-import { motion } from "framer-motion";
+import { Typewriter } from 'react-simple-typewriter'
+import { UTN_logo_white } from '../assets'
+import { motion } from 'framer-motion'
 
-import { Guia } from "../components";
-import { StudentsGuia, CompaniesGuia } from "../constants";
+import { Guia } from '../components'
+import { StudentsGuia, CompaniesGuia } from '../constants'
 
 const Home = () => {
   return (
-    <div>
+    <div className="p-5">
       <motion.div
         initial={{ opacity: 0 }}
         transition={{ duration: 0.5 }}
@@ -24,9 +24,9 @@ const Home = () => {
             <h4 className="text-xl font-epilogue   dark:text-[#7f8084] tracking-tight lg:text-2xl light:text-[#000000]  ">
               <Typewriter
                 words={[
-                  "Encontrá el trabajo de tus sueños.",
-                  "Oportunidades Laborales.",
-                  "Contacta con Empresas.",
+                  'Encontrá el trabajo de tus sueños.',
+                  'Oportunidades Laborales.',
+                  'Contacta con Empresas.'
                 ]}
                 cursor
                 cursorStyle=""
@@ -74,7 +74,7 @@ const Home = () => {
         StudentOrCompany={CompaniesGuia}
       />
     </div>
-  );
-};
+  )
+}
 
-export default Home;
+export default Home
