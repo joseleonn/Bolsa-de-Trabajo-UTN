@@ -3,9 +3,11 @@
     "",
     "\\ServicioBolsaDeTrabajo",
     "\\ServicioBolsaDeTrabajo\\Src",
+    "\\ServicioBolsaDeTrabajo\\Src\\BolsaDeTrabajo.Data",
+    "\\ServicioBolsaDeTrabajo\\Src\\BolsaDeTrabajo.Data\\Inmplementations",
     "\\ServicioBolsaDeTrabajo\\Src\\BolsaDeTrabjo.Api",
     "\\ServicioBolsaDeTrabajo\\Src\\BolsaDeTrabjo.Api\\Controllers"
   ],
-  "SelectedNode": "\\ServicioBolsaDeTrabajo\\Src\\BolsaDeTrabjo.Api\\Controllers\\AdminController.cs",
+  "SelectedNode": "\\ServicioBolsaDeTrabajo\\Src\\BolsaDeTrabajo.Data\\Inmplementations\\JobRepository.cs",
   "PreviewInSolutionExplorer": false
 }

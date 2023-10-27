@@ -3299,19 +3299,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\josecm\\.nuget\\packages\\": {}
+    "C:\\Users\\Usuario\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\josecm\\Desktop\\Nueva carpeta\\Bolsa-de-Trabajo-UTN\\Backend\\ServicioBolsaDeTrabajo\\Src\\BolsaDeTrabajo.Model\\BolsaDeTrabajo.Model.csproj",
+      "projectUniqueName": "C:\\Users\\Usuario\\Desktop\\Bolsa-de-Trabajo-UTN\\Backend\\ServicioBolsaDeTrabajo\\Src\\BolsaDeTrabajo.Model\\BolsaDeTrabajo.Model.csproj",
       "projectName": "BolsaDeTrabajo.Model",
-      "projectPath": "C:\\Users\\josecm\\Desktop\\Nueva carpeta\\Bolsa-de-Trabajo-UTN\\Backend\\ServicioBolsaDeTrabajo\\Src\\BolsaDeTrabajo.Model\\BolsaDeTrabajo.Model.csproj",
-      "packagesPath": "C:\\Users\\josecm\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\josecm\\Desktop\\Nueva carpeta\\Bolsa-de-Trabajo-UTN\\Backend\\ServicioBolsaDeTrabajo\\Src\\BolsaDeTrabajo.Model\\obj\\",
+      "projectPath": "C:\\Users\\Usuario\\Desktop\\Bolsa-de-Trabajo-UTN\\Backend\\ServicioBolsaDeTrabajo\\Src\\BolsaDeTrabajo.Model\\BolsaDeTrabajo.Model.csproj",
+      "packagesPath": "C:\\Users\\Usuario\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Usuario\\Desktop\\Bolsa-de-Trabajo-UTN\\Backend\\ServicioBolsaDeTrabajo\\Src\\BolsaDeTrabajo.Model\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\josecm\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Usuario\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -3362,7 +3362,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
       }
     }
   }

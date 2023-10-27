@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom'
+import { Route, Routes } from "react-router-dom";
 import {
   BotButton,
   ChangePassword,
@@ -7,24 +7,25 @@ import {
   Navbar,
   Perfil,
   Sidebar,
-  UpdateUser
-} from './components'
+  UpdateUser,
+} from "./components";
 import {
   Error404,
   Home,
   JobDetail,
   Jobs,
   Login,
-  MyAplicatedJobs
-} from './pages'
-import { useAuth } from './context/AuthContext'
-import LoadingSpinner from './components/LoadingSpinner'
-import { useLoading } from './context/LoadingContext'
-import { ToastContainer } from 'react-toastify'
+  MyAplicatedJobs,
+  Register,
+} from "./pages";
+import { useAuth } from "./context/AuthContext";
+import LoadingSpinner from "./components/LoadingSpinner";
+import { useLoading } from "./context/LoadingContext";
+import { ToastContainer } from "react-toastify";
 
 function App() {
-  const { isLogin } = useAuth()
-  const { isLoading } = useLoading()
+  const { isLogin } = useAuth();
+  const { isLoading } = useLoading();
   return (
     <div className="relative sm:-8 p-4 dark:bg-[#151719]  min-h-screen flex flex-row ">
       {/* Mostrar Sidebar en todas las rutas excepto "/Login" */}
@@ -40,6 +41,7 @@ function App() {
         <BotButton />
         {isLoading && <LoadingSpinner />}
         <Routes>
+          <Route path="/Register" element={<Register />} />
           <Route path="/" element={<Home />} />
           <Route path="/Login" element={<Login />} />
           <Route path="*" element={<Login />} />
@@ -65,7 +67,7 @@ function App() {
         </Routes>
       </div>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

@@ -1,27 +1,27 @@
-import { useState } from 'react'
-import { search, menu, UTN_logo, UTNletra } from '../assets'
-import CustomButton from './CustomButton'
-import { Link, useNavigate } from 'react-router-dom'
-import { navlinks } from '../constants'
-import { motion } from 'framer-motion'
-import { useAuth } from '../context/AuthContext'
-import { Button } from '@nextui-org/react'
+import { useState } from "react";
+import { search, menu, UTN_logo, UTNletra } from "../assets";
+import CustomButton from "./CustomButton";
+import { Link, useNavigate } from "react-router-dom";
+import { navlinks } from "../constants";
+import { motion } from "framer-motion";
+import { useAuth } from "../context/AuthContext";
+import { Button } from "@nextui-org/react";
 
 const itemVariants = {
   open: {
     opacity: 1,
     y: 0,
-    transition: { type: 'spring', stiffness: 300, damping: 24 }
+    transition: { type: "spring", stiffness: 300, damping: 24 },
   },
-  closed: { opacity: 0, y: 20, transition: { duration: 0.2 } }
-}
+  closed: { opacity: 0, y: 20, transition: { duration: 0.2 } },
+};
 const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false)
-  const navigate = useNavigate()
-  const { isLogin, logout } = useAuth()
+  const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate();
+  const { isLogin, logout } = useAuth();
   const handleLogout = () => {
-    logout()
-  }
+    logout();
+  };
 
   return (
     <div className="sm:flex  flex-row justify-between gap-4 mt-2 max-w-full   ">
@@ -55,7 +55,7 @@ const Navbar = () => {
           </>
         ) : (
           <div className="flex gap-3">
-            {' '}
+            {" "}
             <Link to="/Login">
               <CustomButton
                 btnType=""
@@ -64,12 +64,14 @@ const Navbar = () => {
                 styles="bg-[#f3f3f3] text-[#15171a] hover:bg-[#afb2b7] "
               />
             </Link>
-            <CustomButton
-              btnType=""
-              title="Registrarse"
-              // handleClick={}
-              styles="bg-blue-600 text-[#f3f3f3] hover:bg-blue-800 "
-            />
+            <Link to="/Register">
+              <CustomButton
+                btnType=""
+                title="Registrarse"
+                // handleClick={}
+                styles="bg-blue-600 text-[#f3f3f3] hover:bg-blue-800 "
+              />
+            </Link>
           </div>
         )}
       </div>
@@ -83,7 +85,7 @@ const Navbar = () => {
         </Link>
         <motion.nav
           initial={false}
-          animate={isOpen ? 'open' : 'closed'}
+          animate={isOpen ? "open" : "closed"}
           className="menu  mr-[40px] max-w-[200px]  sm:hidden "
         >
           <div className="flex  justify-end mt-[4px]">
@@ -98,23 +100,23 @@ const Navbar = () => {
           <motion.ul
             variants={{
               open: {
-                clipPath: 'inset(0% 0% 0% 0% round 10px)',
+                clipPath: "inset(0% 0% 0% 0% round 10px)",
                 transition: {
-                  type: 'spring',
+                  type: "spring",
                   bounce: 0,
                   duration: 0.7,
                   delayChildren: 0.3,
-                  staggerChildren: 0.05
-                }
+                  staggerChildren: 0.05,
+                },
               },
               closed: {
-                clipPath: 'inset(10% 50% 90% 50% round 10px)',
+                clipPath: "inset(10% 50% 90% 50% round 10px)",
                 transition: {
-                  type: 'spring',
+                  type: "spring",
                   bounce: 0,
-                  duration: 0.3
-                }
-              }
+                  duration: 0.3,
+                },
+              },
             }}
             className="bg-[#f3f3f3] p-4 gap-5 flex flex-col "
           >
@@ -126,7 +128,7 @@ const Navbar = () => {
                 key={link.name}
                 onClick={() => {
                   if (!link.disabled) {
-                    navigate(link.link)
+                    navigate(link.link);
                   }
                 }}
                 variants={itemVariants}
@@ -181,7 +183,7 @@ const Navbar = () => {
         </motion.nav>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;
