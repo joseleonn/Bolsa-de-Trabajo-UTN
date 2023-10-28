@@ -43,13 +43,16 @@ const FormEmpresas = () => {
             onSubmit={handleSubmit(onSubmit)}
           >
             <div>
-              <label htmlFor="email" className="sr-only text-[#15171a]">
+              <label
+                htmlFor="email"
+                className="sr-only light:text-[#15171a] dark:text-[#f3f3f3]"
+              >
                 Email
               </label>
               <div className="relative">
                 <input
                   type="email"
-                  className="w-full rounded-lg p-4 pe-12 text-sm shadow-sm text-[#15171a]"
+                  className="w-full rounded-lg p-4 pe-12 text-sm shadow-sm light:text-[#15171a] dark:text-[#f3f3f3]"
                   placeholder="correo@empresa.com"
                   {...register("Email", {
                     required: { value: true, message: "El email es requerido" },
@@ -64,7 +67,10 @@ const FormEmpresas = () => {
             </div>
 
             <div>
-              <label htmlFor="password" className="sr-only">
+              <label
+                htmlFor="password"
+                className="sr-only light:text-[#15171a] dark:text-[#f3f3f3]"
+              >
                 Contraseña
               </label>
               <div className="relative">
@@ -97,7 +103,10 @@ const FormEmpresas = () => {
             </div>
 
             <div>
-              <label htmlFor="nombre" className="sr-only text-[#15171a]">
+              <label
+                htmlFor="nombre"
+                className="sr-only light:text-[#15171a] dark:text-[#f3f3f3]"
+              >
                 Nombre de la Empresa
               </label>
               <div className="relative">
@@ -121,13 +130,16 @@ const FormEmpresas = () => {
             </div>
 
             <div>
-              <label htmlFor="pais" className="sr-only text-[#15171a]">
+              <label
+                htmlFor="pais"
+                className="sr-only light:text-[#15171a] dark:text-[#f3f3f3]"
+              >
                 País
               </label>
               <div className="relative">
                 <input
                   type="text"
-                  className="w-full rounded-lg p-4 pe-12 text-sm shadow-sm text-[#15171a]"
+                  className="w-full rounded-lg p-4 pe-12 text-sm shadow-sm light:text-[#15171a] dark:text-[#f3f3f3]"
                   placeholder="País"
                   {...register("Pais", {
                     required: { value: true, message: "El país es requerido" },
@@ -142,13 +154,16 @@ const FormEmpresas = () => {
             </div>
 
             <div>
-              <label htmlFor="ciudad" className="sr-only text-[#15171a]">
+              <label
+                htmlFor="ciudad"
+                className="sr-only light:text-[#15171a] dark:text-[#f3f3f3]"
+              >
                 Ciudad
               </label>
               <div className="relative">
                 <input
                   type="text"
-                  className="w-full rounded-lg p-4 pe-12 text-sm shadow-sm text-[#15171a]"
+                  className="w-full rounded-lg p-4 pe-12 text-sm shadow-sm light:text-[#15171a] dark:text-[#f3f3f3]"
                   placeholder="Ciudad"
                   {...register("Ciudad", {
                     required: {
@@ -166,13 +181,16 @@ const FormEmpresas = () => {
             </div>
 
             <div>
-              <label htmlFor="direccion" className="sr-only text-[#15171a]">
+              <label
+                htmlFor="direccion"
+                className="sr-only light:text-[#15171a] dark:text-[#f3f3f3]"
+              >
                 Dirección
               </label>
               <div className="relative">
                 <input
                   type="text"
-                  className="w-full rounded-lg p-4 pe-12 text-sm shadow-sm text-[#15171a]"
+                  className="w-full rounded-lg p-4 pe-12 text-sm shadow-sm light:text-[#15171a] dark:text-[#f3f3f3]"
                   placeholder="Dirección"
                   {...register("Direccion", {
                     required: {

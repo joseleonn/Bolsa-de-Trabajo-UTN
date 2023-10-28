@@ -40,7 +40,7 @@ const FormEstudiantes = () => {
           </div>
 
           <form
-            className="mx-auto mt-8 max-w-md space-y-4 grid gap-4"
+            className="mx-auto mt-8 max-w-md grid grid-cols-2 gap-4"
             onSubmit={handleSubmit(onSubmit)}
             style={{ gridTemplateColumns: "1fr 1fr" }} // Dos columnas en la cuadrícula
           >
@@ -69,13 +69,16 @@ const FormEstudiantes = () => {
             </div>
 
             <div>
-              <label htmlFor="password" className="sr-only">
+              <label
+                htmlFor="password"
+                className="sr-only dark:text-[#f3f3f3] light:text-[#15171a]"
+              >
                 Contraseña
               </label>
               <div className="relative">
                 <input
                   type={showPassword ? "text" : "password"}
-                  className="w-full rounded-lg p-4 text-sm shadow-sm"
+                  className="w-full rounded-lg p-4 text-sm shadow-sm "
                   placeholder="Contraseña"
                   {...register("Contrasenia", {
                     required: {
@@ -111,10 +114,16 @@ const FormEstudiantes = () => {
               <div className="relative">
                 <input
                   type="text"
-                  className="w-full rounded-lg p-4 text-sm shadow-sm light:text-[#15171a] dark:text-[#f3f3f3]"
+                  className={`w-full rounded-lg p-4 text-sm shadow-sm ${
+                    errors.Dni ? "border-red-500" : ""
+                  } light:text-[#15171a] dark:text-[#f3f3f3]`}
                   placeholder="Número de DNI"
                   {...register("Dni", {
-                    required: { value: true, message: "El DNI es requerido" },
+                    required: "El DNI es requerido",
+                    pattern: {
+                      value: /^\d{8}$/,
+                      message: "El DNI debe contener 8 dígitos numéricos",
+                    },
                   })}
                 />
                 {errors.Dni && (
@@ -216,12 +225,16 @@ const FormEstudiantes = () => {
               <div className="relative">
                 <input
                   type="text"
-                  className="w-full rounded-lg p-4 text-sm shadow-sm light:text-[#15171a] dark:text-[#f3f3f3]"
+                  className={`w-full rounded-lg p-4 text-sm shadow-sm ${
+                    errors.Celular ? "border-red-500" : ""
+                  } light:text-[#15171a] dark:text-[#f3f3f3]`}
                   placeholder="Número de celular"
                   {...register("Celular", {
-                    required: {
-                      value: true,
-                      message: "El número de celular es requerido",
+                    required: "El número de celular es requerido",
+                    pattern: {
+                      value: /^[0-9]{10}$/,
+                      message:
+                        "El número de celular debe contener exactamente 10 dígitos numéricos",
                     },
                   })}
                 />
