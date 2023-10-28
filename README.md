@@ -34,10 +34,7 @@ Esto pondrá en marcha la parte frontend de la aplicación y podrás acceder a e
 
 Después de haber configurado el Frontend, ahora navega a la carpeta Backend:
 
-
-Dentro de la carpeta Backend, realiza cualquier acción necesaria para levantar tu proyecto de backend. Esto puede variar dependiendo de las tecnologías utilizadas en el backend. Asegúrate de seguir las instrucciones específicas del backend que estás utilizando.
-
-Una vez que el backend esté funcionando, podrás interactuar con la aplicación en su totalidad.
+Inicia el proyecto
 
 ¡Eso es todo! Ahora tienes el proyecto clonado en tu máquina local, el Frontend en ejecución en [http://localhost:7197](http://localhost:7197) y el Backend en funcionamiento. Puedes comenzar a trabajar en el proyecto o realizar pruebas según sea necesario.
 
