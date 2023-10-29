@@ -5,9 +5,11 @@
     "\\ServicioBolsaDeTrabajo\\Src",
     "\\ServicioBolsaDeTrabajo\\Src\\BolsaDeTrabajo.Data",
     "\\ServicioBolsaDeTrabajo\\Src\\BolsaDeTrabajo.Data\\Inmplementations",
+    "\\ServicioBolsaDeTrabajo\\Src\\BolsaDeTrabajo.Model",
+    "\\ServicioBolsaDeTrabajo\\Src\\BolsaDeTrabajo.Model\\DTOs",
     "\\ServicioBolsaDeTrabajo\\Src\\BolsaDeTrabjo.Api",
     "\\ServicioBolsaDeTrabajo\\Src\\BolsaDeTrabjo.Api\\Controllers"
   ],
-  "SelectedNode": "\\ServicioBolsaDeTrabajo\\Src\\BolsaDeTrabajo.Data\\Inmplementations\\JobRepository.cs",
+  "SelectedNode": "\\ServicioBolsaDeTrabajo\\Src\\BolsaDeTrabjo.Api\\Program.cs",
   "PreviewInSolutionExplorer": false
 }
