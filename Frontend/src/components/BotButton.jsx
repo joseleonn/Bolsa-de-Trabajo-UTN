@@ -6,7 +6,10 @@ const BotButton = () => {
     <div className="fixed bottom-0 right-0 z-50 mb-4 mr-4">
       {/* Primer botón */}
       <a href="http://t.me/utn_buddy_bot">
-        <button className="w-20 h-20 bg-[#2563EB] hover:bg-blue-700 text-white font-bold rounded-full flex items-center justify-center">
+        <button
+          name="Telegram Button"
+          className="w-20 h-20 bg-[#2563EB] hover:bg-blue-700 text-white font-bold rounded-full flex items-center justify-center"
+        >
           <img
             src={TelegramIcon}
             alt="Imagen del botón"
@@ -17,7 +20,10 @@ const BotButton = () => {
 
       {/* Segundo botón (arriba del primer botón) */}
       <a href="https://wa.me/543416695327">
-        <button className="w-20 h-20 bg-[#25d366] hover:bg-white-700 text-white font-bold rounded-full flex items-center justify-center mt-4">
+        <button
+          name="WhatsApp Button" // Change role to name
+          className="w-20 h-20 bg-[#25d366] hover:bg-white-700 text-white font-bold rounded-full flex items-center justify-center mt-4"
+        >
           {
             <img
               src={WhatSappIcon}
