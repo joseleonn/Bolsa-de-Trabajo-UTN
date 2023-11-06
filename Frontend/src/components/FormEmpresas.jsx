@@ -5,13 +5,14 @@ import { motion } from "framer-motion";
 import { Button } from "@nextui-org/react";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useData } from "../context/DataContext";
 
 const FormEmpresas = () => {
   const [showPassword, setShowPassword] = useState(false);
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
-
+  const { crearEmpresa } = useData();
   const {
     handleSubmit,
     register,
@@ -19,8 +20,20 @@ const FormEmpresas = () => {
   } = useForm();
 
   const onSubmit = async (data) => {
-    // Handle registration logic for empresas here
-    console.log(data);
+    try {
+      console.log(data);
+      const empresaData = {
+        idEmpresa: 0,
+        idUsuario: 1, // Ajusta el ID de usuario según tu lógica
+        nombre: data.Nombre,
+        pais: data.Pais,
+        ciudad: data.Ciudad,
+        direccion: data.Direccion,
+      };
+      const result = await crearEmpresa(empresaData);
+    } catch (error) {
+      errorMessage("Error al registrar la empresa");
+    }
   };
 
   return (
@@ -112,7 +125,7 @@ const FormEmpresas = () => {
               <div className="relative">
                 <input
                   type="text"
-                  className="w-full rounded-lg p-4 pe-12 text-sm shadow-sm text-[#15171a]"
+                  className="w-full rounded-lg p-4 pe-12 text-sm shadow-sm light:text-[#15171a] dark:text-[#f3f3f3]"
                   placeholder="Nombre de la empresa"
                   {...register("Nombre", {
                     required: {

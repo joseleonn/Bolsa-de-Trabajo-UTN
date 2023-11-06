@@ -2,6 +2,7 @@
   "ExpandedNodes": [
     "",
     "\\ServicioBolsaDeTrabajo",
+    "\\ServicioBolsaDeTrabajo\\PruebasUnitarias",
     "\\ServicioBolsaDeTrabajo\\Src",
     "\\ServicioBolsaDeTrabajo\\Src\\BolsaDeTrabajo.Data",
     "\\ServicioBolsaDeTrabajo\\Src\\BolsaDeTrabajo.Data\\Inmplementations",
@@ -10,6 +11,6 @@
     "\\ServicioBolsaDeTrabajo\\Src\\BolsaDeTrabjo.Api",
     "\\ServicioBolsaDeTrabajo\\Src\\BolsaDeTrabjo.Api\\Controllers"
   ],
-  "SelectedNode": "\\ServicioBolsaDeTrabajo\\Src\\BolsaDeTrabjo.Api\\Program.cs",
+  "SelectedNode": "\\ServicioBolsaDeTrabajo\\PruebasUnitarias\\JobServiceTests.cs",
   "PreviewInSolutionExplorer": false
 }

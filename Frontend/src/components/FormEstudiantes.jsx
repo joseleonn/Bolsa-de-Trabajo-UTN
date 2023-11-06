@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Button } from "@nextui-org/react";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
-
+import { useData } from "../context/DataContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const FormEstudiantes = () => {
@@ -18,10 +18,33 @@ const FormEstudiantes = () => {
     register,
     formState: { errors },
   } = useForm();
+  const { crearEstudiante } = useData();
 
   const onSubmit = async (data) => {
-    // Handle registration logic here
-    console.log(data);
+    try {
+      console.log(data);
+      const estudianteData = {
+        idUsuario: 1, // Ajusta el ID de usuario según tu lógica
+        email: data.Email,
+        contrasenia: data.Contrasenia,
+        tipoUsuario: 0,
+        dni: data.Dni,
+        nombre: data.Nombre,
+        apellido: data.Apellido,
+        celular: data.Celular,
+        nacionalidad: data.Nacionalidad,
+        pais: data.Pais,
+        ciudad: data.Ciudad,
+        direccion: data.Direccion,
+      };
+
+      // Llama a la función para crear un estudiante, pasando los datos
+      const result = await crearEstudiante(estudianteData);
+
+      // Aquí puedes manejar la respuesta si es necesario
+    } catch (error) {
+      errorMessage("Error al registrar el estudiante");
+    }
   };
 
   return (
