@@ -16,7 +16,7 @@ namespace BolsaDeTrabajo.Service.Inmplementations
         {
             _repository = repository;
         }
-        public async Task AddCompany(CompanyDTO company)
+        public async Task AddCompany(NewCompanyDTO company)
         {
             if (company != null)
             {

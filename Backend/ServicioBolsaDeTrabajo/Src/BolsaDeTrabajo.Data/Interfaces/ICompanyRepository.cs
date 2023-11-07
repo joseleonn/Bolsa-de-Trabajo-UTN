@@ -9,8 +9,8 @@ namespace BolsaDeTrabajo.Data.Interfaces
 {
     public interface ICompanyRepository
     {
-
-        Task<bool> AddCompany(CompanyDTO company);
+        Task AddCompany(NewCompanyDTO newCompany);
+        //Task<bool> AddCompany(CompanyDTO company);
         Task<CompanyDTO> GetCompanyById(int id);
         Task<List<CompanyDTO>> GetAllCompanies();
 

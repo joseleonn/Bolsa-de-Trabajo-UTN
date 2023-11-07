@@ -19,7 +19,7 @@ namespace BolsaDeTrabjo.Api.Controllers
         [HttpPost]
         [Route("/CargarEmpresa")]
 
-        public async Task<IActionResult> AddCompany([FromBody]CompanyDTO company)
+        public async Task<IActionResult> AddCompany([FromBody]NewCompanyDTO company)
         {
             try
             {

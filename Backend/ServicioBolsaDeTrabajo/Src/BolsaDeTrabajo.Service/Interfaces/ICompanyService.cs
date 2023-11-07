@@ -9,7 +9,8 @@ namespace BolsaDeTrabajo.Service.Interfaces
 {
     public interface ICompanyService
     {
-        Task AddCompany(CompanyDTO company);
+        Task AddCompany(NewCompanyDTO company);
+        //Task AddCompany(CompanyDTO company);
         Task<CompanyDTO> GetCompanyById(int id);
         Task<List<CompanyDTO>> GetAllCompanies();
         Task ModifyCompany(CompanyDTO company);

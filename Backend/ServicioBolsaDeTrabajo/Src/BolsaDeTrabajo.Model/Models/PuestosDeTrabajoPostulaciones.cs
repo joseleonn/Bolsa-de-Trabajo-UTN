@@ -7,7 +7,7 @@ namespace BolsaDeTrabajo.Model.Models
 {
     public partial class PuestosDeTrabajoPostulaciones
     {
-        
+
         public int IdPuestosDeTrabajoPostulaciones { get; set; }
         public int IdPuestoDeTrabajo { get; set; }
         public int IdPostulacion { get; set; }
