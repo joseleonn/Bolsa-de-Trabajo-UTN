@@ -19,6 +19,7 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
   const { isLogin, logout } = useAuth();
+  const { user } = useAuth();
   const handleLogout = () => {
     logout();
   };
@@ -52,6 +53,14 @@ const Navbar = () => {
                 Cerrar Sesion
               </Button>
             </Link>
+            {user.tipoUsuario == 3 && (
+              <Link to={"/Admin"}>
+                <Button color="primary" size="lg">
+                  {" "}
+                  Admin Panel
+                </Button>
+              </Link>
+            )}
           </>
         ) : (
           <div className="flex gap-3">
@@ -83,6 +92,14 @@ const Navbar = () => {
         <Link className=" h-[70px] " to="/">
           <img src={UTNletra} alt="logo" className=" " />
         </Link>
+        {user.tipoUsuario === "3" && (
+          <Link to={"/Admin"}>
+            <Button color="primary" size="lg">
+              {" "}
+              Admin Panel
+            </Button>
+          </Link>
+        )}
         <motion.nav
           initial={false}
           animate={isOpen ? "open" : "closed"}

@@ -23,8 +23,6 @@ namespace BolsaDeTrabajo.Model.DTOs
         public string Email { get; set; }
 
         public string Contrasenia { get; set; }
-
-        public int TipoUsuario { get; set; }
       
         public string Celular { get; set; }
     }

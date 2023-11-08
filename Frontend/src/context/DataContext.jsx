@@ -8,6 +8,7 @@ const DataContext = createContext();
 const student = "1";
 export const DataProvider = ({ children }) => {
   const [jobs, setJobs] = useState([]);
+  const [userData, setUserData] = useState({});
   const [studentData, setStudentData] = useState({
     email: "",
     dni: "",
@@ -24,20 +25,25 @@ export const DataProvider = ({ children }) => {
   const { toggleLoading, isLoading } = useLoading();
   const { successMessage, errorMessage } = useNotify();
   const { user } = useAuth();
+  const [dataFetched, setDataFetched] = useState(false);
 
   const crearEmpresa = async (data) => {
     try {
       toggleLoading(true);
+      console.log(data);
 
       const response = await axios.post(
         "https://localhost:7197/CargarEmpresa",
         {
           idEmpresa: 0,
-          idUsuario: 1,
+          idUsuario: 0,
           nombre: data.nombre,
           pais: data.pais,
           ciudad: data.ciudad,
           direccion: data.direccion,
+          email: data.email,
+          contrasenia: data.contrasenia,
+          celular: data.celular,
         }
       );
       // La empresa se creó con éxito
@@ -53,17 +59,16 @@ export const DataProvider = ({ children }) => {
   const crearEstudiante = async (data) => {
     try {
       toggleLoading(true);
-
+      console.log(data);
       const response = await axios.post(
         "https://localhost:7197/api/Student/CrearUsuarioEstudiante",
         {
-          idUsuario: data.idUsuario,
           email: data.email,
+
           contrasenia: data.contrasenia,
-          tipoUsuario: data.tipoUsuario,
+          curriculum: null,
           dni: data.dni,
           nombre: data.nombre,
-          curriculum: data.curriculum,
           apellido: data.apellido,
           celular: data.celular,
           nacionalidad: data.nacionalidad,
@@ -72,7 +77,18 @@ export const DataProvider = ({ children }) => {
           direccion: data.direccion,
         }
       );
-
+      /*"email": "string",
+            "contrasenia": "string",
+            "tipoUsuario": 0,
+            "dni": "string",
+            "nombre": "string",
+            "curriculum": "string",
+            "apellido": "string",
+            "celular": "string",
+            "nacionalidad": "string",
+            "pais": "string",
+            "ciudad": "string",
+            "direccion": "string" */
       // Si la solicitud es exitosa, puedes manejar la respuesta aquí si es necesario
 
       // Puedes mostrar un mensaje de éxito
@@ -146,9 +162,33 @@ export const DataProvider = ({ children }) => {
         }
       }
     };
-
     getJobsAplicated();
   }, [user]);
+
+  useEffect(() => {
+    const fetchUserData = async () => {
+      if (user && !dataFetched) {
+        try {
+          const response = await axios.get(
+            "https://localhost:7197/api/Usuario",
+            {
+              headers: {
+                Authorization: `Bearer ${user.token}`,
+              },
+            }
+          );
+          setUserData([...response.data]);
+          setDataFetched(true); // Marca que la solicitud se ha completado
+        } catch (error) {
+          console.error("Error al traer usuarios", error);
+        }
+      }
+    };
+
+    fetchUserData();
+    console.log(userData);
+  }, [user, dataFetched]);
+
   return (
     <DataContext.Provider
       value={{
@@ -160,6 +200,8 @@ export const DataProvider = ({ children }) => {
         setJobsAplicated,
         crearEmpresa,
         crearEstudiante,
+
+        userData,
       }}
     >
       {children}

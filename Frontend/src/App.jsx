@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import {
   BotButton,
   ChangePassword,
@@ -8,8 +8,10 @@ import {
   Perfil,
   Sidebar,
   UpdateUser,
+  AdminABM,
 } from "./components";
 import {
+  AdminPanel,
   Error404,
   Home,
   JobDetail,
@@ -24,27 +26,24 @@ import { useLoading } from "./context/LoadingContext";
 import { ToastContainer } from "react-toastify";
 
 function App() {
-  const { isLogin } = useAuth();
+  const { isLogin, user } = useAuth();
   const { isLoading } = useLoading();
+
   return (
-    <div className="relative sm:-8 p-4 dark:bg-[#151719]  min-h-screen flex flex-row ">
-      {/* Mostrar Sidebar en todas las rutas excepto "/Login" */}
+    <div className="relative sm:-8 p-4 dark:bg-[#151719] min-h-screen flex flex-row">
       <ToastContainer />
       <div className="sm:flex hidden mr-10 relative">
         <Sidebar />
       </div>
 
-      <div className="flex-1 max-sm:w-full  mx-auto sm:pr-5 ">
-        {/* Mostrar Navbar en todas las rutas  */}
+      <div className="flex-1 max-sm:w-full mx-auto sm:pr-5">
         <Navbar />
-
         <BotButton />
         {isLoading && <LoadingSpinner />}
         <Routes>
           <Route path="/Register" element={<Register />} />
           <Route path="/" element={<Home />} />
           <Route path="/Login" element={<Login />} />
-          <Route path="*" element={<Login />} />
           <Route path="/cambiar-contrasena" element={<ChangePassword />} />
           <Route
             path="/cambiar-contrasena/codigo"
@@ -54,6 +53,7 @@ function App() {
             path="/cambiar-contrasena/formulario"
             element={<ChangePasswordForm />}
           />
+          <Route path="/404" element={<Error404 />} />
 
           {isLogin && (
             <>
@@ -62,6 +62,12 @@ function App() {
               <Route path="/empleos/:id" element={<JobDetail />} />
               <Route path="/perfil" element={<Perfil />} />
               <Route path="/modificarusuario" element={<UpdateUser />} />
+              {user.tipoUsuario === "3" && (
+                <Route path="/Admin" element={<AdminPanel />} />
+              )}
+              {user.tipoUsuario !== "3" && (
+                <Route path="/Admin" element={() => <Navigate to="/404" />} />
+              )}
             </>
           )}
         </Routes>

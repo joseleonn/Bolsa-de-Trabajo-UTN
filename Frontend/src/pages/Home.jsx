@@ -1,11 +1,13 @@
-import { Typewriter } from 'react-simple-typewriter'
-import { UTN_logo_white } from '../assets'
-import { motion } from 'framer-motion'
-
-import { Guia } from '../components'
-import { StudentsGuia, CompaniesGuia } from '../constants'
+import { Typewriter } from "react-simple-typewriter";
+import { UTN_logo_white, UTN_logo } from "../assets";
+import { motion } from "framer-motion";
+import { useTheme } from "next-themes";
+import { Guia } from "../components";
+import { StudentsGuia, CompaniesGuia } from "../constants";
 
 const Home = () => {
+  const { theme, setTheme } = useTheme();
+  const logoImage = theme === "dark" ? UTN_logo_white : UTN_logo;
   return (
     <div className="p-5">
       <motion.div
@@ -24,9 +26,9 @@ const Home = () => {
             <h4 className="text-xl font-epilogue   dark:text-[#7f8084] tracking-tight lg:text-2xl light:text-[#000000]  ">
               <Typewriter
                 words={[
-                  'Encontrá el trabajo de tus sueños.',
-                  'Oportunidades Laborales.',
-                  'Contacta con Empresas.'
+                  "Encontrá el trabajo de tus sueños.",
+                  "Oportunidades Laborales.",
+                  "Contacta con Empresas.",
                 ]}
                 cursor
                 cursorStyle=""
@@ -41,12 +43,12 @@ const Home = () => {
         <div className="hidden lg:flex mt-20 ">
           <div className="">
             <img
-              src={UTN_logo_white}
+              src={logoImage}
               alt="Universidad Tecnologica Nacional"
               className="h-[65vh] w-[65vh] m-0 "
             />
 
-            <h1 className="hidden flex justify-center lg:flex text-center font-epilogue text-[#f3f3f3] text-[80px] font-bold -mt-20">
+            <h1 className="hidden flex justify-center lg:flex text-center font-epilogue  dark:text-[#f3f3f3] tracking-tight lg:text-8xl  light:text-[#000000] text-[80px] font-bold -mt-20">
               U T N
             </h1>
           </div>
@@ -74,7 +76,7 @@ const Home = () => {
         StudentOrCompany={CompaniesGuia}
       />
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

@@ -21,14 +21,16 @@ const FormEmpresas = () => {
 
   const onSubmit = async (data) => {
     try {
-      console.log(data);
       const empresaData = {
         idEmpresa: 0,
-        idUsuario: 1, // Ajusta el ID de usuario según tu lógica
-        nombre: data.Nombre,
-        pais: data.Pais,
-        ciudad: data.Ciudad,
-        direccion: data.Direccion,
+        idUsuario: 0,
+        nombre: data.nombre,
+        pais: data.pais,
+        ciudad: data.ciudad,
+        direccion: data.direccion,
+        email: data.email,
+        contrasenia: data.contrasenia,
+        celular: data.celular,
       };
       const result = await crearEmpresa(empresaData);
     } catch (error) {
@@ -67,13 +69,13 @@ const FormEmpresas = () => {
                   type="email"
                   className="w-full rounded-lg p-4 pe-12 text-sm shadow-sm light:text-[#15171a] dark:text-[#f3f3f3]"
                   placeholder="correo@empresa.com"
-                  {...register("Email", {
+                  {...register("email", {
                     required: { value: true, message: "El email es requerido" },
                   })}
                 />
-                {errors.Email && (
+                {errors.email && (
                   <span className="text-[#F31260] text-sm font-epilogue">
-                    {errors.Email.message}
+                    {errors.email.message}
                   </span>
                 )}
               </div>
@@ -91,7 +93,7 @@ const FormEmpresas = () => {
                   type={showPassword ? "text" : "password"}
                   className="w-full rounded-lg p-4 pe-12 text-sm shadow-sm"
                   placeholder="Contraseña"
-                  {...register("Contrasenia", {
+                  {...register("contrasenia", {
                     required: {
                       value: true,
                       message: "La contraseña es requerida",
@@ -107,9 +109,9 @@ const FormEmpresas = () => {
                     className="text-gray-400 hover:text-gray-600"
                   />
                 </span>
-                {errors.Contrasenia && (
+                {errors.contrasenia && (
                   <span className="text-[#F31260] text-sm font-epilogue">
-                    {errors.Contrasenia.message}
+                    {errors.contrasenia.message}
                   </span>
                 )}
               </div>
@@ -126,17 +128,17 @@ const FormEmpresas = () => {
                 <input
                   type="text"
                   className="w-full rounded-lg p-4 pe-12 text-sm shadow-sm light:text-[#15171a] dark:text-[#f3f3f3]"
-                  placeholder="Nombre de la empresa"
-                  {...register("Nombre", {
+                  placeholder="nombre de la empresa"
+                  {...register("nombre", {
                     required: {
                       value: true,
                       message: "El nombre es requerido",
                     },
                   })}
                 />
-                {errors.Nombre && (
+                {errors.nombre && (
                   <span className="text-[#F31260] text-sm font-epilogue">
-                    {errors.Nombre.message}
+                    {errors.nombre.message}
                   </span>
                 )}
               </div>
@@ -154,13 +156,13 @@ const FormEmpresas = () => {
                   type="text"
                   className="w-full rounded-lg p-4 pe-12 text-sm shadow-sm light:text-[#15171a] dark:text-[#f3f3f3]"
                   placeholder="País"
-                  {...register("Pais", {
+                  {...register("pais", {
                     required: { value: true, message: "El país es requerido" },
                   })}
                 />
-                {errors.Pais && (
+                {errors.pais && (
                   <span className="text-[#F31260] text-sm font-epilogue">
-                    {errors.Pais.message}
+                    {errors.pais.message}
                   </span>
                 )}
               </div>
@@ -177,17 +179,17 @@ const FormEmpresas = () => {
                 <input
                   type="text"
                   className="w-full rounded-lg p-4 pe-12 text-sm shadow-sm light:text-[#15171a] dark:text-[#f3f3f3]"
-                  placeholder="Ciudad"
-                  {...register("Ciudad", {
+                  placeholder="ciudad"
+                  {...register("ciudad", {
                     required: {
                       value: true,
                       message: "La ciudad es requerida",
                     },
                   })}
                 />
-                {errors.Ciudad && (
+                {errors.ciudad && (
                   <span className="text-[#F31260] text-sm font-epilogue">
-                    {errors.Ciudad.message}
+                    {errors.ciudad.message}
                   </span>
                 )}
               </div>
@@ -205,16 +207,46 @@ const FormEmpresas = () => {
                   type="text"
                   className="w-full rounded-lg p-4 pe-12 text-sm shadow-sm light:text-[#15171a] dark:text-[#f3f3f3]"
                   placeholder="Dirección"
-                  {...register("Direccion", {
+                  {...register("direccion", {
                     required: {
                       value: true,
                       message: "La dirección es requerida",
                     },
                   })}
                 />
-                {errors.Direccion && (
+                {errors.direccion && (
                   <span className="text-[#F31260] text-sm font-epilogue">
-                    {errors.Direccion.message}
+                    {errors.direccion.message}
+                  </span>
+                )}
+              </div>
+            </div>
+            <div>
+              <label
+                htmlFor="celular"
+                className="sr-only dark:text-[#f3f3f3] light:text-[#15171a]"
+              >
+                Celular
+              </label>
+              <div className="relative">
+                <input
+                  type="text"
+                  className={`w-full rounded-lg p-4 text-sm shadow-sm ${
+                    errors.celular ? "border-red-500" : ""
+                  } light:text-[#15171a] dark:text-[#f3f3f3]`}
+                  placeholder="Número de celular"
+                  {...register("celular", {
+                    required: "El número de celular es requerido",
+                    pattern: {
+                      value: /^[0-9]{10}$/,
+                      message:
+                        "El número de celular debe contener exactamente 10 dígitos numéricos",
+                    },
+                  })}
+                />
+                {errors.celular && (
+                  <span className="text-[#F31260] text-sm font-epilogue">
+                    {errors.celular.message}
                   </span>
                 )}
               </div>

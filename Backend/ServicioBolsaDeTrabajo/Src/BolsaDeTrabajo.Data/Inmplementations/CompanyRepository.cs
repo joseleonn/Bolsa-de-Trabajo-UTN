@@ -76,7 +76,7 @@ namespace BolsaDeTrabajo.Data.Inmplementations
                         {
                             Email = newCompany.Email,
                             Contrasenia = newCompany.Contrasenia,
-                            TipoUsuario = 1, /*Tipo alumno */
+                            TipoUsuario = 2, /*Tipo empresa */
 
                         };
 
