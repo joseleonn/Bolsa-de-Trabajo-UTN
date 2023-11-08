@@ -98,6 +98,7 @@ namespace BolsaDeTrabajo.Data.Inmplementations
                    {
 
                        Email = usuario.Email,
+                       Contrasenia = usuario.Contrasenia,
                        TipoUsuario = usuario.TipoUsuario,
                        Dni = alumno.Dni,
                        Nombre = alumno.Nombre,

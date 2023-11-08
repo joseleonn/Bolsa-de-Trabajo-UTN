@@ -171,20 +171,20 @@ namespace BolsaDeTrabajo.Data.Inmplementations
                 {
                     throw new Exception("El alumno no existe");
                 }
-
+                Alumnos student = await _context.Alumnos.FirstOrDefaultAsync(a => a.IdUsuario == ifUserExist.IdUsuario);
                 using (IDbContextTransaction transaction = _context.Database.BeginTransaction())
                 {
                     try
                     {
-                        Alumnos student = ifUserExist.Alumnos.FirstOrDefault(); 
+                        //Alumnos student = await _context.Alumnos.FirstOrDefaultAsync(a => a.IdUsuario == ifUserExist.IdUsuario);
 
                         if (student != null)
                         {
-                            PuestosDeTrabajoPostulaciones ifAplyExist = await _context.PuestosDeTrabajoPostulaciones.FirstOrDefaultAsync(p => p.IdUsuario == ifUserExist.IdUsuario && p.IdPuestoDeTrabajo == aplyJob.idJob);
-                            if (ifAplyExist != null)
-                            {
-                                throw new Exception("Ya estas postulado");
-                            }
+                            //PuestosDeTrabajoPostulaciones ifAplyExist = await _context.PuestosDeTrabajoPostulaciones.FirstOrDefaultAsync(p => p.IdPuestoDeTrabajo == aplyJob.idJob);
+                            //if (ifAplyExist != null)
+                            //{
+                            //    throw new Exception("Ya estas postulado");
+                            //}
                             Postulaciones newAply = new Postulaciones()
                             {
                                 DniAlumno = student.Dni,
@@ -200,7 +200,7 @@ namespace BolsaDeTrabajo.Data.Inmplementations
                             {
                                 IdPuestoDeTrabajo = aplyJob.idJob,
                                 IdPostulacion = newAply.IdPostulacion,
-                                IdUsuario = ifUserExist.IdUsuario,
+                                IdUsuario = student.IdUsuario,
                             };
 
                             await _context.PuestosDeTrabajoPostulaciones.AddAsync(newJobAply);

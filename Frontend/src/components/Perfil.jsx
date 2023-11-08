@@ -42,9 +42,9 @@ const Perfil = () => {
           <Divider></Divider>
           {studentData && (
             <div className="flex flex-col p-[5px] gap-2">
-              <span> DNI {studentData.dni}</span>
-              <span>NOMBRE {studentData.nombre}</span>
-              <span>APELLIDO {studentData.apellido}</span>
+              <span> DNI: {studentData.dni}</span>
+              <span>NOMBRE: {studentData.nombre}</span>
+              <span>APELLIDO: {studentData.apellido}</span>
               <span>CEL: {studentData.celular}</span>
               <span>NACIONALIDAD: {studentData.nacionalidad}</span>
               <span>PAIS: {studentData.pais}</span>

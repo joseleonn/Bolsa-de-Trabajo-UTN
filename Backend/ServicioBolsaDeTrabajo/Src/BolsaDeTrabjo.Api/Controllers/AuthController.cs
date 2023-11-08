@@ -49,7 +49,7 @@ namespace BolsaDeTrabajo.Api.Controllers
 
                 // Verificar si la contraseña coincide
                 string hashPassword = _encryptHelper.GetSHA256(user.Contrasenia);
-                if (usuario.Contrasenia != user.Contrasenia)
+                if (usuario.Contrasenia != hashPassword)
                 {
                     return BadRequest("Contraseña incorrecta");
                 }
