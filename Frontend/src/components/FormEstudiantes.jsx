@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Button } from "@nextui-org/react";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
@@ -19,7 +19,6 @@ const FormEstudiantes = () => {
     formState: { errors },
   } = useForm();
   const { crearEstudiante } = useData();
-
   const onSubmit = async (data) => {
     try {
       const estudianteData = {
@@ -38,7 +37,6 @@ const FormEstudiantes = () => {
 
       // Llama a la función para crear un estudiante, pasando los datos
       const result = await crearEstudiante(estudianteData);
-
       // Aquí puedes manejar la respuesta si es necesario
     } catch (error) {
       errorMessage("Error al registrar el estudiante");

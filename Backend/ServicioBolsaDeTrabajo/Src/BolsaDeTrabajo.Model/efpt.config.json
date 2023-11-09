@@ -13,7 +13,6 @@
    "Schemas": null,
    "SelectedHandlebarsLanguage": 0,
    "SelectedToBeGenerated": 0,
-   "T4TemplatePath": null,
    "Tables": [
       {
          "Name": "[dbo].[Admins]",
@@ -68,7 +67,7 @@
          "ObjectType": 0
       }
    ],
-   "UiHint": "desktop-j0aabt1.BolsaDeTrabajoUTN.dbo",
+   "UiHint": "laptop-qoons4tk.BolsaDeTrabajoUTN.dbo",
    "UncountableWords": null,
    "UseBoolPropertiesWithoutDefaultSql": false,
    "UseDatabaseNames": false,
@@ -81,7 +80,6 @@
    "UseLegacyPluralizer": false,
    "UseManyToManyEntity": false,
    "UseNoDefaultConstructor": false,
-   "UseNoNavigations": false,
    "UseNoObjectFilter": false,
    "UseNodaTime": false,
    "UseNullableReferences": false,

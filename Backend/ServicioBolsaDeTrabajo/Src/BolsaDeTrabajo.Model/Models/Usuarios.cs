@@ -11,6 +11,7 @@ namespace BolsaDeTrabajo.Model.Models
         {
             Admins = new HashSet<Admins>();
             Alumnos = new HashSet<Alumnos>();
+            PuestosDeTrabajoPostulaciones = new HashSet<PuestosDeTrabajoPostulaciones>();
             Suscriptores = new HashSet<Suscriptores>();
             Tokens = new HashSet<Tokens>();
         }
@@ -23,6 +24,7 @@ namespace BolsaDeTrabajo.Model.Models
         public virtual TiposUsuarios TipoUsuarioNavigation { get; set; }
         public virtual ICollection<Admins> Admins { get; set; }
         public virtual ICollection<Alumnos> Alumnos { get; set; }
+        public virtual ICollection<PuestosDeTrabajoPostulaciones> PuestosDeTrabajoPostulaciones { get; set; }
         public virtual ICollection<Suscriptores> Suscriptores { get; set; }
         public virtual ICollection<Tokens> Tokens { get; set; }
     }

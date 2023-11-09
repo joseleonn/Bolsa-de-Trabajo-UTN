@@ -34,8 +34,6 @@ namespace BolsaDeTrabajo.Model.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.UseCollation("Modern_Spanish_CI_AS");
-
             modelBuilder.Entity<Admins>(entity =>
             {
                 entity.HasKey(e => e.IdAdmin);
@@ -78,6 +76,8 @@ namespace BolsaDeTrabajo.Model.Models
                 entity.Property(e => e.Ciudad)
                     .IsRequired()
                     .HasMaxLength(255);
+
+                entity.Property(e => e.Curriculum).HasMaxLength(50);
 
                 entity.Property(e => e.Direccion)
                     .IsRequired()
@@ -222,6 +222,8 @@ namespace BolsaDeTrabajo.Model.Models
 
                 entity.Property(e => e.IdPuestoDeTrabajo).HasColumnName("Id_PuestoDeTrabajo");
 
+                entity.Property(e => e.IdUsuario).HasColumnName("Id_Usuario");
+
                 entity.HasOne(d => d.IdPostulacionNavigation)
                     .WithMany(p => p.PuestosDeTrabajoPostulaciones)
                     .HasForeignKey(d => d.IdPostulacion)
@@ -233,6 +235,12 @@ namespace BolsaDeTrabajo.Model.Models
                     .HasForeignKey(d => d.IdPuestoDeTrabajo)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_PuestosDeTrabajo_Postulaciones_PuestosDeTrabajo");
+
+                entity.HasOne(d => d.IdUsuarioNavigation)
+                    .WithMany(p => p.PuestosDeTrabajoPostulaciones)
+                    .HasForeignKey(d => d.IdUsuario)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_PuestosDeTrabajo_Postulaciones_Usuarios");
             });
 
             modelBuilder.Entity<Suscriptores>(entity =>
