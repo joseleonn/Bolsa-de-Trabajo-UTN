@@ -122,23 +122,21 @@ namespace BolsaDeTrabajo.Data.Inmplementations
             }
         }
 
-        public async Task PostPDF(byte[] file, string studentDNI)
+        public async Task PostPDF(Byte64DTO fileDto)
         {
-
-
             using (IDbContextTransaction transaction = _context.Database.BeginTransaction())
             {
                 try 
                 {
 
-                    Alumnos student = await _context.Alumnos.FirstOrDefaultAsync(a => a.Dni == studentDNI);
+                    Alumnos student = await _context.Alumnos.FirstOrDefaultAsync(a => a.IdUsuario ==fileDto.StudentDni);
                     if (student == null)
                     {
                         throw new Exception("El alumno no existe");
                     }
 
 
-                    student.Curriculum = file;
+                    student.Curriculum = fileDto.files;
 
                     await _context.SaveChangesAsync();
                     transaction.Commit();
@@ -157,11 +155,11 @@ namespace BolsaDeTrabajo.Data.Inmplementations
 
         }
 
-        public async Task<byte[]> GetPDF(string studentDni)
+        public async Task<byte[]> GetPDF(int studentDni)
         {
             try
             {
-                Alumnos student = await _context.Alumnos.FirstOrDefaultAsync(s => s.Dni == studentDni);
+                Alumnos student = await _context.Alumnos.FirstOrDefaultAsync(s => s.IdUsuario == studentDni);
 
                 if (student == null)
                 {

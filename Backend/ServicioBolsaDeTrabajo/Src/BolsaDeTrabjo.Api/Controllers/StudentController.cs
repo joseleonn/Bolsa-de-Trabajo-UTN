@@ -68,7 +68,12 @@ namespace BolsaDeTrabjo.Api.Controllers
                 await obj.files.CopyToAsync(ms);
                 byte[] fileBytes = ms.ToArray();
 
-                await _service.PostPDF(fileBytes, obj.StudentDni);
+                Byte64DTO newCV = new Byte64DTO()
+                {
+                    StudentDni = obj.StudentDni,
+                    files = fileBytes
+                };
+                await _service.PostPDF(newCV);
 
                 return Ok();
             }
@@ -82,7 +87,7 @@ namespace BolsaDeTrabjo.Api.Controllers
         [Authorize]
         [HttpGet]
         [Route("VerCurriculum/{studentDni}")]
-        public async Task<IActionResult> GetPDF(string studentDni)
+        public async Task<IActionResult> GetPDF(int studentDni)
         {
             try
             {

@@ -49,11 +49,11 @@ namespace BolsaDeTrabajo.Service.Inmplementations
             }
         }
 
-        public async Task PostPDF(byte[] file, string studentDNI)
+        public async Task PostPDF(Byte64DTO fileDto)
         {
             try
             {
-                await _repository.PostPDF(file, studentDNI);
+                await _repository.PostPDF(fileDto);
             }
             catch (Exception ex)
             {
@@ -61,7 +61,7 @@ namespace BolsaDeTrabajo.Service.Inmplementations
             }
         }
 
-        public async Task<byte[]> GetPDF(string studentDni)
+        public async Task<byte[]> GetPDF(int studentDni)
         {
             try
             {

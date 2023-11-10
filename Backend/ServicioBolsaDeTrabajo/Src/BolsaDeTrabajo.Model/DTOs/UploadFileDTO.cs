@@ -9,7 +9,9 @@ namespace BolsaDeTrabajo.Model.DTOs
 {
     public class UploadFileDTO
     {
-        public string StudentDni { get; set; }
+        public int StudentDni { get; set; }
         public IFormFile files { get; set; }
+
+
     }
 }
