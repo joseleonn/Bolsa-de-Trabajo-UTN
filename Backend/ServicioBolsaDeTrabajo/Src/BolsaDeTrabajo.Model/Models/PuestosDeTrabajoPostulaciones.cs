@@ -7,12 +7,19 @@ namespace BolsaDeTrabajo.Model.Models
 {
     public partial class PuestosDeTrabajoPostulaciones
     {
+        public PuestosDeTrabajoPostulaciones()
+        {
+            Usuarios = new HashSet<Usuarios>();
+        }
+
         public int IdPuestosDeTrabajoPostulaciones { get; set; }
         public int IdPuestoDeTrabajo { get; set; }
         public int IdPostulacion { get; set; }
-        public int? IdUsuario { get; set; }
+        public int IdUsuario { get; set; }
 
         public virtual Postulaciones IdPostulacionNavigation { get; set; }
         public virtual PuestosDeTrabajo IdPuestoDeTrabajoNavigation { get; set; }
+        public virtual Usuarios IdUsuarioNavigation { get; set; }
+        public virtual ICollection<Usuarios> Usuarios { get; set; }
     }
 }

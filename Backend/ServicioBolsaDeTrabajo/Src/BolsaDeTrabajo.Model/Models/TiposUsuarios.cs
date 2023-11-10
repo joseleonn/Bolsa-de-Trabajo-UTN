@@ -7,14 +7,7 @@ namespace BolsaDeTrabajo.Model.Models
 {
     public partial class TiposUsuarios
     {
-        public TiposUsuarios()
-        {
-            Usuarios = new HashSet<Usuarios>();
-        }
-
         public int IdTipo { get; set; }
         public string Descripcion { get; set; }
-
-        public virtual ICollection<Usuarios> Usuarios { get; set; }
     }
 }

@@ -46,8 +46,8 @@ namespace BolsaDeTrabajo.Data.Inmplementations
                             Email = newStudent.Email,
                             Contrasenia = newStudent.Contrasenia,
                             TipoUsuario = 1, /*Tipo alumno */
-                           
-
+                            CuitCuil = newStudent.CuitCuil,
+                            Carrera = newStudent.Carrera,
                         };
 
                         await _context.Usuarios.AddAsync(newUser);
