@@ -200,7 +200,7 @@ namespace BolsaDeTrabajo.Data.Inmplementations
                             {
                                 IdPuestoDeTrabajo = aplyJob.idJob,
                                 IdPostulacion = newAply.IdPostulacion,
-                                IdUsuario = student.IdUsuario,
+                                IdUsuarios = student.IdUsuario,
                             };
 
                             await _context.PuestosDeTrabajoPostulaciones.AddAsync(newJobAply);
@@ -233,7 +233,7 @@ namespace BolsaDeTrabajo.Data.Inmplementations
             }
 
             List<MyAplicatedJobsDTO> jobsAplicated = await _context.PuestosDeTrabajoPostulaciones
-                .Where(p => p.IdUsuario == idUser)
+                .Where(p => p.IdUsuarios == idUser)
                 .Join(_context.PuestosDeTrabajo, p => p.IdPuestoDeTrabajo, j => j.IdPuesto, (p, j) => new { p, j })
                 .Join(_context.Postulaciones, pj => pj.p.IdPostulacion, po => po.IdPostulacion, (pj, po) => new { pj.p, pj.j, po })
                 .Join(_context.Empresas, pjp => pjp.j.IdEmpresa, e => e.IdEmpresa, (pjp, e) => new MyAplicatedJobsDTO

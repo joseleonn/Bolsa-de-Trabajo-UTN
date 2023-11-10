@@ -20,7 +20,9 @@ namespace BolsaDeTrabajo.Model.Models
         public string Email { get; set; }
         public string Contrasenia { get; set; }
         public int TipoUsuario { get; set; }
+        public int? IdPuestosDeTrabajoPostulaciones { get; set; }
 
+        public virtual PuestosDeTrabajoPostulaciones IdPuestosDeTrabajoPostulacionesNavigation { get; set; }
         public virtual TiposUsuarios TipoUsuarioNavigation { get; set; }
         public virtual ICollection<Admins> Admins { get; set; }
         public virtual ICollection<Alumnos> Alumnos { get; set; }

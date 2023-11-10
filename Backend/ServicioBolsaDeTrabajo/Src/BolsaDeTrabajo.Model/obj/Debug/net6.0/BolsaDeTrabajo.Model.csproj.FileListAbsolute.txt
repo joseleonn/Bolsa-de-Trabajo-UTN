@@ -142,3 +142,5 @@ C:\Users\josec\Desktop\Bolsa-de-Trabajo-UTN\Backend\ServicioBolsaDeTrabajo\Src\B
 C:\Users\josec\Desktop\Bolsa-de-Trabajo-UTN\Backend\ServicioBolsaDeTrabajo\Src\BolsaDeTrabajo.Model\obj\Debug\net6.0\refint\BolsaDeTrabajo.Model.dll
 C:\Users\josec\Desktop\Bolsa-de-Trabajo-UTN\Backend\ServicioBolsaDeTrabajo\Src\BolsaDeTrabajo.Model\obj\Debug\net6.0\BolsaDeTrabajo.Model.pdb
 C:\Users\josec\Desktop\Bolsa-de-Trabajo-UTN\Backend\ServicioBolsaDeTrabajo\Src\BolsaDeTrabajo.Model\obj\Debug\net6.0\ref\BolsaDeTrabajo.Model.dll
+C:\Users\tomas\Desktop\Facultad\Bolsa-de-Trabajo-UTN\Backend\ServicioBolsaDeTrabajo\Src\BolsaDeTrabajo.Model\bin\Debug\net6.0\BolsaDeTrabajo.Model.runtimeconfig.json
+C:\Users\tomas\Desktop\Facultad\Bolsa-de-Trabajo-UTN\Backend\ServicioBolsaDeTrabajo\Src\BolsaDeTrabajo.Model\obj\Debug\net6.0\BolsaDeTrabajo.Model.genruntimeconfig.cache

@@ -34,6 +34,8 @@ namespace BolsaDeTrabajo.Model.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.UseCollation("Modern_Spanish_CI_AS");
+
             modelBuilder.Entity<Admins>(entity =>
             {
                 entity.HasKey(e => e.IdAdmin);
@@ -222,7 +224,7 @@ namespace BolsaDeTrabajo.Model.Models
 
                 entity.Property(e => e.IdPuestoDeTrabajo).HasColumnName("Id_PuestoDeTrabajo");
 
-                entity.Property(e => e.IdUsuario).HasColumnName("Id_Usuario");
+                entity.Property(e => e.IdUsuarios).HasColumnName("Id_Usuarios");
 
                 entity.HasOne(d => d.IdPostulacionNavigation)
                     .WithMany(p => p.PuestosDeTrabajoPostulaciones)
@@ -236,9 +238,9 @@ namespace BolsaDeTrabajo.Model.Models
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_PuestosDeTrabajo_Postulaciones_PuestosDeTrabajo");
 
-                entity.HasOne(d => d.IdUsuarioNavigation)
+                entity.HasOne(d => d.IdUsuariosNavigation)
                     .WithMany(p => p.PuestosDeTrabajoPostulaciones)
-                    .HasForeignKey(d => d.IdUsuario)
+                    .HasForeignKey(d => d.IdUsuarios)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_PuestosDeTrabajo_Postulaciones_Usuarios");
             });
@@ -327,7 +329,14 @@ namespace BolsaDeTrabajo.Model.Models
                     .IsRequired()
                     .HasMaxLength(255);
 
+                entity.Property(e => e.IdPuestosDeTrabajoPostulaciones).HasColumnName("id_PuestosDeTrabajo_Postulaciones");
+
                 entity.Property(e => e.TipoUsuario).HasColumnName("Tipo_Usuario");
+
+                entity.HasOne(d => d.IdPuestosDeTrabajoPostulacionesNavigation)
+                    .WithMany(p => p.Usuarios)
+                    .HasForeignKey(d => d.IdPuestosDeTrabajoPostulaciones)
+                    .HasConstraintName("FK_Usuarios_PuestosDeTrabajo_Postulaciones");
 
                 entity.HasOne(d => d.TipoUsuarioNavigation)
                     .WithMany(p => p.Usuarios)
