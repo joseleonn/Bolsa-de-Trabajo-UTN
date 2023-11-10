@@ -89,6 +89,17 @@ namespace BolsaDeTrabajo.Service.Inmplementations
             }
 
         }
+        public async Task ModifyCompanyAndUser(CompanyDTO company)
+        {
+            try
+            {
+                await _repository.ModifyCompanyAndUser(company);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("error en el service" + ex);
+            }
+        }
 
 
     }

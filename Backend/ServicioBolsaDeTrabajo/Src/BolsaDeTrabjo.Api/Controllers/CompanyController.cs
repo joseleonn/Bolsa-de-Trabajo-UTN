@@ -1,5 +1,6 @@
 ﻿using BolsaDeTrabajo.Model.DTOs;
 using BolsaDeTrabajo.Service.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -73,21 +74,19 @@ namespace BolsaDeTrabjo.Api.Controllers
             }
         }
 
+        [Authorize]
         [HttpPost]
-        [Route("/ModificarEmpresa")]
-
-        public async Task<IActionResult> ModifyCompany([FromBody] CompanyDTO company)
+        [Route("ModificarEmpresa")]
+        public async Task<IActionResult> ModifyCompanyAndUser([FromBody] CompanyDTO company)
         {
             try
             {
-                await _service.ModifyCompany(company);
-                return Ok(company);
-
+                await _service.ModifyCompanyAndUser(company);
+                return Ok();
             }
             catch (Exception ex)
             {
-                return BadRequest(new { error = ex.Message });
-
+                return BadRequest("Error al modificar: " + ex.Message);
             }
         }
     }
