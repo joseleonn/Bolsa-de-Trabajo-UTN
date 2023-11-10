@@ -20,6 +20,7 @@ namespace BolsaDeTrabajo.Data.Interfaces
         Task<byte[]> GetPDF(string studentDni);
 
         Task ModifyUserAndStudent(StudentDTO student);
-       
+        Task<bool> DeleteUserAndStudent(int id);
+
     }
 }

@@ -15,5 +15,7 @@ namespace BolsaDeTrabajo.Service.Interfaces
         Task<List<CompanyDTO>> GetAllCompanies();
         Task ModifyCompany(CompanyDTO company);
         Task ModifyCompanyAndUser(CompanyDTO company);
+
+        Task DeleteCompany(int id);
     }
 }

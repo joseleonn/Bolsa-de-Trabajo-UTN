@@ -46,8 +46,7 @@ namespace BolsaDeTrabajo.Data.Inmplementations
                             Email = newStudent.Email,
                             Contrasenia = newStudent.Contrasenia,
                             TipoUsuario = 1, /*Tipo alumno */
-                            CuitCuil = newStudent.CuitCuil,
-                            Carrera = newStudent.Carrera
+                           
 
                         };
 
@@ -102,8 +101,7 @@ namespace BolsaDeTrabajo.Data.Inmplementations
                        Email = usuario.Email,
                        Contrasenia = usuario.Contrasenia,
                        TipoUsuario = usuario.TipoUsuario,
-                       CuitCuil = usuario.CuitCuil,
-                       Carrera = usuario.Carrera,
+                       
                        Dni = alumno.Dni,
                        Nombre = alumno.Nombre,
                        Apellido = alumno.Apellido,
@@ -266,6 +264,37 @@ namespace BolsaDeTrabajo.Data.Inmplementations
             {
                 throw new Exception(ex.Message);
             }
+        }
+        public async Task<bool> DeleteUserAndStudent(int id)
+        {
+
+            Usuarios User = await _context.Usuarios.FirstOrDefaultAsync(u => u.IdUsuario == id);
+            Alumnos student = await _context.Alumnos.FirstOrDefaultAsync(s => s.IdUsuario == id);
+
+            if (student == null)
+            {
+                throw new Exception("El estudiante o el usuario no existe");
+            }
+
+            using (IDbContextTransaction transaction = _context.Database.BeginTransaction())
+            {
+                _context.Alumnos.Remove(student);
+                _context.Usuarios.Remove(User);
+
+
+                try
+                {
+                    await _context.SaveChangesAsync();
+                    transaction.Commit();
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    transaction.Rollback();
+                    throw new Exception("Error al borrar los datos" + ex);
+                }
+            }
+
         }
     }
 

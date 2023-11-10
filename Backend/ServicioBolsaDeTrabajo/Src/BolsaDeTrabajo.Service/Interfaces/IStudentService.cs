@@ -19,5 +19,6 @@ namespace BolsaDeTrabajo.Service.Interfaces
 
         Task<byte[]> GetPDF(string studentDni);
         Task ModifyUserAndStudent(StudentDTO student);
+        Task DeleteStudent(int id);
     }
 }

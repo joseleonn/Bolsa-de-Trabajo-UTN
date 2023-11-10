@@ -4,6 +4,7 @@ using BolsaDeTrabajo.Model.DTOs;
 using BolsaDeTrabajo.Model.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
+using Microsoft.EntityFrameworkCore.Storage;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -73,6 +74,35 @@ namespace BolsaDeTrabajo.Data.Inmplementations
             {
                 _context.Admins.Remove(admin);
                 await _context.SaveChangesAsync();
+            }
+        }
+        public async Task DeleteAdminAndUser(int id)
+        {
+            Usuarios User = await _context.Usuarios.FirstOrDefaultAsync(u => u.IdUsuario == id);
+            Admins admin = await _context.Admins.FirstOrDefaultAsync(s => s.IdUsuario == id);
+
+            if (admin == null)
+            {
+                throw new Exception("El estudiante o el usuario no existe");
+            }
+
+            using (IDbContextTransaction transaction = _context.Database.BeginTransaction())
+            {
+                _context.Admins.Remove(admin);
+                _context.Usuarios.Remove(User);
+
+
+                try
+                {
+                    await _context.SaveChangesAsync();
+                    transaction.Commit();
+
+                }
+                catch (Exception ex)
+                {
+                    transaction.Rollback();
+                    throw new Exception("Error al borrar los datos" + ex);
+                }
             }
         }
     }

@@ -19,6 +19,8 @@ namespace BolsaDeTrabajo.Model.Models
         public string Ciudad { get; set; }
         public string Direccion { get; set; }
         public string Email { get; set; }
+        public string CuitCuil { get; set; }
+        public string Carrera { get; set; }
 
         public virtual ICollection<EmpresasPuestos> EmpresasPuestos { get; set; }
     }

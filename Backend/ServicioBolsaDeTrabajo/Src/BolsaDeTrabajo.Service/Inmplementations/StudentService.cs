@@ -99,5 +99,19 @@ namespace BolsaDeTrabajo.Service.Inmplementations
                 throw new Exception("error en el service" + ex);
             }
         }
+
+        public async Task DeleteStudent(int id)
+        {
+            try
+            {
+                await _repository.DeleteUserAndStudent(id);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("error en el servicion" + ex);
+            }
+        }
+
+
     }
 }

@@ -77,8 +77,7 @@ namespace BolsaDeTrabajo.Data.Inmplementations
                             Email = newCompany.Email,
                             Contrasenia = newCompany.Contrasenia,
                             TipoUsuario = 2, /*Tipo empresa */
-                            CuitCuil = newCompany.CuitCuil,
-                            Carrera = newCompany.Carrera
+                          
 
                         };
 
@@ -131,7 +130,7 @@ namespace BolsaDeTrabajo.Data.Inmplementations
                     Ciudad = companyById.Ciudad,
                     Pais = companyById.Pais,
                     Direccion = companyById.Direccion,
-                    CuitCuil = ifUserExists.CuitCuil
+                    CuitCuil = ifExists.CuitCuil
 
                 };
                 return result;
@@ -230,6 +229,35 @@ namespace BolsaDeTrabajo.Data.Inmplementations
             catch (Exception ex)
             {
                 throw new Exception(ex.Message);
+            }
+        }
+
+        public async Task DeteleCompany(int id)
+        {
+            Usuarios User = await _context.Usuarios.FirstOrDefaultAsync(u => u.IdUsuario == id);
+            Empresas empresa = await _context.Empresas.FirstOrDefaultAsync(s => s.IdUsuario == id);
+
+            if (empresa == null)
+            {
+                throw new Exception("El estudiante o el usuario no existe");
+            }
+            using (IDbContextTransaction transaction = _context.Database.BeginTransaction())
+            {
+                _context.Empresas.Remove(empresa);
+                _context.Usuarios.Remove(User);
+
+
+                try
+                {
+                    await _context.SaveChangesAsync();
+                    transaction.Commit();
+
+                }
+                catch (Exception ex)
+                {
+                    transaction.Rollback();
+                    throw new Exception("Error al borrar los datos" + ex);
+                }
             }
         }
     }

@@ -103,5 +103,16 @@ namespace BolsaDeTrabajo.Service.Inmplementations
 
 
         }
+        public async Task DeleteAdminAndUser(int id)
+        {
+            try
+            {
+                await _adminRepository.DeleteAdminAndUser(id);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("error en el servicio" + ex);
+            }
+        }
     }
 }

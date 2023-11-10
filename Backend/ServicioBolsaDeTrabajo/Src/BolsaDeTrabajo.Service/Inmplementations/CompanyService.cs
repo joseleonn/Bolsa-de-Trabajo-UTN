@@ -100,7 +100,17 @@ namespace BolsaDeTrabajo.Service.Inmplementations
                 throw new Exception("error en el service" + ex);
             }
         }
-
+        public async Task DeleteCompany(int id)
+        {
+            try
+            {
+                await _repository.DeteleCompany(id);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("error en el servicion" + ex);
+            }
+        }
 
     }
 }

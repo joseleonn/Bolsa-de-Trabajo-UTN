@@ -47,7 +47,7 @@ export const DataProvider = ({ children }) => {
           contrasenia: data.contrasenia,
           celular: data.celular,
           CuitCuil: data.CuitCuil,
-          Carrera: "0"
+          Carrera: "0",
         }
       );
       // La empresa se creó con éxito
@@ -194,6 +194,54 @@ export const DataProvider = ({ children }) => {
     console.log(userData);
   }, [user, dataFetched]);
 
+  const handleDelete = async (userId, tipoUsuario) => {
+    try {
+      let apiUrl = "";
+
+      switch (tipoUsuario) {
+        case 1:
+          apiUrl = `https://localhost:7197/api/Student/${userId}`;
+          break;
+        case 2:
+          apiUrl = `https://localhost:7197/api/Company/${userId}`;
+          break;
+        case 3:
+          apiUrl = `https://localhost:7197/api/Admin/DeleteAdminAndUser/${userId}`;
+          break;
+        default:
+          console.error("Tipo de usuario no reconocido");
+          return;
+      }
+
+      // Inicia el estado de carga
+      toggleLoading(true);
+
+      await axios.delete(apiUrl, {
+        headers: {
+          Authorization: `Bearer ${user.token}`,
+        },
+      });
+
+      // Finaliza el estado de carga
+      toggleLoading(false);
+
+      // Elimina el usuario de la lista
+      const updatedUserData = userData.filter((user) => user.id !== userId);
+      setUserData(updatedUserData);
+
+      // Muestra el mensaje de éxito
+      successMessage(`El usuario se eliminó con éxito.`);
+    } catch (error) {
+      console.error("Error al borrar usuario", error);
+
+      // Finaliza el estado de carga en caso de error
+      toggleLoading(false);
+
+      // Muestra el mensaje de error
+      errorMessage(`Ocurrió un error al borrar el usuario.`);
+    }
+  };
+
   return (
     <DataContext.Provider
       value={{
@@ -206,6 +254,7 @@ export const DataProvider = ({ children }) => {
         crearEmpresa,
         crearEstudiante,
         userData,
+        handleDelete,
       }}
     >
       {children}

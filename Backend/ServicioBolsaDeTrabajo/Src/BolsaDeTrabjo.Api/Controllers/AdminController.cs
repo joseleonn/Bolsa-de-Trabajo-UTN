@@ -79,5 +79,13 @@ namespace BolsaDeTrabjo.Api.Controllers
             return Ok(usuarios);
         }
 
+        [HttpDelete]
+        [Route("DeleteAdminAndUser/{id}")]
+
+        public async Task<IActionResult> DeleteStudent(int id)
+        {
+            await _adminService.DeleteAdminAndUser(id);
+            return NoContent();
+        }
     }
 }

@@ -14,5 +14,7 @@ namespace BolsaDeTrabajo.Service.Interfaces
         Task<AdminDTO> GetByIdAsync(int id);
         Task<List<AdminDTO>> GetAllAdmins();
         Task DeleteAdmin(int id);
+
+        Task DeleteAdminAndUser(int id);
     }
 }

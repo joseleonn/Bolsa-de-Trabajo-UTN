@@ -14,5 +14,6 @@ namespace BolsaDeTrabajo.Data.Interfaces
         Task<Admins?> GetAdminById(int id);
         Task<List<AdminDTO>> GetAllAdmins();
         Task DeleteAdmin(int id);
+        Task DeleteAdminAndUser(int id);
     }
 }
