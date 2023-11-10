@@ -1,4 +1,5 @@
 ﻿using BolsaDeTrabajo.Model.DTOs;
+using BolsaDeTrabajo.Service.Helpers;
 using BolsaDeTrabajo.Service.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -13,10 +14,11 @@ namespace BolsaDeTrabjo.Api.Controllers
     {
 
         private readonly IStudentService _service;
-
-        public StudentController(IStudentService service)
+        private readonly IEncryptHelper _encryptHelper;
+        public StudentController(IStudentService service, IEncryptHelper encryptHelper)
         {
             _service = service;
+            _encryptHelper = encryptHelper;
         }
 
         [HttpGet]

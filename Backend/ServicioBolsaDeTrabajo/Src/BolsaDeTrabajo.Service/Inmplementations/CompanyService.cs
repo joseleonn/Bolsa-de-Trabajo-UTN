@@ -1,5 +1,6 @@
 ﻿using BolsaDeTrabajo.Data.Interfaces;
 using BolsaDeTrabajo.Model.DTOs;
+using BolsaDeTrabajo.Service.Helpers;
 using BolsaDeTrabajo.Service.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -12,14 +13,19 @@ namespace BolsaDeTrabajo.Service.Inmplementations
     public class CompanyService : ICompanyService
     {
         private readonly ICompanyRepository _repository;
-        public CompanyService(ICompanyRepository repository)
+        private readonly IEncryptHelper _encrypt;
+        public CompanyService(ICompanyRepository repository,IEncryptHelper encrypt)
         {
             _repository = repository;
+            _encrypt = encrypt;
         }
         public async Task AddCompany(NewCompanyDTO company)
         {
             if (company != null)
             {
+                string hashedPassword = _encrypt.GetSHA256(company.Contrasenia);
+
+                company.Contrasenia = hashedPassword;
                 await _repository.AddCompany(company);
             }
             else
