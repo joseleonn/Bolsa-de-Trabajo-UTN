@@ -33,6 +33,8 @@ const FormEstudiantes = () => {
         pais: data.pais,
         ciudad: data.ciudad,
         direccion: data.direccion,
+        CuitCuil: data.CuitCuil,
+        carrera: data.carrera,
       };
 
       // Llama a la función para crear un estudiante, pasando los datos
@@ -341,6 +343,67 @@ const FormEstudiantes = () => {
                   </span>
                 )}
               </div>
+            </div>
+            <div>
+              <label
+                htmlFor="CuitCuil"
+                className="sr-only dark:text-[#f3f3f3] light:text-[#15171a]"
+              >
+                CuitCuil
+              </label>
+              <div className="relative">
+                <input
+                  type="text"
+                  className={`w-full rounded-lg p-4 text-sm shadow-sm ${
+                    errors.CuitCuil ? "border-red-500" : ""
+                  } light:text-[#15171a] dark:text-[#f3f3f3]`}
+                  placeholder="Número de CUIL"
+                  {...register("CuitCuil", {
+                    required: "El CUIL es requerido",
+                    pattern: {
+                      value: /^\d{11}$/,
+                      message: "El CUIL debe contener 11 dígitos numéricos",
+                    },
+                  })}
+                />
+                {errors.CuitCuil && (
+                  <span className="text-[#F31260] text-sm font-epilogue">
+                    {errors.CuitCuil.message}
+                  </span>
+                )}
+              </div>
+            </div>
+            <div>
+              <label
+                htmlFor="carrera"
+                className="sr-only dark:text-[#f3f3f3] light:text-[#15171a]"
+              >
+              Carrera
+              </label>
+                <div className="relative">
+                  <select
+                    className={`w-full rounded-lg p-4 text-sm shadow-sm ${
+                      errors.carrera ? "border-red-500" : ""
+                    } light:text-[#15171a] dark:text-[#f3f3f3]`}
+                    {...register("carrera", {
+                      required: "Debes seleccionar una carrera",
+                    })}
+                    >
+                    <option value="">Selecciona una Ingenieria</option>
+                    <option value="Sistemas">Sistemas</option>
+                    <option value="Quimica">Quimica</option>
+                    <option value="Industrial">Industrial</option>
+                    <option value="Mecanica">Mecanica</option>
+                    <option value="Electrónica">Electrónica</option>
+                    <option value="Electrica">Electrica</option>
+                    {/* Agrega más opciones de carrera según tus necesidades */}
+                  </select>
+                  {errors.carrera && (
+                    <span className="text-[#F31260] text-sm font-epilogue">
+                      {errors.carrera.message}
+                    </span>
+                  )}
+                </div>
             </div>
 
             <div className="col-span-2 flex justify-between items-center">

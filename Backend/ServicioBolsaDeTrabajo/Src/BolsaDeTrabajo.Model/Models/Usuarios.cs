@@ -21,7 +21,7 @@ namespace BolsaDeTrabajo.Model.Models
         public string Contrasenia { get; set; }
         public int TipoUsuario { get; set; }
         public int? IdPuestosDeTrabajoPostulaciones { get; set; }
-        public int? CuitCuil { get; set; }
+        public string CuitCuil { get; set; }
         public string Carrera { get; set; }
 
         public virtual PuestosDeTrabajoPostulaciones IdPuestosDeTrabajoPostulacionesNavigation { get; set; }

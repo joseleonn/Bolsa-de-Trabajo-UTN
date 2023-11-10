@@ -25,5 +25,7 @@ namespace BolsaDeTrabajo.Model.DTOs
         public string Contrasenia { get; set; }
       
         public string Celular { get; set; }
+        public string CuitCuil { get; set; }
+        public string Carrera { get; set; }
     }
 }

@@ -21,5 +21,7 @@ namespace BolsaDeTrabajo.Model.DTOs
         public string Pais { get; set; }
         public string Ciudad { get; set; }
         public string Direccion { get; set; }
+        public string CuitCuil { get; set; }
+        public string Carrera { get; set; }
     }
 }

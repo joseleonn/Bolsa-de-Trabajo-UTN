@@ -20,6 +20,8 @@ export const DataProvider = ({ children }) => {
     ciudad: "",
     direccion: "",
     curriculum: "",
+    CuitCuil: "",
+    carrera: "",
   });
   const [jobsAplicated, setJobsAplicated] = useState([]);
   const { toggleLoading, isLoading } = useLoading();
@@ -44,6 +46,8 @@ export const DataProvider = ({ children }) => {
           email: data.email,
           contrasenia: data.contrasenia,
           celular: data.celular,
+          CuitCuil: data.CuitCuil,
+          Carrera: "0"
         }
       );
       // La empresa se creó con éxito
@@ -64,7 +68,6 @@ export const DataProvider = ({ children }) => {
         "https://localhost:7197/api/Student/CrearUsuarioEstudiante",
         {
           email: data.email,
-
           contrasenia: data.contrasenia,
           curriculum: null,
           dni: data.dni,
@@ -75,6 +78,8 @@ export const DataProvider = ({ children }) => {
           pais: data.pais,
           ciudad: data.ciudad,
           direccion: data.direccion,
+          CuitCuil: data.CuitCuil,
+          carrera: data.carrera,
         }
       );
       /*"email": "string",
@@ -200,7 +205,6 @@ export const DataProvider = ({ children }) => {
         setJobsAplicated,
         crearEmpresa,
         crearEstudiante,
-
         userData,
       }}
     >

@@ -46,6 +46,8 @@ namespace BolsaDeTrabajo.Data.Inmplementations
                             Email = newStudent.Email,
                             Contrasenia = newStudent.Contrasenia,
                             TipoUsuario = 1, /*Tipo alumno */
+                            CuitCuil = newStudent.CuitCuil,
+                            Carrera = newStudent.Carrera
 
                         };
 
@@ -100,6 +102,8 @@ namespace BolsaDeTrabajo.Data.Inmplementations
                        Email = usuario.Email,
                        Contrasenia = usuario.Contrasenia,
                        TipoUsuario = usuario.TipoUsuario,
+                       CuitCuil = usuario.CuitCuil,
+                       Carrera = usuario.Carrera,
                        Dni = alumno.Dni,
                        Nombre = alumno.Nombre,
                        Apellido = alumno.Apellido,

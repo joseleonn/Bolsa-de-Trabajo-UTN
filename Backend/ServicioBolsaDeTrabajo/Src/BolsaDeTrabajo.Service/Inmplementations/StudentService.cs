@@ -25,9 +25,7 @@ namespace BolsaDeTrabajo.Service.Inmplementations
             try
             {
                 string hashedPassword = _encrypt.GetSHA256(student.Contrasenia);
-
                 student.Contrasenia = hashedPassword;
-
 
                 await _repository.AddUserAndStudent(student);
 

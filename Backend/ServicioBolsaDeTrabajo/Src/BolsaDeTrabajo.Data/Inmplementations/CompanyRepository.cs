@@ -77,6 +77,8 @@ namespace BolsaDeTrabajo.Data.Inmplementations
                             Email = newCompany.Email,
                             Contrasenia = newCompany.Contrasenia,
                             TipoUsuario = 2, /*Tipo empresa */
+                            CuitCuil = newCompany.CuitCuil,
+                            Carrera = newCompany.Carrera
 
                         };
 
@@ -116,7 +118,7 @@ namespace BolsaDeTrabajo.Data.Inmplementations
         public async Task<CompanyDTO> GetCompanyById(int id)
         {
             Empresas ifExists = await _context.Empresas.FirstOrDefaultAsync(e => e.IdEmpresa == id);
-
+            Usuarios ifUserExists = await _context.Usuarios.FirstOrDefaultAsync(e =>e.Email == ifExists.Email);
             if (ifExists != null)
             {
                 Empresas companyById = await _context.Empresas.FindAsync(id);
@@ -128,7 +130,8 @@ namespace BolsaDeTrabajo.Data.Inmplementations
                     Nombre = companyById.Nombre,
                     Ciudad = companyById.Ciudad,
                     Pais = companyById.Pais,
-                    Direccion = companyById.Direccion
+                    Direccion = companyById.Direccion,
+                    CuitCuil = ifUserExists.CuitCuil
 
                 };
                 return result;
@@ -183,6 +186,51 @@ namespace BolsaDeTrabajo.Data.Inmplementations
             }
 
         }
+        public async Task ModifyCompanyAndUser(CompanyDTO company)
+        {
+            try
+            {
+                Usuarios ifUserExist = await _context.Usuarios.FirstOrDefaultAsync(u => u.Email == company.Email);
+                Empresas ifCompanyExist = await _context.Empresas.FirstOrDefaultAsync(a => a.Email == company.Email);
 
+                if (ifUserExist == null)
+                {
+                    throw new Exception("El Email de usuario no fue encontrado");
+                }
+                if (ifCompanyExist == null)
+                {
+                    throw new Exception("El Email de empresa no fue encontrado");
+                }
+                ifUserExist.Email = company.Email;
+                ifUserExist.Contrasenia = ifUserExist.Contrasenia;
+                ifUserExist.TipoUsuario = ifUserExist.TipoUsuario;
+
+                ifCompanyExist.Nombre = company.Nombre;
+                ifCompanyExist.Pais = company.Pais;
+                ifCompanyExist.Ciudad = company.Ciudad;
+                ifCompanyExist.Direccion = company.Direccion;
+                ifCompanyExist.Email = company.Email;
+
+                using (IDbContextTransaction transaction = _context.Database.BeginTransaction())
+                {
+                    try
+                    {
+                        await _context.SaveChangesAsync();
+
+                        transaction.Commit();
+                    }
+                    catch (Exception ex)
+                    {
+                        transaction.Rollback();
+                        throw new Exception(ex.Message);
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
     }
 }

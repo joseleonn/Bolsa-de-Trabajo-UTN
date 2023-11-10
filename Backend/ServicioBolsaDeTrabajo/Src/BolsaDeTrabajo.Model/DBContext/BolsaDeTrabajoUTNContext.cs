@@ -327,7 +327,9 @@ namespace BolsaDeTrabajo.Model.Models
                     .IsRequired()
                     .HasMaxLength(255);
 
-                entity.Property(e => e.CuitCuil).HasColumnName("cuit_cuil");
+                entity.Property(e => e.CuitCuil)
+                    .HasMaxLength(11)
+                    .HasColumnName("cuit_cuil");
 
                 entity.Property(e => e.Email)
                     .IsRequired()

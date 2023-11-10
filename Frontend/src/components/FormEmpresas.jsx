@@ -31,6 +31,8 @@ const FormEmpresas = () => {
         email: data.email,
         contrasenia: data.contrasenia,
         celular: data.celular,
+        CuitCuil: data.CuitCuil,
+        Carrera: null,
       };
       const result = await crearEmpresa(empresaData);
     } catch (error) {
@@ -247,6 +249,36 @@ const FormEmpresas = () => {
                 {errors.celular && (
                   <span className="text-[#F31260] text-sm font-epilogue">
                     {errors.celular.message}
+                  </span>
+                )}
+              </div>
+            </div>
+            <div>
+              <label
+                htmlFor="CuitCuil"
+                className="sr-only dark:text-[#f3f3f3] light:text-[#15171a]"
+              >
+                CUIT
+              </label>
+              <div className="relative">
+                <input
+                  type="text"
+                  className={`w-full rounded-lg p-4 text-sm shadow-sm ${
+                    errors.CuitCuil ? "border-red-500" : ""
+                  } light:text-[#15171a] dark:text-[#f3f3f3]`}
+                  placeholder="Número de CUIT"
+                  {...register("CuitCuil", {
+                    required: "El CUIT es requerido",
+                    pattern: {
+                      value: /^[0-9]{11}$/,
+                      message:
+                        "El número de CUIT debe contener exactamente 11 dígitos numéricos",
+                    },
+                  })}
+                />
+                {errors.CuitCuil && (
+                  <span className="text-[#F31260] text-sm font-epilogue">
+                    {errors.CuitCuil.message}
                   </span>
                 )}
               </div>
