@@ -12,3 +12,6 @@ export { default as ChangePasswordForm } from "./ChangePassword/ChangePasswordFo
 export { default as UpdateUser } from "./UpdateUser";
 export { default as BotButton } from "./BotButton";
 export { default as AdminABM } from "./AdminABM";
+export { default as CreateUserAdmin } from "./CreateUserAdmin";
+export { default as ModalCreateAdmin } from "./ModalCreateAdmin";
+export { default as CreateStudent } from "./CreateStudent";

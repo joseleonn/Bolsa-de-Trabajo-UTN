@@ -9,6 +9,9 @@ import {
   Sidebar,
   UpdateUser,
   AdminABM,
+  ModalCreateAdmin,
+  CreateUserAdmin,
+  CreateStudent,
 } from "./components";
 import {
   AdminPanel,

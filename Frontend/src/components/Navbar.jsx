@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { search, menu, UTN_logo, UTNletra } from "../assets";
 import CustomButton from "./CustomButton";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { navlinks } from "../constants";
 import { motion } from "framer-motion";
 import { useAuth } from "../context/AuthContext";
 import { Button } from "@nextui-org/react";
+import ModalCreateAdmin from "./ModalCreateAdmin";
 
 const itemVariants = {
   open: {
@@ -20,6 +21,7 @@ const Navbar = () => {
   const navigate = useNavigate();
   const { isLogin, logout } = useAuth();
   const { user } = useAuth();
+  const location = useLocation();
   const handleLogout = () => {
     logout();
   };
@@ -43,6 +45,9 @@ const Navbar = () => {
       <div className="sm:flex hidden gap-4 ">
         {isLogin ? (
           <>
+            {location.pathname === "/Admin" && user.tipoUsuario === "3" && (
+              <ModalCreateAdmin />
+            )}
             <Link to="/">
               <Button
                 color="danger"
@@ -99,6 +104,9 @@ const Navbar = () => {
               Admin Panel
             </Button>
           </Link>
+        )}
+        {location.pathname === "/Admin" && user.tipoUsuario === "3" && (
+          <ModalCreateAdmin />
         )}
         <motion.nav
           initial={false}
