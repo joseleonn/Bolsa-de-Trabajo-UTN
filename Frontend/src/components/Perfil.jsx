@@ -23,7 +23,7 @@ const Perfil = () => {
 
   const UploadCurriculum = async () => {
     if (selectedFile) {
-      await addCurriculum(selectedFile, studentData.dni);
+      await addCurriculum(selectedFile, user.idUser);
     } else {
       alert('No se seleccionó ningún archivo');
     }
@@ -62,7 +62,7 @@ const Perfil = () => {
                       color="default"
                       size="sm"
                       className="p-[10px]"
-                      onPress={() => seeCV(studentData.dni)}
+                      onPress={() => seeCV(user.idUser)}
                     >
                       Ver Curriculum
                     </Button>

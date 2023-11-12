@@ -3,6 +3,7 @@ using BolsaDeTrabajo.Service.Helpers;
 using BolsaDeTrabajo.Service.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -55,35 +56,37 @@ namespace BolsaDeTrabjo.Api.Controllers
         [Route("CargarCurriculum")]
         public async Task<IActionResult> PostPDF([FromForm] UploadFileDTO obj)
         {
-
             try
             {
-                if (obj.files == null || obj.files.Length == 0)
+                if (obj.files == null || obj.files.Length < 0)
                 {
-                    return BadRequest("No se cargo ningun archivo");
+                    return BadRequest("No se cargó ningún archivo");
                 }
 
-                // Lee el archivo y conviértelo en un array de bytes
                 using MemoryStream ms = new MemoryStream();
                 await obj.files.CopyToAsync(ms);
                 byte[] fileBytes = ms.ToArray();
 
-                Byte64DTO newCV = new Byte64DTO()
-                {
-                    StudentDni = obj.StudentDni,
-                    files = fileBytes
-                };
-                await _service.PostPDF(newCV);
+                await _service.PostPDF(fileBytes, obj.StudentDni);
 
                 return Ok();
             }
+            catch (FileNotFoundException ex)
+            {
+                return BadRequest("Archivo no encontrado: " + ex.Message);
+            }
+            catch (DbUpdateException ex)
+            {
+                // Maneja específicamente las excepciones relacionadas con la base de datos
+                return BadRequest("Error de base de datos: " + ex.Message);
+            }
             catch (Exception ex)
             {
-
-                return BadRequest(ex.Message);
+                // Captura cualquier otra excepción no manejada
+                return BadRequest("Error desconocido: " + ex.Message);
             }
-
         }
+
         [Authorize]
         [HttpGet]
         [Route("VerCurriculum/{studentDni}")]

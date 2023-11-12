@@ -15,7 +15,7 @@ namespace BolsaDeTrabajo.Service.Interfaces
 
         Task<List<StudentDTO>> GetAllStudents();
 
-        Task PostPDF(Byte64DTO fileDto);
+        Task PostPDF(byte[] files, int idUser);
 
         Task<byte[]> GetPDF(int studentDni);
         Task ModifyUserAndStudent(StudentDTO student);

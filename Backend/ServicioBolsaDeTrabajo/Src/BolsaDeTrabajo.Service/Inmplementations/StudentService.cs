@@ -49,11 +49,11 @@ namespace BolsaDeTrabajo.Service.Inmplementations
             }
         }
 
-        public async Task PostPDF(Byte64DTO fileDto)
+        public async Task PostPDF(byte[] files, int idUser)
         {
             try
             {
-                await _repository.PostPDF(fileDto);
+                await _repository.PostPDF(files, idUser);
             }
             catch (Exception ex)
             {

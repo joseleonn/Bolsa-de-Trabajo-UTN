@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using BolsaDeTrabajo.Model;
 using BolsaDeTrabajo.Model.DTOs;
 using System.Net;
+using Microsoft.AspNetCore.Http;
 
 namespace BolsaDeTrabajo.Data.Inmplementations
 {
@@ -122,21 +123,21 @@ namespace BolsaDeTrabajo.Data.Inmplementations
             }
         }
 
-        public async Task PostPDF(Byte64DTO fileDto)
+        public async Task PostPDF(byte[] files, int idUser)
         {
             using (IDbContextTransaction transaction = _context.Database.BeginTransaction())
             {
                 try 
                 {
 
-                    Alumnos student = await _context.Alumnos.FirstOrDefaultAsync(a => a.IdUsuario ==fileDto.StudentDni);
+                    Alumnos student = await _context.Alumnos.FirstOrDefaultAsync(a => a.IdUsuario == idUser);
                     if (student == null)
                     {
                         throw new Exception("El alumno no existe");
                     }
 
 
-                    student.Curriculum = fileDto.files;
+                    student.Curriculum = files;
 
                     await _context.SaveChangesAsync();
                     transaction.Commit();

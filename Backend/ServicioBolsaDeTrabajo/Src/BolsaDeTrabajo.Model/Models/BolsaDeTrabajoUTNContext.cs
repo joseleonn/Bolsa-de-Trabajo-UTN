@@ -69,10 +69,6 @@ namespace BolsaDeTrabajo.Model.Models
                     .IsRequired()
                     .HasMaxLength(255);
 
-                entity.Property(e => e.Carrera)
-                    .HasMaxLength(255)
-                    .IsUnicode(false);
-
                 entity.Property(e => e.Celular)
                     .IsRequired()
                     .HasMaxLength(255);
