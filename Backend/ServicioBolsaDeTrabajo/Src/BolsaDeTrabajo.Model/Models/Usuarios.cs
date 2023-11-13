@@ -23,6 +23,7 @@ namespace BolsaDeTrabajo.Model.Models
         public int? IdPuestosDeTrabajoPostulaciones { get; set; }
         public string CuitCuil { get; set; }
         public int IdCarrera { get; set; }
+        public int Estado { get; set; }
 
         public virtual PuestosDeTrabajoPostulaciones IdPuestosDeTrabajoPostulacionesNavigation { get; set; }
         public virtual ICollection<Admins> Admins { get; set; }

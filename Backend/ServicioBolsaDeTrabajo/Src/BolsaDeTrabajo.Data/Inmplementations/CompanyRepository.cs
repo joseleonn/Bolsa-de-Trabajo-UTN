@@ -79,6 +79,7 @@ namespace BolsaDeTrabajo.Data.Inmplementations
                             TipoUsuario = 2, /*Tipo empresa */
                             CuitCuil = newCompany.CuitCuil,
                             IdCarrera = newCompany.Carrera,
+                            Estado = 1,
                         };
 
                         await _context.Usuarios.AddAsync(newUser);
@@ -117,7 +118,7 @@ namespace BolsaDeTrabajo.Data.Inmplementations
         public async Task<CompanyDTO> GetCompanyById(int id)
         {
             Empresas ifExists = await _context.Empresas.FirstOrDefaultAsync(e => e.IdEmpresa == id);
-            Usuarios ifUserExists = await _context.Usuarios.FirstOrDefaultAsync(e =>e.Email == ifExists.Email);
+            Usuarios ifUserExists = await _context.Usuarios.FirstOrDefaultAsync(e =>e.Email == ifExists.Email && e.Estado == 1);
             if (ifExists != null)
             {
                 Empresas companyById = await _context.Empresas.FindAsync(id);
@@ -189,7 +190,7 @@ namespace BolsaDeTrabajo.Data.Inmplementations
         {
             try
             {
-                Usuarios ifUserExist = await _context.Usuarios.FirstOrDefaultAsync(u => u.Email == company.Email);
+                Usuarios ifUserExist = await _context.Usuarios.FirstOrDefaultAsync(u => u.Email == company.Email && u.Estado == 1);
                 Empresas ifCompanyExist = await _context.Empresas.FirstOrDefaultAsync(a => a.Email == company.Email);
 
                 if (ifUserExist == null)
@@ -234,17 +235,16 @@ namespace BolsaDeTrabajo.Data.Inmplementations
 
         public async Task DeteleCompany(int id)
         {
-            Usuarios User = await _context.Usuarios.FirstOrDefaultAsync(u => u.IdUsuario == id);
+            Usuarios User = await _context.Usuarios.FirstOrDefaultAsync(u => u.IdUsuario == id && u.Estado == 1);
             Empresas empresa = await _context.Empresas.FirstOrDefaultAsync(s => s.IdUsuario == id);
 
             if (empresa == null)
             {
-                throw new Exception("El estudiante o el usuario no existe");
+                throw new Exception("La empresa o el usuario no existe");
             }
             using (IDbContextTransaction transaction = _context.Database.BeginTransaction())
             {
-                _context.Empresas.Remove(empresa);
-                _context.Usuarios.Remove(User);
+                User.Estado = 2;
 
 
                 try

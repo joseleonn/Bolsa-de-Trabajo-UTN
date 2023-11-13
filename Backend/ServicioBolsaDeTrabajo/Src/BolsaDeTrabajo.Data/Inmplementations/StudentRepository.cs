@@ -49,6 +49,7 @@ namespace BolsaDeTrabajo.Data.Inmplementations
                             TipoUsuario = 1, /*Tipo alumno */
                             CuitCuil = newStudent.CuitCuil,
                             IdCarrera = newStudent.Carrera,
+                            Estado = 1,
                         };
 
                         await _context.Usuarios.AddAsync(newUser);
@@ -181,7 +182,7 @@ namespace BolsaDeTrabajo.Data.Inmplementations
         {
             try
             {
-                Usuarios user = await _context.Usuarios.FirstOrDefaultAsync(u => u.IdUsuario == id);
+                Usuarios user = await _context.Usuarios.FirstOrDefaultAsync(u => u.IdUsuario == id && u.Estado == 1);
                 Alumnos student = await _context.Alumnos.FirstOrDefaultAsync(a=> a.IdUsuario == id);
 
                 if (student !=null)
@@ -220,7 +221,7 @@ namespace BolsaDeTrabajo.Data.Inmplementations
         {
             try
             {
-                Usuarios ifUserExist = await _context.Usuarios.FirstOrDefaultAsync(u => u.Email == student.Email);
+                Usuarios ifUserExist = await _context.Usuarios.FirstOrDefaultAsync(u => u.Email == student.Email && student.Estado == 1);
                 Alumnos ifStudentExist = await _context.Alumnos.FirstOrDefaultAsync(a => a.Dni == student.Dni);
 
                 if (ifStudentExist == null) {
@@ -278,9 +279,7 @@ namespace BolsaDeTrabajo.Data.Inmplementations
 
             using (IDbContextTransaction transaction = _context.Database.BeginTransaction())
             {
-                _context.Alumnos.Remove(student);
-                _context.Usuarios.Remove(User);
-
+                User.Estado = 2;
 
                 try
                 {
