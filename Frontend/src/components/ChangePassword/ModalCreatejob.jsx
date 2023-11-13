@@ -13,7 +13,7 @@ const ModalCreateJob = () => {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   return (
     <>
-      <Button color="primary" size="lg" onPress={onOpen}>
+      <Button color="primary" size="md" fullWidth onPress={onOpen}>
         Crear Trabajo
       </Button>
       <Modal

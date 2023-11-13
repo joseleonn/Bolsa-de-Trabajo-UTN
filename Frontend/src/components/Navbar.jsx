@@ -157,6 +157,7 @@ const Navbar = () => {
             <li>
               {isLogin ? (
                 <>
+                  {user.tipoUsuario === '2' && <ModalCreateJob />}
                   {user.tipoUsuario === '3' && (
                     <Link to="/Admin">
                       <Button color="primary" fullWidth size="md">

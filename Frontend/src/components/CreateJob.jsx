@@ -15,14 +15,14 @@ const carreraOptions = {
 
 const CreateJob = () => {
   const { addjob, empresa } = useData();
-  const { user } = useAuth();
+  const { user } = useAuth(empresa.idEmpresa);
   // Find the company that matches the idUser
-  const matchingCompany = empresa.find(
-    (comp) => comp.idUsuario.toString() === user.idUser
-  );
-  console.log(matchingCompany);
-  // Extract idEmpresa if matchingCompany exists, otherwise set to null
-  const Empresaid = matchingCompany ? matchingCompany.idEmpresa : null;
+  //const matchingCompany = empresa.find(
+  //  (comp) => comp.idUsuario.toString() === user.idUser
+  //);
+  //console.log(matchingCompany);
+  //// Extract idEmpresa if matchingCompany exists, otherwise set to null
+  //const Empresaid = matchingCompany ? matchingCompany.idEmpresa : null;
 
   const {
     handleSubmit,
@@ -33,7 +33,7 @@ const CreateJob = () => {
   const onSubmit = async (data) => {
     try {
       const jobData = {
-        idEmpresa: Empresaid,
+        idEmpresa: empresa.idEmpresa,
         descripcion: data.descripcion,
         titulo: data.titulo,
         disponible: true, // Convert string to boolean
