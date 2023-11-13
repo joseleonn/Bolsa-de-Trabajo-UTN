@@ -6,8 +6,11 @@ import useNotify from "../hooks/useNotify";
 const DataContext = createContext();
 
 const student = "1";
+const empresa = "2";
 export const DataProvider = ({ children }) => {
   const [jobs, setJobs] = useState([]);
+  const [empresa, setEmpresa] = useState([]);
+
   const [userData, setUserData] = useState({});
   const [studentData, setStudentData] = useState({
     email: "",
@@ -128,6 +131,27 @@ export const DataProvider = ({ children }) => {
 
     getJobs();
   }, [jobs, user]);
+  useEffect(() => {
+    const getEmpresas = async () => {
+      {
+        try {
+          const response = await axios.get(
+            "https://localhost:7197/ListaEmpresas",
+            {
+              headers: {
+                Authorization: `Bearer ${user.token}`, // Agrega el token JWT en el encabezado 'Authorization'
+              },
+            }
+          );
+          setEmpresa([...response.data]);
+        } catch (error) {
+          console.error("Error al traer empresas", error);
+        }
+      }
+    };
+
+    getEmpresas();
+  }, [user]);
 
   useEffect(() => {
     const getDataStudent = async () => {
@@ -244,6 +268,28 @@ export const DataProvider = ({ children }) => {
     }
   };
 
+  const addjob = async (data) => {
+    try {
+      toggleLoading(true);
+      console.log(data);
+
+      const response = await axios.post("https://localhost:7197/CargarEmpleo", {
+        idEmpresa: data.idEmpresa,
+        idUsuario: user.idUser,
+        descripcion: data.descripcion,
+        titulo: data.titulo,
+        carrera: data.carrera,
+      });
+      // La empresa se creó con éxito
+      successMessage("El puesto se creó con éxito.");
+    } catch (error) {
+      // Manejar errores de la solicitud
+      errorMessage("Ocurrió un error al crear el puesto.");
+    } finally {
+      toggleLoading(false); // Finalizar el estado de carga
+    }
+  };
+
   return (
     <DataContext.Provider
       value={{
@@ -257,6 +303,8 @@ export const DataProvider = ({ children }) => {
         crearEstudiante,
         userData,
         handleDelete,
+        addjob,
+        empresa,
       }}
     >
       {children}

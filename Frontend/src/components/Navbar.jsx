@@ -7,6 +7,7 @@ import { motion } from "framer-motion";
 import { useAuth } from "../context/AuthContext";
 import { Button } from "@nextui-org/react";
 import ModalCreateAdmin from "./ModalCreateAdmin";
+import ModalCreateJob from "./ChangePassword/ModalCreatejob";
 
 const itemVariants = {
   open: {
@@ -48,6 +49,7 @@ const Navbar = () => {
             {location.pathname === "/Admin" && user.tipoUsuario === "3" && (
               <ModalCreateAdmin />
             )}
+            {user.tipoUsuario === "2" && <ModalCreateJob />}
             <Link to="/">
               <Button
                 color="danger"
