@@ -4081,19 +4081,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\josec\\.nuget\\packages\\": {}
+    "C:\\Users\\tomia\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\josec\\OneDrive\\Escritorio\\Bolsa-de-Trabajo-UTN\\Backend\\ServicioBolsaDeTrabajo\\Src\\BolsaDeTrabjo.Api\\BolsaDeTrabjo.Api.csproj",
+      "projectUniqueName": "C:\\Users\\tomia\\OneDrive\\Escritorio\\Bolsa-de-Trabajo-UTN\\Backend\\ServicioBolsaDeTrabajo\\Src\\BolsaDeTrabjo.Api\\BolsaDeTrabjo.Api.csproj",
       "projectName": "BolsaDeTrabjo.Api",
-      "projectPath": "C:\\Users\\josec\\OneDrive\\Escritorio\\Bolsa-de-Trabajo-UTN\\Backend\\ServicioBolsaDeTrabajo\\Src\\BolsaDeTrabjo.Api\\BolsaDeTrabjo.Api.csproj",
-      "packagesPath": "C:\\Users\\josec\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\josec\\OneDrive\\Escritorio\\Bolsa-de-Trabajo-UTN\\Backend\\ServicioBolsaDeTrabajo\\Src\\BolsaDeTrabjo.Api\\obj\\",
+      "projectPath": "C:\\Users\\tomia\\OneDrive\\Escritorio\\Bolsa-de-Trabajo-UTN\\Backend\\ServicioBolsaDeTrabajo\\Src\\BolsaDeTrabjo.Api\\BolsaDeTrabjo.Api.csproj",
+      "packagesPath": "C:\\Users\\tomia\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\tomia\\OneDrive\\Escritorio\\Bolsa-de-Trabajo-UTN\\Backend\\ServicioBolsaDeTrabajo\\Src\\BolsaDeTrabjo.Api\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\josec\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\tomia\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -4107,11 +4107,11 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\josec\\OneDrive\\Escritorio\\Bolsa-de-Trabajo-UTN\\Backend\\ServicioBolsaDeTrabajo\\Src\\BolsaDeTrabajo.Data\\BolsaDeTrabajo.Data.csproj": {
-              "projectPath": "C:\\Users\\josec\\OneDrive\\Escritorio\\Bolsa-de-Trabajo-UTN\\Backend\\ServicioBolsaDeTrabajo\\Src\\BolsaDeTrabajo.Data\\BolsaDeTrabajo.Data.csproj"
+            "C:\\Users\\tomia\\OneDrive\\Escritorio\\Bolsa-de-Trabajo-UTN\\Backend\\ServicioBolsaDeTrabajo\\Src\\BolsaDeTrabajo.Data\\BolsaDeTrabajo.Data.csproj": {
+              "projectPath": "C:\\Users\\tomia\\OneDrive\\Escritorio\\Bolsa-de-Trabajo-UTN\\Backend\\ServicioBolsaDeTrabajo\\Src\\BolsaDeTrabajo.Data\\BolsaDeTrabajo.Data.csproj"
             },
-            "C:\\Users\\josec\\OneDrive\\Escritorio\\Bolsa-de-Trabajo-UTN\\Backend\\ServicioBolsaDeTrabajo\\Src\\BolsaDeTrabajo.Service\\BolsaDeTrabajo.Service.csproj": {
-              "projectPath": "C:\\Users\\josec\\OneDrive\\Escritorio\\Bolsa-de-Trabajo-UTN\\Backend\\ServicioBolsaDeTrabajo\\Src\\BolsaDeTrabajo.Service\\BolsaDeTrabajo.Service.csproj"
+            "C:\\Users\\tomia\\OneDrive\\Escritorio\\Bolsa-de-Trabajo-UTN\\Backend\\ServicioBolsaDeTrabajo\\Src\\BolsaDeTrabajo.Service\\BolsaDeTrabajo.Service.csproj": {
+              "projectPath": "C:\\Users\\tomia\\OneDrive\\Escritorio\\Bolsa-de-Trabajo-UTN\\Backend\\ServicioBolsaDeTrabajo\\Src\\BolsaDeTrabajo.Service\\BolsaDeTrabajo.Service.csproj"
             }
           }
         }
@@ -4158,7 +4158,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
       }
     }
   }

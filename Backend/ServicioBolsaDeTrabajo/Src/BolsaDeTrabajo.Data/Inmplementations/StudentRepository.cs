@@ -48,7 +48,7 @@ namespace BolsaDeTrabajo.Data.Inmplementations
                             Contrasenia = newStudent.Contrasenia,
                             TipoUsuario = 1, /*Tipo alumno */
                             CuitCuil = newStudent.CuitCuil,
-                            Carrera = newStudent.Carrera,
+                            IdCarrera = newStudent.Carrera,
                         };
 
                         await _context.Usuarios.AddAsync(newUser);
@@ -65,7 +65,8 @@ namespace BolsaDeTrabajo.Data.Inmplementations
                             Nacionalidad = newStudent.Nacionalidad,
                             Pais = newStudent.Pais,
                             Ciudad = newStudent.Ciudad,
-                            Direccion = newStudent.Direccion
+                            Direccion = newStudent.Direccion,
+                            Curriculum = newStudent.Curriculum
                         };
                         await _context.Alumnos.AddAsync(student);
                         await _context.SaveChangesAsync();

@@ -22,6 +22,7 @@ export const DataProvider = ({ children }) => {
     curriculum: "",
     CuitCuil: "",
     carrera: "",
+    curriculum: "",
   });
   const [jobsAplicated, setJobsAplicated] = useState([]);
   const { toggleLoading, isLoading } = useLoading();
@@ -80,6 +81,7 @@ export const DataProvider = ({ children }) => {
           direccion: data.direccion,
           CuitCuil: data.CuitCuil,
           carrera: data.carrera,
+          curriculum: null,
         }
       );
       /*"email": "string",

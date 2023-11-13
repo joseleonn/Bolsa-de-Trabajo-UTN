@@ -17,6 +17,7 @@ namespace BolsaDeTrabajo.Model.Models
         public string Descripcion { get; set; }
         public string Titulo { get; set; }
         public bool Disponible { get; set; }
+        public int IdCarrera { get; set; }
 
         public virtual ICollection<PuestosDeTrabajoPostulaciones> PuestosDeTrabajoPostulaciones { get; set; }
     }

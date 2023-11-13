@@ -15,5 +15,7 @@ namespace BolsaDeTrabajo.Model.DTOs
         public string Titulo { get; set; }
 
         public bool Disponible { get; set; }
+
+        public int Carrera { get; set; }
     }
 }

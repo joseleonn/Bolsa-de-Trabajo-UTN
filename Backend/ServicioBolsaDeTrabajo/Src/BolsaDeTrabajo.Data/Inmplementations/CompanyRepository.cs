@@ -78,7 +78,7 @@ namespace BolsaDeTrabajo.Data.Inmplementations
                             Contrasenia = newCompany.Contrasenia,
                             TipoUsuario = 2, /*Tipo empresa */
                             CuitCuil = newCompany.CuitCuil,
-                            Carrera = newCompany.Carrera,
+                            IdCarrera = newCompany.Carrera,
                         };
 
                         await _context.Usuarios.AddAsync(newUser);

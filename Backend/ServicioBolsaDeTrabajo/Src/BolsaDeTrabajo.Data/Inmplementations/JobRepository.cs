@@ -34,7 +34,8 @@ namespace BolsaDeTrabajo.Data.Inmplementations
                             Titulo = job.Titulo,
                             Disponible = job.Disponible,
                             Descripcion = job.Descripcion,
-                        };
+                            IdCarrera = job.Carrera,
+    };
                         _context.PuestosDeTrabajo.Add(newJob);
                         await _context.SaveChangesAsync();
 
@@ -103,6 +104,7 @@ namespace BolsaDeTrabajo.Data.Inmplementations
                     Descripcion = ifExists.Descripcion,
                     Titulo = ifExists.Titulo,
                     Disponible = ifExists.Disponible,
+                    Carrera = ifExists.IdCarrera
                 };
                 return result;
             }
@@ -125,6 +127,7 @@ namespace BolsaDeTrabajo.Data.Inmplementations
                 Descripcion = job.Descripcion,
                 Titulo = job.Titulo,
                 Disponible = job.Disponible,
+                Carrera = job.IdCarrera
             }).ToList();
 
             return results;
@@ -141,6 +144,7 @@ namespace BolsaDeTrabajo.Data.Inmplementations
                 ifExists.Descripcion = job.Descripcion;
                 ifExists.Titulo = job.Titulo;
                 ifExists.Disponible = job.Disponible;
+                ifExists.IdCarrera = job.Carrera;
 
                 _context.Entry(ifExists).State = EntityState.Modified;
                 await _context.SaveChangesAsync();

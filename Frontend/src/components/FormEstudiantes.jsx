@@ -390,12 +390,11 @@ const FormEstudiantes = () => {
                     })}
                     >
                     <option value="">Selecciona una Ingenieria</option>
-                    <option value="Sistemas">Sistemas</option>
-                    <option value="Quimica">Quimica</option>
-                    <option value="Industrial">Industrial</option>
-                    <option value="Mecanica">Mecanica</option>
-                    <option value="Electrónica">Electrónica</option>
-                    <option value="Electrica">Electrica</option>
+                    <option value="5">Sistemas</option>
+                    <option value="3">Quimica</option>
+                    <option value="1">Civil</option>
+                    <option value="4">Mecanica</option>
+                    <option value="2">Electrica</option>
                     {/* Agrega más opciones de carrera según tus necesidades */}
                   </select>
                   {errors.carrera && (

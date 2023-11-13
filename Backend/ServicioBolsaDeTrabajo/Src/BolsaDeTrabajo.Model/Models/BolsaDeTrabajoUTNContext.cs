@@ -34,6 +34,8 @@ namespace BolsaDeTrabajo.Model.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.UseCollation("Modern_Spanish_CI_AS");
+
             modelBuilder.Entity<Admins>(entity =>
             {
                 entity.HasKey(e => e.IdAdmin);
@@ -203,6 +205,8 @@ namespace BolsaDeTrabajo.Model.Models
                     .IsRequired()
                     .HasMaxLength(255);
 
+                entity.Property(e => e.IdCarrera).HasColumnName("Id_Carrera");
+
                 entity.Property(e => e.IdEmpresa).HasColumnName("Id_Empresa");
 
                 entity.Property(e => e.Titulo)
@@ -319,8 +323,6 @@ namespace BolsaDeTrabajo.Model.Models
 
                 entity.Property(e => e.IdUsuario).HasColumnName("Id_Usuario");
 
-                entity.Property(e => e.Carrera).HasMaxLength(255);
-
                 entity.Property(e => e.Contrasenia)
                     .IsRequired()
                     .HasMaxLength(255);
@@ -332,6 +334,8 @@ namespace BolsaDeTrabajo.Model.Models
                 entity.Property(e => e.Email)
                     .IsRequired()
                     .HasMaxLength(255);
+
+                entity.Property(e => e.IdCarrera).HasColumnName("Id_Carrera");
 
                 entity.Property(e => e.IdPuestosDeTrabajoPostulaciones).HasColumnName("Id_PuestosDeTrabajo_Postulaciones");
 
