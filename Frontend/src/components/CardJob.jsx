@@ -67,8 +67,8 @@ const CardJob = ({ idJob, title, description, company, handleClick }) => {
         </CardBody>
         <CardFooter className="gap-3">
           <div className="flex gap-1">
-            <p className="font-semibold text-default-400 text-small">4</p>
-            <p className=" text-default-400 text-small">Postulados</p>
+            <p className="font-semibold text-default-400 text-small"></p>
+            <p className=" text-default-400 text-small"></p>
           </div>
         </CardFooter>
       </Card>
