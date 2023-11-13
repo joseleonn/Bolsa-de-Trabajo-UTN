@@ -1,16 +1,16 @@
-import { Button, Input } from '@nextui-org/react'
-import React, { useState } from 'react'
-import { useData } from '../context/DataContext'
-import { useAuth } from '../context/AuthContext'
-import useModifyStudent from '../hooks/useModifyStudent'
-import { useNavigate } from 'react-router-dom'
-import { ToastContainer } from 'react-toastify'
+import { Button, Input } from '@nextui-org/react';
+import React, { useState } from 'react';
+import { useData } from '../context/DataContext';
+import { useAuth } from '../context/AuthContext';
+import useModifyStudent from '../hooks/useModifyStudent';
+import { useNavigate } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 
 const UpdateUser = () => {
-  const { studentData, setStudentData } = useData()
-  const { user } = useAuth()
-  const { modifyStudent } = useModifyStudent()
-  const navigate = useNavigate()
+  const { studentData, setStudentData } = useData();
+  const { user } = useAuth();
+  const { modifyStudent } = useModifyStudent();
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: user.email,
     nombre: studentData.nombre,
@@ -23,34 +23,37 @@ const UpdateUser = () => {
     direccion: studentData.direccion,
     curriculum: '',
     tipoUsuario: 0,
-    contrasenia: ''
-  })
+    contrasenia: '',
+    estado: studentData.estado,
+    carrera: studentData.carrera,
+    cuitCuil: studentData.cuitCuil
+  });
 
   const handleInputChange = (e) => {
-    const { name, value } = e.target
+    const { name, value } = e.target;
     setFormData({
       ...formData,
       [name]: value
-    })
-  }
+    });
+  };
 
   const handleFormSubmit = async (e) => {
-    e.preventDefault()
-    console.log(formData)
+    e.preventDefault();
+    console.log(formData);
     try {
-      await modifyStudent(formData)
+      await modifyStudent(formData);
       setStudentData({
         ...formData,
         curriculum: studentData.curriculum,
         tipoUsuario: studentData.tipoUsuario
-      })
+      });
     } catch (error) {
-      console.error('Error al modificar los datos', error)
+      console.error('Error al modificar los datos', error);
     }
-  }
+  };
   const handleNavigate = () => {
-    navigate(`/perfil`)
-  }
+    navigate(`/perfil`);
+  };
   return (
     <div className="dark:bg-[#18181B] shadow-xl rounded-[20px] p-[40px] mt-[70px] flex flex-wrap gap-3 items-center w-full justify-center md:justify-start">
       <h1 className="w-full text-2xl uppercase font-bold text-center">
@@ -167,7 +170,7 @@ const UpdateUser = () => {
         </div>
       </form>
     </div>
-  )
-}
+  );
+};
 
-export default UpdateUser
+export default UpdateUser;

@@ -105,5 +105,24 @@ namespace BolsaDeTrabajo.Data.Inmplementations
                 }
             }
         }
+
+        public async Task DeleteUser(int id)
+        {
+            try
+            {
+                Usuarios ifUserExist = await _context.Usuarios.FirstOrDefaultAsync(u => u.IdUsuario == id && u.Estado == 1);
+                if(ifUserExist == null)
+                {
+                    throw new Exception("El usaurio no existe o no esta activo");
+                }
+                ifUserExist.Estado = 2;
+
+                await _context.SaveChangesAsync();
+            }
+            catch(Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
     }
 }

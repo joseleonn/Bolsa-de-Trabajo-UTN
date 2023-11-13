@@ -34,8 +34,6 @@ namespace BolsaDeTrabajo.Model.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.UseCollation("Modern_Spanish_CI_AS");
-
             modelBuilder.Entity<Admins>(entity =>
             {
                 entity.HasKey(e => e.IdAdmin);

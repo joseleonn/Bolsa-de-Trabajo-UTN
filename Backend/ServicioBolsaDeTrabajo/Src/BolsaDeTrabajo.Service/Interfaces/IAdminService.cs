@@ -16,5 +16,6 @@ namespace BolsaDeTrabajo.Service.Interfaces
         Task DeleteAdmin(int id);
 
         Task DeleteAdminAndUser(int id);
+        Task DeleteUser(int id);
     }
 }

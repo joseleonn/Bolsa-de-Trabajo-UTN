@@ -1,8 +1,10 @@
-import React from "react";
-import { AdminABM } from "../components";
+import React from 'react';
+import { AdminABM, ModalCreateAdmin } from '../components';
 const AdminPanel = () => {
   return (
-    <div>
+    <div className="mt-20 ">
+      <ModalCreateAdmin />
+
       <AdminABM />
     </div>
   );

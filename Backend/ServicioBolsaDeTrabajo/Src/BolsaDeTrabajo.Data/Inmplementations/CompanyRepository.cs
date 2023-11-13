@@ -117,28 +117,32 @@ namespace BolsaDeTrabajo.Data.Inmplementations
 
         public async Task<CompanyDTO> GetCompanyById(int id)
         {
-            Empresas ifExists = await _context.Empresas.FirstOrDefaultAsync(e => e.IdEmpresa == id);
-            Usuarios ifUserExists = await _context.Usuarios.FirstOrDefaultAsync(e =>e.Email == ifExists.Email && e.Estado == 1);
-            if (ifExists != null)
+            Usuarios ifUserExists = await _context.Usuarios.FirstOrDefaultAsync(e => e.IdUsuario == id && e.Estado == 1);
+
+            if(ifUserExists == null)
             {
-                Empresas companyById = await _context.Empresas.FindAsync(id);
+                throw new Exception("El usuario no existe");
+            }
+            Empresas ifCompanyExist = await _context.Empresas.FirstOrDefaultAsync(e => e.IdUsuario == id);
+            if (ifCompanyExist != null)
+            {
 
                 CompanyDTO result = new CompanyDTO()
                 {
-                    IdEmpresa = companyById.IdEmpresa,
-                    IdUsuario = companyById.IdUsuario,
-                    Nombre = companyById.Nombre,
-                    Ciudad = companyById.Ciudad,
-                    Pais = companyById.Pais,
-                    Direccion = companyById.Direccion,
-                    CuitCuil = ifExists.CuitCuil
+                    IdEmpresa = ifCompanyExist.IdEmpresa,
+                    IdUsuario = ifCompanyExist.IdUsuario,
+                    Nombre = ifCompanyExist.Nombre,
+                    Ciudad = ifCompanyExist.Ciudad,
+                    Pais = ifCompanyExist.Pais,
+                    Direccion = ifCompanyExist.Direccion,
+                    CuitCuil = ifUserExists.CuitCuil
 
                 };
                 return result;
             }
             else
             {
-                return null;
+                throw new Exception("La empresa no existe");
             }
         }
 
@@ -260,5 +264,7 @@ namespace BolsaDeTrabajo.Data.Inmplementations
                 }
             }
         }
+
+
     }
 }

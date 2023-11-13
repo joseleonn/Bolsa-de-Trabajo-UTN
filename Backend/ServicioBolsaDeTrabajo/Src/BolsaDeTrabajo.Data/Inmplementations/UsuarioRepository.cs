@@ -47,7 +47,7 @@ namespace BolsaDeTrabajo.Data.Implementations
         public async Task<List<UsuariosDTO>> GetAllUsuarios()
         {
             // Obtener todos los usuarios
-            List<Usuarios> users = await _context.Usuarios.ToListAsync();
+            List<Usuarios> users = await _context.Usuarios. Where(u=>u.Estado == 1).ToListAsync();
 
             // Mapea la lista de usuarios a una lista de objetos UsuariopDTO.
             List<UsuariosDTO> results = users.Select(usuario => new UsuariosDTO

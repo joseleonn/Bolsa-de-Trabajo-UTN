@@ -1,21 +1,21 @@
-import { useState } from "react";
-import { search, menu, UTN_logo, UTNletra } from "../assets";
-import CustomButton from "./CustomButton";
-import { Link, useNavigate, useLocation } from "react-router-dom";
-import { navlinks } from "../constants";
-import { motion } from "framer-motion";
-import { useAuth } from "../context/AuthContext";
-import { Button } from "@nextui-org/react";
-import ModalCreateAdmin from "./ModalCreateAdmin";
-import ModalCreateJob from "./ChangePassword/ModalCreatejob";
+import { useState } from 'react';
+import { search, menu, UTN_logo, UTNletra } from '../assets';
+import CustomButton from './CustomButton';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { navlinks } from '../constants';
+import { motion } from 'framer-motion';
+import { useAuth } from '../context/AuthContext';
+import { Button } from '@nextui-org/react';
+import ModalCreateAdmin from './ModalCreateAdmin';
+import ModalCreateJob from './ChangePassword/ModalCreatejob';
 
 const itemVariants = {
   open: {
     opacity: 1,
     y: 0,
-    transition: { type: "spring", stiffness: 300, damping: 24 },
+    transition: { type: 'spring', stiffness: 300, damping: 24 }
   },
-  closed: { opacity: 0, y: 20, transition: { duration: 0.2 } },
+  closed: { opacity: 0, y: 20, transition: { duration: 0.2 } }
 };
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -46,10 +46,7 @@ const Navbar = () => {
       <div className="sm:flex hidden gap-4 ">
         {isLogin ? (
           <>
-            {location.pathname === "/Admin" && user.tipoUsuario === "3" && (
-              <ModalCreateAdmin />
-            )}
-            {user.tipoUsuario === "2" && <ModalCreateJob />}
+            {user.tipoUsuario === '2' && <ModalCreateJob />}
             <Link to="/">
               <Button
                 color="danger"
@@ -61,9 +58,8 @@ const Navbar = () => {
               </Button>
             </Link>
             {user.tipoUsuario == 3 && (
-              <Link to={"/Admin"}>
+              <Link to="/Admin">
                 <Button color="primary" size="lg">
-                  {" "}
                   Admin Panel
                 </Button>
               </Link>
@@ -71,7 +67,7 @@ const Navbar = () => {
           </>
         ) : (
           <div className="flex gap-3">
-            {" "}
+            {' '}
             <Link to="/Login">
               <CustomButton
                 btnType=""
@@ -99,20 +95,10 @@ const Navbar = () => {
         <Link className=" h-[70px] " to="/">
           <img src={UTNletra} alt="logo" className=" " />
         </Link>
-        {user.tipoUsuario === "3" && (
-          <Link to={"/Admin"}>
-            <Button color="primary" size="lg">
-              {" "}
-              Admin Panel
-            </Button>
-          </Link>
-        )}
-        {location.pathname === "/Admin" && user.tipoUsuario === "3" && (
-          <ModalCreateAdmin />
-        )}
+
         <motion.nav
           initial={false}
-          animate={isOpen ? "open" : "closed"}
+          animate={isOpen ? 'open' : 'closed'}
           className="menu  mr-[40px] max-w-[200px]  sm:hidden "
         >
           <div className="flex  justify-end mt-[4px]">
@@ -127,23 +113,23 @@ const Navbar = () => {
           <motion.ul
             variants={{
               open: {
-                clipPath: "inset(0% 0% 0% 0% round 10px)",
+                clipPath: 'inset(0% 0% 0% 0% round 10px)',
                 transition: {
-                  type: "spring",
+                  type: 'spring',
                   bounce: 0,
                   duration: 0.7,
                   delayChildren: 0.3,
-                  staggerChildren: 0.05,
-                },
+                  staggerChildren: 0.05
+                }
               },
               closed: {
-                clipPath: "inset(10% 50% 90% 50% round 10px)",
+                clipPath: 'inset(10% 50% 90% 50% round 10px)',
                 transition: {
-                  type: "spring",
+                  type: 'spring',
                   bounce: 0,
-                  duration: 0.3,
-                },
-              },
+                  duration: 0.3
+                }
+              }
             }}
             className="bg-[#f3f3f3] p-4 gap-5 flex flex-col "
           >
@@ -171,11 +157,22 @@ const Navbar = () => {
             <li>
               {isLogin ? (
                 <>
+                  {user.tipoUsuario === '3' && (
+                    <Link to="/Admin">
+                      <Button color="primary" fullWidth size="md">
+                        {' '}
+                        Admin Panel
+                      </Button>
+                    </Link>
+                  )}
+
                   <Link to="/">
                     <Button
                       color="danger"
-                      size="lg"
+                      size="md"
+                      fullWidth
                       onPress={handleLogout}
+                      className="mt-1"
                       styles="bg-red-600 text-white hover:bg-red-800 "
                     >
                       Cerrar Sesion

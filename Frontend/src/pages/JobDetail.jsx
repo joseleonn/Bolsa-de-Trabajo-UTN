@@ -1,16 +1,20 @@
-import { Button } from '@nextui-org/react'
-import React from 'react'
-import { useLocation, useNavigate } from 'react-router-dom'
-import useAplyJob from '../hooks/useAply'
+import { Button } from '@nextui-org/react';
+import React from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
+import useAplyJob from '../hooks/useAply';
+import { useAuth } from '../context/AuthContext';
+import { useData } from '../context/DataContext';
 
 const JobDetail = () => {
-  const { state } = useLocation()
-  const navigate = useNavigate()
-  const { aplyJob } = useAplyJob()
+  const { state } = useLocation();
+  const navigate = useNavigate();
+  const { aplyJob } = useAplyJob();
+  const { user } = useAuth();
+  const { jobsAplicated } = useData();
 
   const handleNavigate = () => {
-    navigate(`/Empleos`)
-  }
+    navigate(`/Empleos`);
+  };
   return (
     <div className="dark:bg-[#18181B] shadow-xl rounded-[20px] p-[40px] mt-[70px] flex flex-wrap gap-3 items-center w-full justify-center md:justify-start">
       <div className="w-full">
@@ -54,17 +58,40 @@ const JobDetail = () => {
             Volver
           </Button>
 
-          <Button
-            className=" bg-blue-600 text-white font-epilogue border-default-200  "
-            radius="full"
-            onPress={() => aplyJob(state.idPuesto)}
-          >
-            Postularse
-          </Button>
+          {user.tipoUsuario === '2' || user.tipoUsuario === '3' ? (
+            <>
+              {' '}
+              <Button
+                className=" bg-blue-600 text-white font-epilogue border-default-200  "
+                radius="full"
+                isDisabled
+              >
+                No sos Alumno
+              </Button>
+            </>
+          ) : jobsAplicated.some((job) => job.idPuesto === state.idPuesto) ? (
+            <Button
+              className=" bg-green-600 text-white font-epilogue border-default-200  "
+              radius="full"
+              isDisabled
+            >
+              Aplicado
+            </Button>
+          ) : (
+            <>
+              <Button
+                className=" bg-blue-600 text-white font-epilogue border-default-200  "
+                radius="full"
+                onPress={() => aplyJob(state.idPuesto)}
+              >
+                Postularse
+              </Button>
+            </>
+          )}
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default JobDetail
+export default JobDetail;

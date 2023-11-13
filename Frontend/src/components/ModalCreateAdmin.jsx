@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   Modal,
   ModalContent,
@@ -6,21 +6,21 @@ import {
   ModalBody,
   ModalFooter,
   Button,
-  useDisclosure,
-} from "@nextui-org/react";
-import CreateUserAdmin from "./CreateUserAdmin";
+  useDisclosure
+} from '@nextui-org/react';
+import CreateUserAdmin from './CreateUserAdmin';
 
 const ModalCreateAdmin = () => {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   return (
     <>
-      <Button color="primary" size="lg" onPress={onOpen}>
+      <Button className="mb-2" color="primary" size="lg" onPress={onOpen}>
         Crear Usuario
       </Button>
       <Modal
         isOpen={isOpen}
         onOpenChange={onOpenChange}
-        size="full"
+        size="5xl"
         scrollBehavior="inside"
       >
         <ModalContent>

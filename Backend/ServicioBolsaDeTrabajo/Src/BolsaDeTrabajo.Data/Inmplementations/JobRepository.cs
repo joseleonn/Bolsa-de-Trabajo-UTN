@@ -165,7 +165,7 @@ namespace BolsaDeTrabajo.Data.Inmplementations
                 PuestosDeTrabajo ifJobExist = await _context.PuestosDeTrabajo.FirstOrDefaultAsync(j => j.IdPuesto == aplyJob.idJob);
                 Usuarios ifUserExist = await _context.Usuarios
                     .Include(u => u.Alumnos)
-                    .FirstOrDefaultAsync(u => u.Email == aplyJob.userEmail);
+                    .FirstOrDefaultAsync(u => u.Email == aplyJob.userEmail && u.TipoUsuario == 1);
 
                 if (ifJobExist == null)
                 {

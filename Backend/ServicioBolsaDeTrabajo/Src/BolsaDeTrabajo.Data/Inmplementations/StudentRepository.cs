@@ -198,6 +198,9 @@ namespace BolsaDeTrabajo.Data.Inmplementations
                     Pais = student.Pais,
                     Ciudad = student.Ciudad,
                     Direccion = student.Direccion,
+                    Carrera = user.IdCarrera,
+                    CuitCuil = user.CuitCuil,
+                    Estado = user.Estado,
                     Curriculum = student.Curriculum,
                     
                     };
@@ -222,7 +225,7 @@ namespace BolsaDeTrabajo.Data.Inmplementations
             try
             {
                 Usuarios ifUserExist = await _context.Usuarios.FirstOrDefaultAsync(u => u.Email == student.Email && student.Estado == 1);
-                Alumnos ifStudentExist = await _context.Alumnos.FirstOrDefaultAsync(a => a.Dni == student.Dni);
+                Alumnos ifStudentExist = await _context.Alumnos.FirstOrDefaultAsync(a => a.Email == student.Email);
 
                 if (ifStudentExist == null) {
                     throw new Exception("El dni no fue encontrado");

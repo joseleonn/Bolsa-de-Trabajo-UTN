@@ -10,7 +10,7 @@ const Perfil = () => {
   const [selectedFile, setSelectedFile] = useState(null);
 
   const { user } = useAuth();
-  const { studentData } = useData();
+  const { studentData, empresa } = useData();
   const { seeCV } = useSeeCV();
   const { addCurriculum } = useUploadCurriculum();
   const navigate = useNavigate();
@@ -44,6 +44,8 @@ const Perfil = () => {
             ) : null}
           </div>
           <Divider></Divider>
+
+          {/* para alumno */}
           {user.tipoUsuario === '1' ? (
             <>
               {studentData && (
@@ -88,12 +90,27 @@ const Perfil = () => {
               )}
             </>
           ) : (
-            <p className="text-gray-600">Sos Administrador</p>
+            <></>
           )}
-          {user.tipoUsuario === '2' && (
-            <h2 className="text-gray-600">
-              Sos empresa y no podes ver tus postulaciones
-            </h2>
+
+          {/* para empresa */}
+          {user.tipoUsuario === '2' ? (
+            <>
+              {empresa && (
+                <div className="flex flex-col p-[5px] gap-2">
+                  <span> CUIT: {empresa.cuitCuil}</span>
+                  <span>RAZON SOCIAL: {empresa.nombre}</span>
+                  <span>PAIS: {empresa.pais}</span>
+                  <span>CIUDAD: {empresa.ciudad}</span>
+                  <span>DIRECION: {empresa.direccion}</span>
+                </div>
+              )}
+            </>
+          ) : (
+            <></>
+          )}
+          {user.tipoUsuario === '3' && (
+            <h2 className="text-gray-600">Sos Administrador</h2>
           )}
         </div>
       </div>

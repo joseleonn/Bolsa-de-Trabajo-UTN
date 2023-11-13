@@ -18,6 +18,5 @@ namespace BolsaDeTrabajo.Data.Interfaces
         Task ModifyCompanyAndUser(CompanyDTO company);
 
         Task DeteleCompany(int id);
-
     }
 }

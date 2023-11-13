@@ -44,7 +44,7 @@ namespace BolsaDeTrabjo.Api.Controllers
             {
                 await _service.AddStudent(student);
 
-                return CreatedAtAction(nameof(AddStudent), null);
+                return CreatedAtAction(nameof(AddStudent), student);
             }
             catch
             {

@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import {
   Card,
   CardHeader,
@@ -7,12 +7,14 @@ import {
   Avatar,
   Button,
   useDisclosure
-} from '@nextui-org/react'
-import ModalJob from './ModalJob'
-import { useData } from '../context/DataContext'
+} from '@nextui-org/react';
+import ModalJob from './ModalJob';
+import { useData } from '../context/DataContext';
+import { useAuth } from '../context/AuthContext';
 
 const CardJob = ({ idJob, title, description, company, handleClick }) => {
-  const { jobsAplicated } = useData()
+  const { jobsAplicated } = useData();
+  const { user } = useAuth();
   return (
     <div className="cursor-pointer" onClick={handleClick}>
       {' '}
@@ -29,10 +31,29 @@ const CardJob = ({ idJob, title, description, company, handleClick }) => {
             </div>
           </div>
           {jobsAplicated.some((job) => job.idPuesto === idJob) ? (
-            <p>Aplicado</p>
+            <Button
+              className="bg-green-600 text-white font-epilogue border-default-200"
+              radius="full"
+              size="sm"
+              isDisabled
+            >
+              Aplicado
+            </Button>
+          ) : user.tipoUsuario !== '1' ? (
+            <>
+              <Button
+                className="bg-blue-600 text-white font-epilogue border-default-200"
+                radius="full"
+                size="sm"
+                isDisabled
+                onClick={handleClick}
+              >
+                No sos Alumno
+              </Button>
+            </>
           ) : (
             <Button
-              className=" bg-blue-600 text-white font-epilogue border-default-200"
+              className="bg-blue-600 text-white font-epilogue border-default-200"
               radius="full"
               size="sm"
               onClick={handleClick}
@@ -52,7 +73,7 @@ const CardJob = ({ idJob, title, description, company, handleClick }) => {
         </CardFooter>
       </Card>
     </div>
-  )
-}
+  );
+};
 
-export default CardJob
+export default CardJob;
