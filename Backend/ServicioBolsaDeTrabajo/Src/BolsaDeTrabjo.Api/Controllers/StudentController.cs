@@ -147,8 +147,8 @@ namespace BolsaDeTrabjo.Api.Controllers
                 return BadRequest("Error al modificar: " + ex.Message);
             }
         }
-        [HttpDelete("{id}")]
 
+        [HttpPost("EliminarPorId")]
         public async Task<IActionResult> DeleteStudent(int id)
         {
             await _service.DeleteStudent(id);

@@ -89,7 +89,8 @@ namespace BolsaDeTrabjo.Api.Controllers
                 return BadRequest("Error al modificar: " + ex.Message);
             }
         }
-        [HttpDelete("{id}")]
+
+        [HttpPost("EliminarPorId")]
 
         public async Task<IActionResult> DeleteCompany(int id)
         {
