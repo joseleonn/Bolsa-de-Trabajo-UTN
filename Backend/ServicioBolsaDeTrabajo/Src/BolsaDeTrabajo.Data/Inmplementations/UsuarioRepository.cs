@@ -144,7 +144,28 @@ namespace BolsaDeTrabajo.Data.Implementations
             }
         }
 
-        
+
+        public async Task<bool> ChangePassword(changePasswordDTO usuario)
+        {
+            // Buscar el usuario por su ID
+            Usuarios existingUser = await _context.Usuarios.FirstOrDefaultAsync(e => e.Email == usuario.Email);
+
+            if (existingUser != null)
+            {
+                existingUser.Email = usuario.Email;
+                existingUser.Contrasenia = usuario.Contrasenia;
+                // Actualiza otros campos si es necesario
+
+                // Marcar la entidad como modificada
+                _context.Entry(existingUser).State = EntityState.Modified;
+                await _context.SaveChangesAsync();
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
 
     }
 }

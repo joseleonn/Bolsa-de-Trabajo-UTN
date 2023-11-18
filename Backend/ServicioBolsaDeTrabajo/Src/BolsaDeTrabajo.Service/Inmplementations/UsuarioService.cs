@@ -229,5 +229,32 @@ namespace BolsaDeTrabajo.Service.Implementations
                 throw new Exception("No se pudo verificar el token");
             }
         }
+        public async Task ChangePassword(changePasswordDTO usuario)
+        {
+            try
+            {
+                Usuarios ifUserExist = await _context.Usuarios.FirstOrDefaultAsync(u => u.Email == usuario.Email);
+
+                if (ifUserExist != null)
+                {
+                    usuario.Contrasenia = _encrypt.GetSHA256(usuario.Contrasenia);
+                    bool result = await _repository.ChangePassword(usuario);
+                    if (!result)
+                    {
+                        throw new Exception("El usuario no fue modificado");
+
+                    }
+                }
+                else
+                {
+                    throw new Exception("El usuario no fue encontrado");
+                }
+            }
+            catch
+            {
+                throw new Exception("hubo un error en modificar");
+            }
+        }
+
     }
 }

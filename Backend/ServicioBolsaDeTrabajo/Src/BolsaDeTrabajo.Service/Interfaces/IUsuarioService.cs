@@ -16,6 +16,7 @@ namespace BolsaDeTrabajo.Service.Interfaces
         Task ChangePassword(string email);
 
         Task VerifyToken(string token);
+        Task ChangePassword(changePasswordDTO usuario);
 
     }
 }

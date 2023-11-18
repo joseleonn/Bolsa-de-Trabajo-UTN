@@ -44,11 +44,11 @@ namespace BolsaDeTrabajo.Api.Controllers
 
 
         [HttpPost("CambiarContrasenia")]
-        public async Task<IActionResult> Put([FromBody] UsuariosDTO usuarioDTO)
+        public async Task<IActionResult> Put([FromBody] changePasswordDTO usuarioDTO)
         {
             try
             {
-                await _usuarioService.UpdateUsuarioAsync(usuarioDTO);
+                await _usuarioService.ChangePassword(usuarioDTO);
                 return Ok("contra modificada");
             }
             catch(Exception ex)

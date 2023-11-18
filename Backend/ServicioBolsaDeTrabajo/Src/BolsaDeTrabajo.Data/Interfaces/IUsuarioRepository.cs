@@ -24,5 +24,6 @@ namespace BolsaDeTrabajo.Data.Interfaces
         Task DeleteUsuario(int id);
         
         Task<UsuariosDTO> GetUsuarioByEmail (string email);
+        Task<bool> ChangePassword(changePasswordDTO usuario);
     }
 }
